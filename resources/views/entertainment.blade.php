@@ -30,6 +30,8 @@
         <input type="checkbox" name="entertainment[]" value="pack15">
         
     </div>
-    <button type="submit">Submit</button>
+
+    <button type="submit">Next</button>
+
 </form>
 @stop
