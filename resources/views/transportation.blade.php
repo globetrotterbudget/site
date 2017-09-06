@@ -11,5 +11,6 @@
             {{ csrf_field() }}
             <button type="submit" name="public" value='public'>Public</button>
             <button type="submit" name="rental" value='rental'>Rental</button>
+            <button type="submit">Next</button>
 </form>
 @stop

@@ -12,5 +12,6 @@
         <button type="submit" name="$" value='lowest'>$</button>
         <button type="submit" name="$$" value='modest'>$$</button>
         <button type="submit" name="$$$" value='highest'>$$$</button>
+        <button type="submit">Next</button>
 </form>
 @stop
