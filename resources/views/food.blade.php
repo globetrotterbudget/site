@@ -7,10 +7,10 @@
 
 @section('content')
 <h2>The "$$" Budget are for most meals at modestly priced restaurnts.</h2>
-<form method="POST" action="">
+<form method="GET" action="{{ action('PageController@food') }}">
         {{ csrf_field() }}
-        <button type="submit" name="$" value='lowest'>$</button>
-        <button type="submit" name="$$" value='modest'>$$</button>
-        <button type="submit" name="$$$" value='highest'>$$$</button>
+        <button type="submit" name="food" value='lowest'>$</button>
+        <button type="submit" name="food" value='modest'>$$</button>
+        <button type="submit" name="food" value='highest'>$$$</button>
 </form>
 @stop
