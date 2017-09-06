@@ -6,6 +6,7 @@
 
 @section('content')
 
+
 <?php $array =['location' => 'Los Angeles', 'days' => '7', 'travelers' => '4']; ?>
 
 
@@ -14,10 +15,10 @@
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
 			<h2>How many days would you like to visit for?</h2>
-			<form method="GET" action="groupsize">
-			<input type="text" name="days">
-			<button type="submit">Submit</button>
-			</form>
+        <form method="GET" action="{{action ('PageController@days')}}">
+          <input type="text" name="days">
+          <button type="submit">Submit</button>
+        </form>
 		</div>
 	</div>
 	@if(!empty($array)) 
@@ -34,6 +35,7 @@
 	@endif
 	</div>
 </div>
+
 
 
 @stop
