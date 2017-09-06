@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('layouts.location');
 });
 
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -34,3 +35,6 @@ Route::get('groupsize', function(){
 Route::get('accommodations', function(){
 	return view('accommodations');
 });
+
+Route::get('/location', 'PageController@location');
+
