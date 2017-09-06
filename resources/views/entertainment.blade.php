@@ -29,5 +29,6 @@
         <button type="submit" name="$14" value='pack14'>$95</button>
         <button type="submit" name="$15" value='pack15'>$95</button>
     </div>
+    <button type="submit">Next</button>
 </form>
 @stop
