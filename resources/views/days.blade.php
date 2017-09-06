@@ -6,11 +6,6 @@
 
 @section('content')
 
-
-<?php $array =['location' => 'Los Angeles', 'days' => '7', 'travelers' => '4']; ?>
-
-
-
 <div class="container">
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
