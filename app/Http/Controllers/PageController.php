@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
 class PageController extends Controller
 {
     /**
@@ -14,9 +15,13 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function location(Request $request)
     {
-        //
+        var_dump($request['location']);
+        $request->session()->put('location', $request['location']);
+        $value = $request->session()->get('location');
+        var_dump($value);
+        return view('layouts.location');
     }
 
     /**

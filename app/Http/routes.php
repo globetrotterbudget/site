@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('layouts.location');
 });
+Route::get('/location', 'PageController@location');
