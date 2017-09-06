@@ -5,7 +5,8 @@
 @stop
 
 @section('content')
-<h2>How would you like to commute on your trip?</h2>
+
+<h2>How would you prefer to commute on your trip?</h2>
 <form method="POST" action="">
             {{ csrf_field() }}
             <button type="submit" name="public" value='public'>Public</button>

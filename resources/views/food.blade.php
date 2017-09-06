@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('title')
-<title>Food</title>
+
+<title>Food and Dining</title>
 @stop
 
 @section('content')
