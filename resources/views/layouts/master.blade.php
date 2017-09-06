@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,6 @@
 </head>
 <body>
 	@include('layouts.partials._navbar')
-    @yield('content')
+  @yield('content')
 </body>
 </html>
