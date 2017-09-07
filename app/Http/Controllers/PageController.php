@@ -52,7 +52,6 @@ class PageController extends Controller
         } else {
 
             $request->session()->put('groupsize', $request['groupsize']);
-            $groupsize = session()->get('groupsize');
             return redirect()->action('PageController@accommodations');
         }
     }
@@ -109,6 +108,7 @@ class PageController extends Controller
         }
 
     }
+
     public function summary(Request $request) {
         
         $entertainment = session()->get('entertainment');
@@ -123,6 +123,7 @@ class PageController extends Controller
         return view('summary', $data);
     }
 
+   
     /**
      * Show the form for creating a new resource.
      *
