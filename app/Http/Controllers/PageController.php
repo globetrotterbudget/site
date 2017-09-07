@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 
 class PageController extends Controller
 {
@@ -129,7 +131,7 @@ class PageController extends Controller
     }
 
     public function summary(Request $request) {
-        
+
         $entertainment = session()->get('entertainment');
         $transportation = session()->get('transportation');
         $location = session()->get('location');

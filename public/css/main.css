@@ -11,6 +11,11 @@
 #wizard{
 	height: 80vh;
 }
+#login {
+	text-align:center;
+	display:table-cell;
+    vertical-align:middle;
+}
 .container .parent-container {
 	display: table;
 	text-align:center;

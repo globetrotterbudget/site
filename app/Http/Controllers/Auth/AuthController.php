@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -22,6 +23,12 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
+
+
+    // protected $redirectPath = "users/" . Auth::id(); 
+    protected $redirectPath = "/location";
+    protected $redirectAfterLogout = "/auth/login";
 
     /**
      * Create a new authentication controller instance.
