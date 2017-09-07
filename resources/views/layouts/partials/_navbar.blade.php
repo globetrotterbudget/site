@@ -17,6 +17,7 @@
 
                     <li><a href="">About</a></li>
                     @if(!Auth::check())
+                    <li><a href="/auth/register">Sign Up</a></li>
                     <li><a href="/auth/login">Login</a></li>
                     @else
                     <li><a href="#">My Trips</a></li>
