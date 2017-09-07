@@ -9,13 +9,14 @@
 <div class="container">
     <div id="wizard" class="col-md-8 parent-container">
         <div id="content">
-            <h2>How would you prefer to commute on your trip?</h2>
+            <h2>Select a Meal Preference Budget</h2>
 				<form method="GET" action="{{ action('PageController@food')}}">
 				{{ csrf_field() }}
 		            <button type="submit" name="food" value='lowest'>$</button>
        				<button type="submit" name="food" value='modest'>$$</button>
         			<button type="submit" name="food" value='highest'>$$$</button>
 				</form>
+            <h3>The "$$" Budget is for meals at modestly priced restaurants.</h3>
         </div>
     </div>
     @if(!empty($array)) 
