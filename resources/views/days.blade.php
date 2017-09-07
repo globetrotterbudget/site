@@ -6,11 +6,6 @@
 
 @section('content')
 
-
-<?php $array =['location' => 'Los Angeles', 'days' => '7', 'travelers' => '4']; ?>
-
-
-
 <div class="container">
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
@@ -24,6 +19,11 @@
 	@if(!empty($array)) 
 	<div class="col-md-4">
 		<div id="sidebar">
+		<div class="row">
+			<?php $location = array_shift($array); ?>
+		 	<h4 class="category">{{ $location }}</h4>
+		 	<a class="sidebarEdit" href="">edit</a>
+		</div>
 		@foreach( $array as $key => $value )
 			<p>{{ $key . ':'}}</p>
 			<div class="row">
