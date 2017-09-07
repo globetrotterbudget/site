@@ -34,6 +34,8 @@ Route::get('/accommodations', 'PageController@accommodations');
 
 Route::get('/location', 'PageController@location');
 Route::get('/transportation', 'PageController@transportation');
+Route::get('/food', 'PageController@food');
 Route::get('/entertainment', 'PageController@entertainment');
 Route::get('/summary', 'PageController@summary');
+
 

@@ -54,7 +54,6 @@ class PageController extends Controller
         } else {
 
             $request->session()->put('groupsize', $request['groupsize']);
-            $groupsize = session()->get('groupsize');
             return redirect()->action('PageController@accommodations');
         }
     }
@@ -89,8 +88,25 @@ class PageController extends Controller
             return view('transportation', $data);
         } else {
             $request->session()->put('transportation', $request['transportation']);
-            return redirect()->action('PageController@entertainment');
+            return redirect()->action('PageController@food');
         }
+    }
+    public function food(Request $request)
+    {
+       if($request['food'] === null) {
+            $location = session()->get('location');
+            $days = session()->get('days');
+            $groupsize = session()->get('groupsize');
+            $accommodations = session()->get('accommodations');
+            $transportation = session()->get('transportation');
+
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, '    accommodations' => $accommodations, 'transportation'=> $transportation];
+
+            return view('food', $data);
+        } else {
+            $request->session()->put('food', $request['food']);
+            return redirect()->action('PageController@entertainment');
+        } 
     }
     public function entertainment(Request $request)
     {
@@ -101,8 +117,10 @@ class PageController extends Controller
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
             $accommodations = session()->get('accommodations');
+            $transportation = session()->get('transportation');
+            $food = session()->get('food');
 
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, '    accommodations' => $accommodations, 'transportation' => $transportation];
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, '    accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food];
             return view('entertainment', $data);
 
         } else {
@@ -111,6 +129,7 @@ class PageController extends Controller
         }
 
     }
+
     public function summary(Request $request) {
 
         $entertainment = session()->get('entertainment');
@@ -125,6 +144,7 @@ class PageController extends Controller
         return view('summary', $data);
     }
 
+   
     /**
      * Show the form for creating a new resource.
      *

@@ -6,11 +6,35 @@
 @stop
 
 @section('content')
-<h2>The "$$" Budget are for most meals at modestly priced restaurnts.</h2>
-<form method="POST" action="">
-        {{ csrf_field() }}
-        <button type="submit" name="$" value='lowest'>$</button>
-        <button type="submit" name="$$" value='modest'>$$</button>
-        <button type="submit" name="$$$" value='highest'>$$$</button>
-</form>
+<div class="container">
+    <div id="wizard" class="col-md-8 parent-container">
+        <div id="content">
+            <h2>Select a Meal Preference Budget</h2>
+				<form method="GET" action="{{ action('PageController@food')}}">
+				{{ csrf_field() }}
+		            <button type="submit" name="food" value='lowest'>$</button>
+       				<button type="submit" name="food" value='modest'>$$</button>
+        			<button type="submit" name="food" value='highest'>$$$</button>
+				</form>
+            <h3>The "$$" Budget is for meals at modestly priced restaurants.</h3>
+        </div>
+    </div>
+    @if(!empty($array)) 
+    <div class="col-md-4">
+        <div id="sidebar">
+        <div class="row">
+			<?php $location = array_shift($array); ?>
+		 	<h4 class="category">{{ $location }}</h4>
+		 	<a class="sidebarEdit" href="">edit</a>
+		</div>
+        @foreach( $array as $key => $value )
+            <p>{{ $key . ':'}}</p>
+            <div class="row">
+                <h4 class="category">{{ $value }}</h4>
+                <a class="sidebarEdit" href="/{{ $key }}">edit</a>
+             </div>
+        @endforeach
+        </div>
+    @endif
+    </div>
 @stop
