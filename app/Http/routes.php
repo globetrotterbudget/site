@@ -25,16 +25,13 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('days', function () {
-	return view('days');
-});
+Route::get('/days', 'PageController@days');
 
-Route::get('groupsize', function(){
-	return view('groupsize');
-});
-Route::get('accommodations', function(){
-	return view('accommodations');
-});
+Route::get('/groupsize', 'PageController@groupsize');
+Route::get('/accommodations', 'PageController@accommodations');
 
 Route::get('/location', 'PageController@location');
+Route::get('/transportation', 'PageController@transportation');
+Route::get('/food', 'PageController@food');
+Route::get('/entertainment', 'PageController@entertainment');
 
