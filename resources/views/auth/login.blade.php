@@ -11,7 +11,7 @@
     <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
         <div id="login">
             <h2>This is where you log in</h2>
-
+            
             <form method="POST" action="/auth/login">
                 {!! csrf_field() !!}
 
