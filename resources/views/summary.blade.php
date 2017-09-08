@@ -27,10 +27,14 @@
 					{!! $thing . ", " !!}
 					@endforeach
 				</p>
+<<<<<<< HEAD
 				<a class="sidebarEdit" href="/entertainment">edit</a>
 				
 				
 				 
+=======
+				<a class="sidebarEdit" href="">edit</a>
+>>>>>>> 8eab1113fcbfd1995e712cdd54e93a0ef3fb5d38
 		</div>
 	</div>
 	<div id="wizard" class="parent-container">
@@ -39,7 +43,12 @@
         <form method="GET" action="{{action ('PageController@location')}}">
           	<button type="submit">Add another trip</button>
         </form>
-          	<button type="submit">Save this itinerary</button>
+        	@if(Auth::check())
+          	<a href="/save"><input type="button" value="Save this itinerary"></a>
+          	@else
+          	<?php session()->put('itinerary', 'yes'); ?> 
+          	<a href="/auth/login"><input type="button" value="Save this itinerary"></a>
+          	@endif
 		</div>
 	</div>
 </div>

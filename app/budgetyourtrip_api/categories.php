@@ -1,4 +1,6 @@
 <?php
+namespace App\Budgetyourtrip_api;
+use App\budgetyourtrip_api\lib\bytapiconnection;
 
 class Categories extends BYTAPIConnection
 {

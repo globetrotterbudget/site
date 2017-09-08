@@ -16,6 +16,11 @@
 	display:table-cell;
     vertical-align:middle;
 }
+#save {
+	text-align:left;
+	display:table-cell;
+    vertical-align:middle;
+}
 #signup {
 	text-align:center;
 	display:table-cell;

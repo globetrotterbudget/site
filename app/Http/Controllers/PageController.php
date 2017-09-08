@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\budgetyourtrip_api\Accomodation;
+use App\budgetyourtrip_api\Categories;
+use App\budgetyourtrip_api\Costs;
+use App\budgetyourtrip_api\Countries;
+use App\budgetyourtrip_api\Currencies;
+use App\budgetyourtrip_api\Locations;
+use App\Trip;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -14,8 +22,15 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function location(Request $request)
     {
+
+        if(session()->has('itinerary')) {
+            session()->forget('itinerary');
+            return redirect()->action('PageController@save');
+        }
         if($request['location'] === null) {
 
             $location = session()->get('location');
@@ -23,8 +38,13 @@ class PageController extends Controller
 
             return view('location', $data);
         } else {
+<<<<<<< HEAD
             
             $request->session()->put('location', $request['location']);
+=======
+            $location = 2988507;
+            $request->session()->put('location', $location); 
+>>>>>>> 8eab1113fcbfd1995e712cdd54e93a0ef3fb5d38
             return redirect()->action('PageController@days');
         }
     }
@@ -66,8 +86,26 @@ class PageController extends Controller
             $location = session()->get('location');
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
-
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize];
+            $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation($location);
+            $cost_per_day = $cost_data[count($cost_data) - 1];
+            $average_cost_per_day = $cost_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_cost_per_day);
+            $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
+            $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
+            // $category_ids = [];
+            // foreach($cost_data as $categories){
+            //     array_push($category_ids, $categories->category_id);
+            // }
+            // $categories = new Categories(env('API_KEY'));
+            // $categories_description = [];
+            // foreach($category_ids as $id){
+            //     array_push($categories_description, $categories->getCategories($id));
+            // }
+            // var_dump($category_ids);
+            // var_dump($categories_description);
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person' => number_format((float)$average_trip_cost, 2, '.', ''), 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', '')];
             
             return view('accommodations', $data);
 
@@ -114,7 +152,6 @@ class PageController extends Controller
     {
 
         if($request['entertainment'] === null) {
-            $transportation = session()->get('transportation');
             $location = session()->get('location');
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
@@ -132,17 +169,26 @@ class PageController extends Controller
 
     }
 
-    public function summary(Request $request) {
-
+    public function summary(Request $request) {        
         $entertainment = session()->get('entertainment');
         $transportation = session()->get('transportation');
         $location = session()->get('location');
         $days = session()->get('days');
         $groupsize = session()->get('groupsize');
         $accommodations = session()->get('accommodations');
+<<<<<<< HEAD
         $food = session()->get('food');
 
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+=======
+        $transportation = session()->get('transportation');
+        $food = session()->get('food');
+        $entertainment = session()->get('entertainment');
+        $food = session()->get('food');
+
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+
+>>>>>>> 8eab1113fcbfd1995e712cdd54e93a0ef3fb5d38
         return view('summary', $data);
     }
 
@@ -156,6 +202,20 @@ class PageController extends Controller
     {
         //
     }
+    public function save(Request $request)
+    {
+        $entertainment = session()->get('entertainment');
+        $transportation = session()->get('transportation');
+        $location = session()->get('location');
+        $days = session()->get('days');
+        $groupsize = session()->get('groupsize');
+        $accommodations = session()->get('accommodations');
+        $food = session()->get('food');
+
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+
+        return view('/save', $data);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -165,7 +225,31 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $trip = new trip();
+        $trip->user_id = Auth::id();
+        $trip->trip_name = $request->trip_name;
+        $trip->location = session()->get('location');
+        $trip->groupsize = session()->get('groupsize');
+        $trip->days = session()->get('days');
+        $trip->accommodations = session()->get('accommodations');
+        $trip->transportation = session()->get('transportation');
+        $trip->food = session()->get('food');
+        $trip->save();
+
+        session()->flush();
+
+        $request->session()->flash("successMessage", "Your post was saved successfully");
+
+
+        // var_dump($request);
+
+        return view('layouts.location');
+
+
+
+
+
+
     }
 
     /**
@@ -213,3 +297,4 @@ class PageController extends Controller
         //
     }
 }
+
