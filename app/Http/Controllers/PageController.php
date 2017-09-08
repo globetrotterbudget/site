@@ -32,19 +32,10 @@ class PageController extends Controller
             return redirect()->action('PageController@save');
         }
         if($request['location'] === null) {
-
-            $location = session()->get('location');
-            $data['array'] = ['location' => $location];
-
-            return view('location', $data);
+            return view('layouts.location');
         } else {
-<<<<<<< HEAD
-            
-            $request->session()->put('location', $request['location']);
-=======
             $location = 2988507;
             $request->session()->put('location', $location); 
->>>>>>> 8eab1113fcbfd1995e712cdd54e93a0ef3fb5d38
             return redirect()->action('PageController@days');
         }
     }
@@ -170,25 +161,14 @@ class PageController extends Controller
     }
 
     public function summary(Request $request) {        
-        $entertainment = session()->get('entertainment');
-        $transportation = session()->get('transportation');
         $location = session()->get('location');
         $days = session()->get('days');
         $groupsize = session()->get('groupsize');
         $accommodations = session()->get('accommodations');
-<<<<<<< HEAD
-        $food = session()->get('food');
-
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
-=======
         $transportation = session()->get('transportation');
-        $food = session()->get('food');
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
-
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
-
->>>>>>> 8eab1113fcbfd1995e712cdd54e93a0ef3fb5d38
         return view('summary', $data);
     }
 

@@ -27,14 +27,7 @@
 					{!! $thing . ", " !!}
 					@endforeach
 				</p>
-<<<<<<< HEAD
 				<a class="sidebarEdit" href="/entertainment">edit</a>
-				
-				
-				 
-=======
-				<a class="sidebarEdit" href="">edit</a>
->>>>>>> 8eab1113fcbfd1995e712cdd54e93a0ef3fb5d38
 		</div>
 	</div>
 	<div id="wizard" class="parent-container">
