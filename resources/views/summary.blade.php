@@ -13,13 +13,13 @@
 				<?php $location = array_shift($array); ?>
 				<?php $entertainment = array_pop($array); ?>
 			 	<h4 class="category">{{ $location }}</h4>
-			 	<a class="sidebarEdit" href="">edit</a>
+			 	<a class="sidebarEdit" href="/">edit</a>
 			</div>
 			@foreach( $array as $key => $value )
 				<p>{{ $key . ':'}}</p>
 				<div class="row">
 					<h4 class="category">{{ $value }}</h4>
-				 	<a class="sidebarEdit" href="">edit</a>
+				 	<a class="sidebarEdit" href="/{{ $key }}">edit</a>
 				 </div>
 			@endforeach
 			<p>Entertainment<br>
