@@ -77,7 +77,7 @@ class PageController extends Controller
             $location = session()->get('location');
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
-            $costs = new Costs(env('API_KEY'));
+            $costs = new App\budgetyourtrip_api\Costs(env('API_KEY'));
             $cost_data = $costs->getLocation($location);
             $cost_per_day = $cost_data[count($cost_data) - 1];
             $average_cost_per_day = $cost_per_day->value_midrange;
