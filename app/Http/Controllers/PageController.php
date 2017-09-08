@@ -23,6 +23,7 @@ class PageController extends Controller
 
             return view('location', $data);
         } else {
+            
             $request->session()->put('location', $request['location']);
             return redirect()->action('PageController@days');
         }

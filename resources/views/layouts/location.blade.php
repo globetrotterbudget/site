@@ -22,7 +22,7 @@
 		<div class="row">
 			<?php $location = array_shift($array); ?>
 		 	<h4 class="category">{{ $location }}</h4>
-		 	<a class="sidebarEdit" href="/layouts/partials/location">edit</a>
+		 	<a class="sidebarEdit" href="/layouts/location">edit</a>
 		</div>
 		@foreach( $array as $key => $value )
 			<p>{{ $key . ':'}}</p>
