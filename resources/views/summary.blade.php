@@ -39,6 +39,7 @@
         	@if(Auth::check())
           	<a href="/save"><input type="button" value="Save this itinerary"></a>
           	@else
+          	<?php session()->put('itinerary', 'yes'); ?> 
           	<a href="/auth/login"><input type="button" value="Save this itinerary"></a>
           	@endif
 		</div>

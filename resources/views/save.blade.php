@@ -11,7 +11,7 @@
     <div class="col-md-offset-2 col-md-8 parent-container">
         <div id="save">
 
-        		<form method="POST" action="{{ action('PageController@save') }}">
+        		<form method="POST" action="{{ action('PageController@store') }}">
         		{{ csrf_field() }}
         			<label for="save">Save to New Trip</label>
         			<input type="text" name="trip_name">

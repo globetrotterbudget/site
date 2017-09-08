@@ -16,8 +16,15 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function location(Request $request)
     {
+
+        if(session()->has('itinerary')) {
+            session()->forget('itinerary');
+            return redirect()->action('PageController@save');
+        }
         if($request['location'] === null) {
             return view('layouts.location');
         } else {
@@ -178,6 +185,7 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $trip = new trip();
+        $trip->user_id = Auth::id();
         $trip->trip_name = $request->trip_name;
         $trip->location = session()->get('location');
         $trip->groupsize = session()->get('groupsize');
@@ -185,8 +193,9 @@ class PageController extends Controller
         $trip->accommodations = session()->get('accommodations');
         $trip->transportation = session()->get('transportation');
         $trip->food = session()->get('food');
-        $trip->user_id = Auth::id();
         $trip->save();
+
+        session()->flush();
 
         $request->session()->flash("successMessage", "Your post was saved successfully");
 
