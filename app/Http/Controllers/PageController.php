@@ -12,6 +12,8 @@ use App\budgetyourtrip_api\Costs;
 use App\budgetyourtrip_api\Countries;
 use App\budgetyourtrip_api\Currencies;
 use App\budgetyourtrip_api\Locations;
+use App\Trip;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -20,8 +22,15 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function location(Request $request)
     {
+
+        if(session()->has('itinerary')) {
+            session()->forget('itinerary');
+            return redirect()->action('PageController@save');
+        }
         if($request['location'] === null) {
             return view('layouts.location');
         } else {
@@ -163,8 +172,10 @@ class PageController extends Controller
         $transportation = session()->get('transportation');
         $food = session()->get('food');
         $entertainment = session()->get('entertainment');
+        
+        $food = session()->get('food');
 
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, '    accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
 
         return view('summary', $data);
     }
@@ -179,6 +190,20 @@ class PageController extends Controller
     {
         //
     }
+    public function save(Request $request)
+    {
+        $entertainment = session()->get('entertainment');
+        $transportation = session()->get('transportation');
+        $location = session()->get('location');
+        $days = session()->get('days');
+        $groupsize = session()->get('groupsize');
+        $accommodations = session()->get('accommodations');
+        $food = session()->get('food');
+
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+
+        return view('/save', $data);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -188,7 +213,31 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $trip = new trip();
+        $trip->user_id = Auth::id();
+        $trip->trip_name = $request->trip_name;
+        $trip->location = session()->get('location');
+        $trip->groupsize = session()->get('groupsize');
+        $trip->days = session()->get('days');
+        $trip->accommodations = session()->get('accommodations');
+        $trip->transportation = session()->get('transportation');
+        $trip->food = session()->get('food');
+        $trip->save();
+
+        session()->flush();
+
+        $request->session()->flash("successMessage", "Your post was saved successfully");
+
+
+        // var_dump($request);
+
+        return view('layouts.location');
+
+
+
+
+
+
     }
 
     /**
@@ -236,3 +285,4 @@ class PageController extends Controller
         //
     }
 }
+

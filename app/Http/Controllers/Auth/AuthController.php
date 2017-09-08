@@ -27,7 +27,9 @@ class AuthController extends Controller
 
 
     // protected $redirectPath = "users/" . Auth::id(); 
+    
     protected $redirectPath = "/location";
+    
     protected $redirectAfterLogout = "/auth/login";
 
     /**
