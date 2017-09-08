@@ -16,10 +16,11 @@ class CreateTripsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('locations');
-            $table->integer('number_of_people');
-            $table->integer('number_of_days');
-            $table->integer('accomodations');
+            $table->string('trip_name');
+            $table->string('location');
+            $table->integer('groupsize');
+            $table->integer('days');
+            $table->integer('accommodations');
             $table->integer('transportation');
             $table->integer('food');
             $table->timestamps();
@@ -36,3 +37,4 @@ class CreateTripsTable extends Migration
         Schema::drop('trips');
     }
 }
+

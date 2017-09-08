@@ -1,6 +1,6 @@
 <?php
-
-require_once("lib/bytapiconnection.php");
+namespace App\Budgetyourtrip_api;
+use lib\bytapiconnection.php;
 
 class Accommodation extends BYTAPIConnection
 {

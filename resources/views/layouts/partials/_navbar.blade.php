@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/posts">Globetrotter</a>
+            <a class="navbar-brand" href="/location">Globetrotter</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,6 +17,7 @@
 
                     <li><a href="">About</a></li>
                     @if(!Auth::check())
+                    <li><a href="/auth/register">Sign Up</a></li>
                     <li><a href="/auth/login">Login</a></li>
                     @else
                     <li><a href="#">My Trips</a></li>
