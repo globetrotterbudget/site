@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\budgetyourtrip_api\Accomodation;
+use App\budgetyourtrip_api\Categories;
+use App\budgetyourtrip_api\Costs;
+use App\budgetyourtrip_api\Countries;
+use App\budgetyourtrip_api\Currencies;
+use App\budgetyourtrip_api\Locations;
 use App\Trip;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +34,8 @@ class PageController extends Controller
         if($request['location'] === null) {
             return view('layouts.location');
         } else {
-            $request->session()->put('location', $request['location']);
+            $location = 2988507;
+            $request->session()->put('location', $location); 
             return redirect()->action('PageController@days');
         }
     }
@@ -70,8 +77,26 @@ class PageController extends Controller
             $location = session()->get('location');
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
-
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize];
+            $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation($location);
+            $cost_per_day = $cost_data[count($cost_data) - 1];
+            $average_cost_per_day = $cost_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_cost_per_day);
+            $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
+            $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
+            // $category_ids = [];
+            // foreach($cost_data as $categories){
+            //     array_push($category_ids, $categories->category_id);
+            // }
+            // $categories = new Categories(env('API_KEY'));
+            // $categories_description = [];
+            // foreach($category_ids as $id){
+            //     array_push($categories_description, $categories->getCategories($id));
+            // }
+            // var_dump($category_ids);
+            // var_dump($categories_description);
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person' => number_format((float)$average_trip_cost, 2, '.', ''), 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', '')];
             
             return view('accommodations', $data);
 
@@ -137,13 +162,17 @@ class PageController extends Controller
     }
 
     public function summary(Request $request) {
-
+        
         $entertainment = session()->get('entertainment');
         $transportation = session()->get('transportation');
         $location = session()->get('location');
         $days = session()->get('days');
         $groupsize = session()->get('groupsize');
         $accommodations = session()->get('accommodations');
+        $transportation = session()->get('transportation');
+        $food = session()->get('food');
+        $entertainment = session()->get('entertainment');
+        
         $food = session()->get('food');
 
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
