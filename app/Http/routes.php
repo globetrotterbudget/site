@@ -38,7 +38,10 @@ Route::get('/food', 'PageController@food');
 Route::get('/entertainment', 'PageController@entertainment');
 Route::get('/summary', 'PageController@summary');
 
-Route::get('save', 'PageController@save');
-Route::post('save', 'PageController@store');
+Route::get('/save', 'PageController@save');
+Route::post('/save', 'PageController@store');
+
+Route::get('/trips', 'PageController@trips');
+Route::get('/trips/{tripName}', 'PageController@tripDetail');
 
 
