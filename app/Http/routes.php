@@ -44,4 +44,5 @@ Route::post('/save', 'PageController@store');
 Route::get('/trips', 'PageController@trips');
 Route::get('/trips/{tripName}', 'PageController@tripDetail');
 
+Route:get('/trips/{id}/edit', 'PageController@edit');
 

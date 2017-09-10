@@ -243,9 +243,9 @@ class PageController extends Controller
     public function tripDetail($tripName)
     {
         
-        $data['mytrips'] = Trip::select()->where('trips_name', $tripName);
+        $trips = \DB::table('trips')->where('trip_name', $tripName)->get();
+        $data['trips'] = $trips;
         return view('/tripdetail', $data);
-
     }
     
 
@@ -274,7 +274,20 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $trip = \DB::table('trips')->where('id', $id)->get();
+
+
+        foreach($trip as $key)
+        {
+            foreach($key as $value=>$info)
+            {
+               $array[$value] = $info; 
+               
+            }
+        }
+        $data['array'] = $array;
+        return view('/days', $data);
+
     }
 
     /**
