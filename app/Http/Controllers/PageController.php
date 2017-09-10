@@ -199,6 +199,8 @@ class PageController extends Controller
 
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
 
+        $data['tripNames'] = Trip::select('trip_name')->distinct()->get();
+
         return view('/save', $data);
     }
 
@@ -221,21 +223,34 @@ class PageController extends Controller
         $trip->food = session()->get('food');
         $trip->save();
 
-        session()->flush();
-
         $request->session()->flash("successMessage", "Your post was saved successfully");
 
 
         // var_dump($request);
 
         return view('layouts.location');
+    }
+    public function trips()
+    {
 
-
-
-
-
+        $data['tripNames'] = Trip::select('trip_name')->distinct()->get();
+        return view('/trips', $data);
 
     }
+    public function tripDetail($tripName)
+    {
+        
+        $trips = \DB::table('trips')->where('trip_name', $tripName)->get();
+        $data['trips'] = $trips;
+        return view('/tripdetail', $data);
+    }
+    
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -256,7 +271,20 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $trip = \DB::table('trips')->where('id', $id)->get();
+
+
+        foreach($trip as $key)
+        {
+            foreach($key as $value=>$info)
+            {
+               $array[$value] = $info; 
+               
+            }
+        }
+        $data['array'] = $array;
+        return view('/days', $data);
+
     }
 
     /**
