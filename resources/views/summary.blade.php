@@ -15,6 +15,7 @@
 			 	<h4 class="category">{{ $location }}</h4>
 			 	<a class="sidebarEdit" href="/">edit</a>
 			</div>
+
 			@foreach( $array as $key => $value )
 				<p>{{ $key . ':'}}</p>
 				<div class="row">
@@ -33,14 +34,18 @@
 	<div id="wizard" class="parent-container">
 		<div id="content">
 			
-        <form method="GET" action="{{action ('PageController@location')}}">
-          	<button type="submit">Add another trip</button>
-        </form>
         	@if(Auth::check())
-          	<a href="/save"><input type="button" value="Save this itinerary"></a>
+        		@if(isset($array['id']))
+          		<a href="/update"><input type="button" class="btn btn-default" value="Update intinerary"></a>
+          		@else
+          		<a href="/save"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
+          		@endif
           	@else
+          	<form method="GET" action="{{action ('PageController@location')}}">
+          		<input type="submit"class="btn btn-default">Start Over</input>
+        	</form>
           	<?php session()->put('itinerary', 'yes'); ?> 
-          	<a href="/auth/login"><input type="button" value="Save this itinerary"></a>
+          	<a href="/auth/login"><input type="button" value="Save this itinerary" class="btn btn-default"></a>
           	@endif
 		</div>
 	</div>

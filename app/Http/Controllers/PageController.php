@@ -41,8 +41,9 @@ class PageController extends Controller
     }
     public function days(Request $request)
     {
+        
         if($request['days'] === null) {
-
+            
             $location = session()->get('location');
             $data['array'] = ['location' => $location];
 
@@ -50,12 +51,15 @@ class PageController extends Controller
 
         } else {
 
+            $request->session()->put('location', $request['location']);
+            $request->session()->put('id', $request['id']);
             $request->session()->put('days', $request['days']);
             return redirect()->action('PageController@groupsize');
         }
     }
     public function groupsize(Request $request)
     {
+        var_dump((session()->get('location')));
         if($request['groupsize'] === null) {
 
             $location = session()->get('location');
@@ -72,6 +76,7 @@ class PageController extends Controller
     }
     public function accommodations(Request $request)
     {
+        var_dump((session()->get('location')));
         if($request['accommodations'] === null) {
 
             $location = session()->get('location');
@@ -149,6 +154,7 @@ class PageController extends Controller
             $accommodations = session()->get('accommodations');
             $transportation = session()->get('transportation');
             $food = session()->get('food');
+            
 
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food];
             return view('entertainment', $data);
@@ -171,8 +177,9 @@ class PageController extends Controller
         $food = session()->get('food');
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
+        $id = session()->get('id');
 
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'id'=>$id, 'entertainment' => $entertainment];
 
         return view('summary', $data);
     }

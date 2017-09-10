@@ -7,6 +7,7 @@
 @section('content')
 
 <div class="container">
+<?php var_dump($array); ?>
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
 			<h2>How many will you be traveling with?</h2>
