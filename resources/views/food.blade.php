@@ -16,7 +16,7 @@
        				<button type="submit" name="food" value='modest'>$$</button>
         			<button type="submit" name="food" value='highest'>$$$</button>
 				</form>
-            <h3>The "$$" Budget is for meals at modestly priced restaurants.</h3>
+            <h4>"$$" Budgets are modestly priced restaurants.</h4>
         </div>
     </div>
     @if(!empty($array)) 

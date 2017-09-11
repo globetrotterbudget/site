@@ -28,7 +28,7 @@
 					{!! $thing . ", " !!}
 					@endforeach
 				</p>
-				<a class="sidebarEdit" href="">edit</a>
+				<a class="sidebarEdit" href="/entertainment">edit</a>
 		</div>
 	</div>
 	<div id="wizard" class="parent-container">
