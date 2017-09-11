@@ -11,11 +11,17 @@
     <div id="wizard" class="col-md-8 parent-container">
         <div id="content">
             <h2>How would you prefer to commute on your trip?</h2>
-				<form method="GET" action="{{ action('PageController@transportation')}}">
-				{{ csrf_field() }}
-		            <button type="submit" name="transportation" value='public'>Public</button>
-		            <button type="submit" name="transportation" value='rental'>Rental</button>
-				</form>
+            
+            <div id="transpo" class="row">
+                <input id="public">
+                <input id="rental">
+                <form method="GET" action="{{ action('PageController@transportation')}}">
+                {{ csrf_field() }}
+                    <button type="submit" name="transportation" value='public'>Public</button>
+                    <button type="submit" name="transportation" value='rental'>Rental</button>
+                </form>
+            </div>
+
         </div>
     </div>
     @if(!empty($array)) 
