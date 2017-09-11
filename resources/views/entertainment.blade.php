@@ -13,13 +13,14 @@
             <h2>Choose Entertainment for your trip.</h2>
             <form method="GET" action="{{ action('PageController@entertainment') }}">
                 {{ csrf_field() }}
-                <div>
-                <input type="checkbox" name="entertainment[]" value='pack1'>
-                <input type="checkbox" name="entertainment[]" value='pack2'>
-                <input type="checkbox" name="entertainment[]" value='pack3'>
-                <input type="checkbox" name="entertainment[]" value='pack4'>
-                <input type="checkbox" name="entertainment[]" value='pack5'>
-            </div>
+
+                @foreach($entertainmentOptions as $entertainmentOption )
+                    <div>
+                        <h2>{{ $entertainmentOption->description}}</h2>
+                        <p>{{ $entertainmentOption->cost}}</p>
+                    </div>
+                @endforeach
+
             <div>
                 <input type="checkbox" name="entertainment[]" value='pack6'>
                 <input type="checkbox" name="entertainment[]" value='pack7'>

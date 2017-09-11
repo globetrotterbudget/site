@@ -206,7 +206,18 @@ class PageController extends Controller
             $USD_average_food_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_food_cost_per_day);
             $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
             $average_food_cost = round(($days * $USD_average_food_cost_per_day_summary->newAmount), 2);
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
+            $cost_highlights = $costs->getHighlights($location);
+            $entertainment_options = [];
+            foreach($cost_highlights as $highlight){
+                if($highlight->category_id === '6'){
+                    $USD_entertainment_costs = $currencies->convert('EURO', 'USD', $highlight->cost);
+                    $USD_entertainment_cost = round($USD_entertainment_costs->newAmount, 2);
+                    $highlight->cost = $USD_entertainment_cost;
+                    array_push($entertainment_options, $highlight);
+                };
+            }
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'transportation' => $transportation, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
+            $data['entertainmentOptions'] = $entertainment_options;
             return view('entertainment', $data);
 
         } else {
