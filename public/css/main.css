@@ -63,6 +63,14 @@ input:focus, textarea:focus
 	font-size: 4em;
 	color: #f3df3c;
 }	
+.dollarsign {
+	cursor: pointer;
+	font-size: 4em;
+	color: #eee;
+	margin: 0 10px 0 10px;
+    -webkit-text-stroke-color: #ddd;
+    -webkit-text-stroke-width: .5px;
+}
 #public, #rental {
 	border-radius: 4px;
 	border: 1px solid #eee;

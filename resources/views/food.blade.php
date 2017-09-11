@@ -10,12 +10,20 @@
     <div id="wizard" class="col-md-8 parent-container">
         <div id="content">
             <h2>Select a Meal Preference Budget</h2>
-				<form method="GET" action="{{ action('PageController@food')}}">
+                <span data-dollar=0 class="dollarsign">$</span>
+                <span data-dollar=1 class="dollarsign">$$</span>
+                <span data-dollar=2 class="dollarsign">$$$</span>
+
+                <p id="foodDesc"></p>
+
+                <form method="GET" action="{{ action('PageController@entertainment')}}">
 				{{ csrf_field() }}
-		            <button type="submit" name="food" value='lowest'>$</button>
-       				<button type="submit" name="food" value='modest'>$$</button>
-        			<button type="submit" name="food" value='highest'>$$$</button>
-				</form>
+
+                    <input type="hidden" name="food" id="foodValue" value="">
+                    <a href="/transportation"><input type="button" class="btn btn-default" value="Previous"></a>
+                    <button id="foodButton" class="btn btn-default" type="submit">Submit</button>
+
+                </form>
             <h4>"$$" Budgets are modestly priced restaurants.</h4>
         </div>
     </div>
