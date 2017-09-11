@@ -45,4 +45,6 @@ Route::get('/trips', 'PageController@trips');
 Route::get('/trips/{tripName}', 'PageController@tripDetail');
 
 Route:get('/trips/{id}/edit', 'PageController@edit');
+Route::get('/start', 'PageController@startover');
+Route::get('/trips/{id}/update', 'PageController@update');
 
