@@ -23,7 +23,6 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
     public function startover(Request $request)
     {
         session()->flush();
