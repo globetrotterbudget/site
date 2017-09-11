@@ -1,5 +1,5 @@
 <?php
-namespace App\Budgetyourtrip_api\lib;
+namespace App\budgetyourtrip_api\lib;
 use App\budgetyourtrip_api\lib\apiconnection;
 
 abstract class BYTAPIConnection extends APIConnection

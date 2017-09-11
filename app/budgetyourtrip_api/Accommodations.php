@@ -1,5 +1,5 @@
 <?php
-namespace App\Budgetyourtrip_api;
+namespace App\budgetyourtrip_api;
 use lib\bytapiconnection.php;
 
 class Accommodation extends BYTAPIConnection
