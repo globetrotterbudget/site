@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\budgetyourtrip_api\Accomodation;
 use App\budgetyourtrip_api\Categories;
-use App\Budgetyourtrip_api\Costs;
+use App\budgetyourtrip_api\Costs;
 use App\budgetyourtrip_api\Countries;
 use App\budgetyourtrip_api\Currencies;
 use App\budgetyourtrip_api\Locations;
@@ -22,7 +22,6 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
 
     public function startover(Request $request)
     {

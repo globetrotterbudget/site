@@ -1,5 +1,5 @@
 <?php
-namespace App\Budgetyourtrip_api;
+namespace App\budgetyourtrip_api;
 use App\budgetyourtrip_api\lib\bytapiconnection;
 
 class Locations extends BYTAPIConnection

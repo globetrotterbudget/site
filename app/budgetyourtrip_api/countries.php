@@ -1,5 +1,5 @@
 <?php
-namespace App\Budgetyourtrip_api;
+namespace App\budgetyourtrip_api;
 class Countries extends BYTAPIConnection
 {
     function getCountries($country_code = "")
