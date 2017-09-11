@@ -36,16 +36,14 @@
 			
         	@if(Auth::check())
         		@if(isset($array['id']))
-          		<a href="/update"><input type="button" class="btn btn-default" value="Update intinerary"></a>
+          		<a href="{{ action('PageController@update', $array['id'])}}"><input type="button" class="btn btn-default"value="Update intinerary"></a>
           		@else
-          		<a href="/save"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
+          		<a href="/save"><input type="button" class="btn btn-default"value="Save this itinerary"></a>
           		@endif
           	@else
-          	<form method="GET" action="{{action ('PageController@location')}}">
-          		<input type="submit"class="btn btn-default">Start Over</input>
-        	</form>
+          	<a href="{{ action('PageController@startover')}}"><input type="button" value="Start Over"></a>
           	<?php session()->put('itinerary', 'yes'); ?> 
-          	<a href="/auth/login"><input type="button" value="Save this itinerary" class="btn btn-default"></a>
+          	<a href="/auth/login"><input type="button" value="Save this itinerary"></a>
           	@endif
 		</div>
 	</div>

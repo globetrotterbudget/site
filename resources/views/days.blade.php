@@ -6,14 +6,13 @@
 
 @section('content')
 
-
-<?php var_dump($array['location']) ?>
 <div class="container">
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
 			<h2>How many days would you like to visit for?</h2>
         <form method="GET" action="{{action ('PageController@days')}}">
           <input type="text" name="days">
+          <input type="hidden" name="location" value="{{ $array['location'] }}">
           @if(isset($array['id']))
         
           <input type="hidden" name="id" value="{{ $array['id'] }}">

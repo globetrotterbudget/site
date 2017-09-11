@@ -24,6 +24,11 @@ class PageController extends Controller
      */
 
 
+    public function startover(Request $request)
+    {
+        session()->flush();
+        return view('layouts.location');
+    }
     public function location(Request $request)
     {
 
@@ -59,7 +64,6 @@ class PageController extends Controller
     }
     public function groupsize(Request $request)
     {
-        var_dump((session()->get('location')));
         if($request['groupsize'] === null) {
 
             $location = session()->get('location');
@@ -76,7 +80,6 @@ class PageController extends Controller
     }
     public function accommodations(Request $request)
     {
-        var_dump((session()->get('location')));
         if($request['accommodations'] === null) {
 
             $location = session()->get('location');
@@ -235,7 +238,7 @@ class PageController extends Controller
 
         // var_dump($request);
 
-        return view('layouts.location');
+        return redirect()->action('PageController@trips');
     }
     public function trips()
     {
@@ -303,7 +306,19 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $location = ($request->session()->get('location'));
+        $days = ($request->session()->get('days'));
+        $groupsize = ($request->session()->get('groupsize'));
+        $accommodations = ($request->session()->get('accommodations'));
+        $transportation = ($request->session()->get('transportation'));
+        $food = ($request->session()->get('food'));
+
+        \DB::table('trips')->where('id', $id)->update(['location' => $location,
+            'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food' => $food]);
+        $name = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
+        $tripName = $name[0]->trip_name;
+        return redirect()->action('PageController@tripDetail', $tripName);
     }
 
     /**
