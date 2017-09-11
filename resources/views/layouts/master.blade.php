@@ -45,15 +45,15 @@ $(document).ready(function() {
 
 
         if(clickedIndex == 0) {
-            $('#ratings').text("Economy");
+            $('#ratings').text("1 Star—Properties that offer budget facilities without compromising cleanliness or guest security.");
         } else if(clickedIndex == 1) {
-            $('#ratings').text("Budget");
+            $('#ratings').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
         } else if(clickedIndex == 2) {
-            $('#ratings').text("Decent");
+            $('#ratings').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
         } else if(clickedIndex == 3) {
-            $('#ratings').text("pretty nice");
+            $('#ratings').text("4 Star— Properties which achieve a deluxe guest experience. A wide range of facilities and superior design qualities are typically complemented by service standards that reflect the varied and discerning needs of the guest.");
         } else if(clickedIndex == 4) {
-            $('#ratings').text("Super nice");
+            $('#ratings').text("5 Star–Properties that typify luxury across all areas of operation. Guests will enjoy an extensive range of facilities and comprehensive or highly personalised services. Properties at this level will display excellent design quality and attention to detail.");
         }
 
         $(e.target).html(' &#9733 ');
@@ -77,18 +77,65 @@ $(document).ready(function() {
 	$('document').ready(function() {
 		"use strict";
 		$('#public').click(function() {
-			
+
 			$('#hiddenTrans').val($('#public').data('transportation'));
 
 			// console.log($('#public').data('transportation'));
 		});
 		$('#rental').click(function() {
-			
+
 			$('#hiddenTrans').val($('#rental').data('transportation'));
 
 			// console.log($('#rental').data('transportation'));
 		});
 	});
+
+</script>
+
+<script>
+
+$(document).ready(function() {
+    const dollarsign = $('.dollarsign');
+    
+    function resetDollars() {
+        $('.dollarsign').css('color','grey');
+    }
+
+   
+   // setup an event listener on every dollarsign
+   $('.dollarsign').click(function(e) {
+        resetDollars();
+
+        // $('#accommodationsButton').css("display", "inline");
+
+        var clickedIndex = $(e.target).data('star');
+
+        
+    	
+
+
+        if(clickedIndex == 0) {
+            $('#ratings').text("1 Star—Properties that offer budget facilities without compromising cleanliness or guest security.");
+        } else if(clickedIndex == 1) {
+            $('#ratings').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
+        } else if(clickedIndex == 2) {
+            $('#ratings').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
+        } 
+   
+
+        $(e.target).html(' &#9733 ');
+        
+        for(var i = 0; i < clickedIndex; i++) {
+
+            console.log(stars[i]);
+            
+            $(stars[i]).html(' &#9733 ');
+        }
+
+        $('#accommodations').val(clickedIndex);
+        
+   });
+});
 
 </script>
 

@@ -237,7 +237,7 @@ class PageController extends Controller
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
         $id = session()->get('id');
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'id' => $id, 'entertainment' => $entertainment];
         return view('summary', $data);
     }
 
