@@ -121,9 +121,27 @@ class PageController extends Controller
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
             $accommodations = session()->get('accommodations');
+            $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation($location);
+            $accommodations_per_day = $cost_data[0];
+            if ($accommodations <= 2){
+                $accommodations_cost_per_day = $accommodations_per_day->value_budget;
+            } else if ($accommodations > 2 && $accommodations <= 4){
+                $accommodations_cost_per_day = $accommodations_per_day->value_midrange;
+            } else if ($accommodations > 3 && $accommodations <= 5){
+                $accommodations_cost_per_day = $accommodations_per_day->value_luxury;
+            }
+            $currencies = new Currencies(env('API_KEY'));
 
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations];
+            $USD_average_accommodation_per_day_summary = $currencies->convert('EURO', 'USD', $accommodations_cost_per_day);
+            $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
+            $average_accommodation_cost = round(($days * $USD_average_accommodation_per_day_summary->newAmount), 2);
 
+            if ($groupsize > 1){
+                $USD_average_accommodation_per_day /= 2;
+                $average_accommodation_cost /= 2;
+            }
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person' => number_format((float)$USD_average_accommodation_per_day, 2, '.', ''), 'Average Accomodation Cost per Person per Day' => number_format((float)$average_accommodation_cost, 2, '.', '')];
             return view('transportation', $data);
         } else {
             $request->session()->put('transportation', $request['transportation']);
@@ -178,10 +196,8 @@ class PageController extends Controller
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
         $id = session()->get('id');
-
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'id'=>$id, 'entertainment' => $entertainment];
-
-      return view('summary', $data);
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+        return view('summary', $data);
     }
 
    
