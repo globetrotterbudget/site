@@ -7,6 +7,7 @@
 @section('content')
 
 <div class="container">
+
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
 			<h2>How many will you be traveling with?</h2>
@@ -20,6 +21,7 @@
 	<div class="col-md-4">
 		<div id="sidebar">
 		<div class="row">
+
 			<?php $location = array_shift($array); ?>
 		 	<h4 class="category">{{ $location }}</h4>
 		 	<a class="sidebarEdit" href="">edit</a>
