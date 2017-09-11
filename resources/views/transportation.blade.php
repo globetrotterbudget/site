@@ -13,12 +13,17 @@
             <h2>How would you prefer to commute on your trip?</h2>
             
             <div id="transpo" class="row">
-                <input id="public">
-                <input id="rental">
+
+                <input type="button" id="public" data-transportation="public" value="public">
+                <input type="button" id="rental" data-transportation="rental" value="rental">
+
                 <form method="GET" action="{{ action('PageController@transportation')}}">
                 {{ csrf_field() }}
-                    <button type="submit" name="transportation" value='public'>Public</button>
-                    <button type="submit" name="transportation" value='rental'>Rental</button>
+                    <br>
+                    <input id="hiddenTrans" type="hidden" name="transportation" value="">
+                    <a href="/accommodations"><input type="button" class="btn btn-default" value="Previous"></a>
+                    <button id="transportation" class="btn btn-default" type="submit">Submit</button>
+                    
                 </form>
             </div>
 

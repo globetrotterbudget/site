@@ -71,5 +71,26 @@ $(document).ready(function() {
 });
 
 </script>
+
+<script>
+
+	$('document').ready(function() {
+		"use strict";
+		$('#public').click(function() {
+			
+			$('#hiddenTrans').val($('#public').data('transportation'));
+
+			// console.log($('#public').data('transportation'));
+		});
+		$('#rental').click(function() {
+			
+			$('#hiddenTrans').val($('#rental').data('transportation'));
+
+			// console.log($('#rental').data('transportation'));
+		});
+	});
+
+</script>
+
 </body>
 </html>
