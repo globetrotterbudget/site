@@ -1,3 +1,7 @@
+input:focus, textarea:focus
+{
+    outline: none;
+}
 #sidebar {
 	float:right;
 	width:300px;
@@ -59,21 +63,19 @@
 	font-size: 4em;
 	color: #f3df3c;
 }	
-#public {
+#public, #rental {
 	border-radius: 4px;
 	border: 1px solid #eee;
 	height: 250px;
 	width:180px;
 	background-color: white;
 	display:inline-block;
+	font-size: 20px;
 	margin: 20px 20px 20px 20px;
+	cursor:pointer;
 }
-#rental {
-	border-radius: 4px;
-	border: 1px solid #eee;
-	height:250px;
-	width:180px;
-	background-color: white;
-	display:inline-block;
-	margin: 20px 20px 20px 20px;
+
+#public:hover, #rental:hover,
+#public:focus, #rental:focus {
+	background-color: #eee;
 }
