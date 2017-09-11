@@ -10,13 +10,24 @@
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
 			<h2>Accommodations</h2>
-			<form method="GET" action="{{ action('PageController@accommodations')}}">
-				<button type="submit" name="accommodations" value='1'><span class="glyphicon glyphicon-star-empty"></span></button>
-				<button type="submit" name="accommodations" value='2'><span class="glyphicon glyphicon-star-empty"></span></button>
-				<button type="submit" name="accommodations" value='3'><span class="glyphicon glyphicon-star-empty"></span></button>
-				<button type="submit" name="accommodations" value='4'><span class="glyphicon glyphicon-star-empty"></span></button>
-				<button type="submit" name="accommodations" value='5'><span class="glyphicon glyphicon-star-empty"></span></button>
-			</form>
+
+				<span data-star=0 class="star"> &#9734 </span>
+			    <span data-star=1 class="star"> &#9734 </span>
+			    <span data-star=2 class="star"> &#9734 </span>
+			    <span data-star=3 class="star"> &#9734 </span>
+			    <span data-star=4 class="star"> &#9734 </span>
+
+			    <p id="ratings"></p>
+
+
+    			
+				<form method="GET" action="{{ action('PageController@accommodations')}}">
+
+					<input type="hidden" name="accommodations" id="accommodations" value="">
+					<a href="/groupsize"><input type="button" class="btn btn-default" value="Previous"></a>
+        			<button id="accommodationsButton" class="btn btn-default" type="submit">Submit</button>
+
+				</form>
 		</div>
 	</div>
 	@if(!empty($array)) 
@@ -38,4 +49,5 @@
 	@endif
 	</div>
 @stop
+
 

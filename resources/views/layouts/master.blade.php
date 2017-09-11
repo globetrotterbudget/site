@@ -18,5 +18,58 @@
   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
   crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(function() {
+    const stars = $('.star');
+    
+    $('#ratings').text("Select your accommodations");
+    $('#accommodationsButton').css("display", "none");
+    
+
+    function resetStars() {
+        $('.star').html(' &#9734 ');
+    }
+
+   
+   // setup an event listener on every star
+   $('.star').click(function(e) {
+        resetStars();
+
+        $('#accommodationsButton').css("display", "inline");
+
+        var clickedIndex = $(e.target).data('star');
+
+        
+    	
+
+
+        if(clickedIndex == 0) {
+            $('#ratings').text("Economy");
+        } else if(clickedIndex == 1) {
+            $('#ratings').text("Budget");
+        } else if(clickedIndex == 2) {
+            $('#ratings').text("Decent");
+        } else if(clickedIndex == 3) {
+            $('#ratings').text("pretty nice");
+        } else if(clickedIndex == 4) {
+            $('#ratings').text("Super nice");
+        }
+
+        $(e.target).html(' &#9733 ');
+        
+        for(var i = 0; i < clickedIndex; i++) {
+
+            console.log(stars[i]);
+            
+            $(stars[i]).html(' &#9733 ');
+        }
+
+        $('#accommodations').val(clickedIndex);
+        
+   });
+});
+
+</script>
 </body>
 </html>
