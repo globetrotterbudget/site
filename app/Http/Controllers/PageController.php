@@ -141,6 +141,7 @@ class PageController extends Controller
                 $USD_average_accommodation_per_day /= 2;
                 $average_accommodation_cost /= 2;
             }
+            session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person' => number_format((float)$USD_average_accommodation_per_day, 2, '.', ''), 'Average Accomodation Cost per Person per Day' => number_format((float)$average_accommodation_cost, 2, '.', '')];
             return view('transportation', $data);
         } else {
@@ -156,8 +157,21 @@ class PageController extends Controller
             $groupsize = session()->get('groupsize');
             $accommodations = session()->get('accommodations');
             $transportation = session()->get('transportation');
-
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation'=> $transportation];
+            $average_accommodation_cost = session()->get('average_accommodation_cost');
+            $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation($location);
+            $transportation_cost_per_day = $cost_data[1];
+            if($transportation === strtolower('public')){
+                $average_transportation_cost_per_day = $transportation_cost_per_day->value_budget;
+            } else {
+                $average_transportation_cost_per_day = $transportation_cost_per_day->value_luxury;
+            }
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_transportation_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_transportation_cost_per_day);
+            $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
+            $average_transportation_cost = round(($days * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
+            session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day'=>$average_accommodation_cost, 'transportation'=> $transportation, 'Transportation Cost per Day per Person'=> number_format((float)$USD_average_transportation_cost_per_day, 2, '.', ''), 'Transportation Cost per Person'=> number_format((float)$average_transportation_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost];
 
             return view('food', $data);
         } else {
