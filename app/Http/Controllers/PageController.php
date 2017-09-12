@@ -148,7 +148,6 @@ class PageController extends Controller
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', ''), 'Average Accomodation Cost per Person per Day' => number_format((float)$average_accommodation_cost, 2, '.', '')];
             return view('transportation', $data);
         } else {
-            
             $request->session()->put('transportation', $request['transportation']);
             return redirect()->action('PageController@food');
         }

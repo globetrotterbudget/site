@@ -22,7 +22,7 @@
 
                 <p id="foodDesc"></p>
 
-                <form method="GET" action="{{ action('PageController@entertainment')}}">
+                <form method="GET" action="{{ action('PageController@food')}}">
 				{{ csrf_field() }}
 
                     <input type="hidden" name="food" id="foodValue" value="">

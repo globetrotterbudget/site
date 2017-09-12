@@ -120,13 +120,15 @@ $(document).ready(function() {
     	
 
 
-        if(foodIndex == 0) {
+        
+        if(foodIndex == 'lowest') {
             $('#foodDesc').text("1 Star—Properties that offer budget facilities without compromising cleanliness or guest security.");
-        } else if(foodIndex == 1) {
+        } else if(foodIndex == 'modest') {
             $('#foodDesc').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
-        } else if(foodIndex == 2) {
+        } else if(foodIndex == 'luxury') {
             $('#foodDesc').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
         } 
+
    
 
         $(e.target).css("color", "#ffe319");
