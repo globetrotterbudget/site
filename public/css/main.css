@@ -2,7 +2,7 @@ body {
 	background-color: black;
 }
 
-#daysBlade {
+/*#daysBlade {
 	background-image: url('../img/emotions-2559504_1920.jpg');
 }
 #groupSize {
@@ -39,7 +39,7 @@ body {
 	margin:0 auto;
 	display: table;
 	background-image: url('../img/oia-416135_1920.jpg')
-}
+}*/
 input:focus, textarea:focus
 {
     outline: none;
