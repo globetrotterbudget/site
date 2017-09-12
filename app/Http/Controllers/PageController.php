@@ -40,8 +40,20 @@ class PageController extends Controller
         if($request['location'] === null) {
             return view('layouts.location');
         } else {
-            $location = 2988507;
-            $request->session()->put('location', $location); 
+            
+            $input = explode(',', $request['location']);
+            $city = trim($input[0]);
+            $province = trim($input[1]);
+
+            $locations = new Locations(env('API_KEY'));
+            $possible_locations = $locations->search($city);
+            foreach($possible_locations as $possible_location){
+                if($possible_location->name === $city && trim($possible_location->country_name) === $province){
+                    session()->put('geonameid', $possible_location->geonameid);
+                    session()->put('currency_code', $possible_location->currency_code);
+                }
+            }
+            $request->session()->put('location', $request['location']);
             return redirect()->action('PageController@days');
         }
     }
@@ -57,8 +69,6 @@ class PageController extends Controller
 
         } else {
 
-            $request->session()->put('location', $request['location']);
-            $request->session()->put('id', $request['id']);
             $request->session()->put('days', $request['days']);
             return redirect()->action('PageController@groupsize');
         }
@@ -86,12 +96,15 @@ class PageController extends Controller
             $location = session()->get('location');
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
+            $geonameid = session()->get('geonameid');
+            $currency_code = session()->get('currency_code');
+            var_dump($currency_code);
             $costs = new Costs(env('API_KEY'));
-            $cost_data = $costs->getLocation($location);
+            $cost_data = $costs->getLocation($geonameid);
             $cost_per_day = $cost_data[count($cost_data) - 1];
             $average_cost_per_day = $cost_per_day->value_midrange;
             $currencies = new Currencies(env('API_KEY'));
-            $USD_average_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_cost_per_day);
+            $USD_average_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_cost_per_day);
             $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
             $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
             // $category_ids = [];
@@ -123,8 +136,10 @@ class PageController extends Controller
             $days = session()->get('days');
             $groupsize = session()->get('groupsize');
             $accommodations = session()->get('accommodations');
+            $geonameid = session()->get('geonameid');
+            $currency_code = session()->get('currency_code');
             $costs = new Costs(env('API_KEY'));
-            $cost_data = $costs->getLocation($location);
+            $cost_data = $costs->getLocation($geonameid);
             $accommodations_per_day = $cost_data[0];
             if ($accommodations <= 2){
                 $accommodations_cost_per_day = $accommodations_per_day->value_budget;
@@ -135,7 +150,7 @@ class PageController extends Controller
             }
             $currencies = new Currencies(env('API_KEY'));
 
-            $USD_average_accommodation_per_day_summary = $currencies->convert('EURO', 'USD', $accommodations_cost_per_day);
+            $USD_average_accommodation_per_day_summary = $currencies->convert($currency_code, 'USD', $accommodations_cost_per_day);
             $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
             $average_accommodation_cost = round(($days * $USD_average_accommodation_per_day_summary->newAmount), 2);
 
@@ -162,10 +177,12 @@ class PageController extends Controller
             $groupsize = session()->get('groupsize');
             $accommodations = session()->get('accommodations');
             $transportation = session()->get('transportation');
+            $geonameid = session()->get('geonameid');
+            $currency_code = session()->get('currency_code');
             $average_accommodation_cost = session()->get('average_accommodation_cost');
             $average_accommodation_cost_per_day = session()->get('average_accommodation_cost_per_day');
             $costs = new Costs(env('API_KEY'));
-            $cost_data = $costs->getLocation($location);
+            $cost_data = $costs->getLocation($geonameid);
             $transportation_cost_per_day = $cost_data[1];
             if($transportation === strtolower('public')){
                 $average_transportation_cost_per_day = $transportation_cost_per_day->value_budget;
@@ -173,7 +190,7 @@ class PageController extends Controller
                 $average_transportation_cost_per_day = $transportation_cost_per_day->value_luxury;
             }
             $currencies = new Currencies(env('API_KEY'));
-            $USD_average_transportation_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_transportation_cost_per_day);
+            $USD_average_transportation_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_transportation_cost_per_day);
             $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
             $average_transportation_cost = round(($days * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
             session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
@@ -198,12 +215,14 @@ class PageController extends Controller
             $accommodations = session()->get('accommodations');
             $transportation = session()->get('transportation');
             $food = session()->get('food');
+            $geonameid = session()->get('geonameid');
+            $currency_code = session()->get('currency_code');
             $average_accommodation_cost_per_day = session()->get('average_accommodation_cost_per_day');
             $average_accommodation_cost = session()->get('average_accommodation_cost');
             $average_transportation_cost_per_day = session()->get('average_transportation_cost_per_day');
             $average_transportation_cost  = session()->get('average_transportation_cost');
             $costs = new Costs(env('API_KEY'));
-            $cost_data = $costs->getLocation($location);
+            $cost_data = $costs->getLocation($geonameid);
             $food_cost_per_day = $cost_data[2];
             if($food === 'lowest'){
                 $average_food_cost_per_day = $food_cost_per_day->value_budget;
@@ -213,14 +232,14 @@ class PageController extends Controller
                 $average_food_cost_per_day = $food_cost_per_day->value_luxury;
             }
             $currencies = new Currencies(env('API_KEY'));
-            $USD_average_food_cost_per_day_summary = $currencies->convert('EURO', 'USD', $average_food_cost_per_day);
+            $USD_average_food_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_food_cost_per_day);
             $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
             $average_food_cost = round(($days * $USD_average_food_cost_per_day_summary->newAmount), 2);
-            $cost_highlights = $costs->getHighlights($location);
+            $cost_highlights = $costs->getHighlights($geonameid);
             $entertainment_options = [];
             foreach($cost_highlights as $highlight){
                 if($highlight->category_id === '6'){
-                    $USD_entertainment_costs = $currencies->convert('EURO', 'USD', $highlight->cost);
+                    $USD_entertainment_costs = $currencies->convert($currency_code, 'USD', $highlight->cost);
                     $USD_entertainment_cost = round($USD_entertainment_costs->newAmount, 2);
                     $highlight->cost = $USD_entertainment_cost;
                     array_push($entertainment_options, $highlight);
