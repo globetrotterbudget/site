@@ -16,16 +16,16 @@
                 </div>
             </div>
             <h2>Select a Meal Preference Budget</h2>
-                <span data-dollar=0 class="dollarsign">$</span>
-                <span data-dollar=1 class="dollarsign">$$</span>
-                <span data-dollar=2 class="dollarsign">$$$</span>
+                <span data-dollar='lowest' class="dollarsign">$</span>
+                <span data-dollar='modest' class="dollarsign">$$</span>
+                <span data-dollar='luxury' class="dollarsign">$$$</span>
 
                 <p id="foodDesc"></p>
 
-                <form method="GET" action="{{ action('PageController@entertainment')}}">
+                <form method="GET" action="{{ action('PageController@food')}}">
 				{{ csrf_field() }}
 
-                    <input type="hidden" name="food" id="foodValue" value="">
+                    <input type="hidden" name="food" id="foodValue">
                     <a href="/transportation"><input type="button" class="btn btn-default" value="Previous"></a>
                     <button id="foodButton" class="btn btn-default" type="submit">Submit</button>
 
