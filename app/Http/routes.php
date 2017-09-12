@@ -48,3 +48,8 @@ Route:get('/trips/{id}/edit', 'PageController@edit');
 Route::get('/start', 'PageController@startover');
 Route::get('/trips/{id}/update', 'PageController@update');
 
+Route::get('/cancel', function(Request $request) {
+	session()->flush();
+	return redirect()->action('PageController@trips');
+});
+

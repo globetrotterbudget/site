@@ -6,33 +6,29 @@
 
 @section('content')
 
-<div class="container">
-	<div id="wizard" class="col-md-8 parent-container">
-		<div id="content">
-    		<h2>Where would you like to go?</h2>
+<div id="header">	
+	<div id="welcome" class="col-md-offset-1 col-md-9">
+		<div id="banner">Plan your vacation budget</div>
    		<form method="GET" action="{{action ('PageController@location')}}">
-        	<input type="text" name="location">
+        	<input id="search" type="text" name="location">
         	<button type="submit">Go</button>
       	</form>
-      	</div>
-    </div>
-    @if(!empty($array)) 
-	<div class="col-md-4">
-		<div id="sidebar">
-		<div class="row">
-			<?php $location = array_shift($array); ?>
-		 	<h4 class="category">{{ $location }}</h4>
-		 	<a class="sidebarEdit" href="/layouts/location">edit</a>
+    </div>    
+</div>
+<div class="container">
+	<div class="row">
+		<h2>Featured Locations</h2>
+	</div>
+	<div class="col-md-offset-1 col-md-10">
+		<div id="feature1" class="feature">
+			<h2>Paris</h2>
 		</div>
-		@foreach( $array as $key => $value )
-			<p>{{ $key . ':'}}</p>
-			<div class="row">
-				<h4 class="category">{{ $value }}</h4>
-			 	<a class="sidebarEdit" href="location">edit</a>
-			 </div>
-		@endforeach
+		<div id="feature2" class="feature">
+			<h2>Tel Aviv</h2>
 		</div>
-	@endif
+		<div id="feature3" class="feature">
+			<h2>Tokyo</h2>
+		</div>		
 	</div>
 </div>
 

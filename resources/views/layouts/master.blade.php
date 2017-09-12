@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
-
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600');
+	</style>
 </head>
 <body>
 	@include('layouts.partials._navbar')
@@ -92,13 +94,17 @@ $(document).ready(function() {
 
 </script>
 
+
+
 <script>
 
 $(document).ready(function() {
-    const dollarsign = $('.dollarsign');
+    const dollarsigns = $('.dollarsign');
+
+    $('#foodButton').css("display", "none");
     
     function resetDollars() {
-        $('.dollarsign').css('color','grey');
+        $('.dollarsign').css('color','#eee');
     }
 
    
@@ -106,33 +112,27 @@ $(document).ready(function() {
    $('.dollarsign').click(function(e) {
         resetDollars();
 
-        // $('#accommodationsButton').css("display", "inline");
+        $('#foodButton').css("display", "inline");
 
-        var clickedIndex = $(e.target).data('star');
+        var foodIndex = $(e.target).data('dollar');
 
         
     	
 
 
-        if(clickedIndex == 0) {
-            $('#ratings').text("1 Star—Properties that offer budget facilities without compromising cleanliness or guest security.");
-        } else if(clickedIndex == 1) {
-            $('#ratings').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
-        } else if(clickedIndex == 2) {
-            $('#ratings').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
+        if(foodIndex == 0) {
+            $('#foodDesc').text("1 Star—Properties that offer budget facilities without compromising cleanliness or guest security.");
+        } else if(foodIndex == 1) {
+            $('#foodDesc').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
+        } else if(foodIndex == 2) {
+            $('#foodDesc').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
         } 
    
 
-        $(e.target).html(' &#9733 ');
+        $(e.target).css("color", "#ffe319");
         
-        for(var i = 0; i < clickedIndex; i++) {
 
-            console.log(stars[i]);
-            
-            $(stars[i]).html(' &#9733 ');
-        }
-
-        $('#accommodations').val(clickedIndex);
+        $('#foodValue').val(foodIndex);
         
    });
 });

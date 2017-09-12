@@ -9,24 +9,35 @@
 <div class="container">
     <div id="wizard" class="col-md-8 parent-container">
         <div id="content">
+            <div class="row">
+                <?php $location = $array['location']; ?>
+                <div id="locationBox" class="container">
+                        <h4 class="category">{{ $location }}</h4>
+                </div>
+            </div>
             <h2>Select a Meal Preference Budget</h2>
-				<form method="GET" action="{{ action('PageController@food')}}">
+                <span data-dollar=0 class="dollarsign">$</span>
+                <span data-dollar=1 class="dollarsign">$$</span>
+                <span data-dollar=2 class="dollarsign">$$$</span>
+
+                <p id="foodDesc"></p>
+
+                <form method="GET" action="{{ action('PageController@entertainment')}}">
 				{{ csrf_field() }}
-		            <button type="submit" name="food" value='lowest'>$</button>
-       				<button type="submit" name="food" value='modest'>$$</button>
-        			<button type="submit" name="food" value='highest'>$$$</button>
-				</form>
-            <h4>"$$" Budgets are modestly priced restaurants.</h4>
+
+                    <input type="hidden" name="food" id="foodValue" value="">
+                    <a href="/transportation"><input type="button" class="btn btn-default" value="Previous"></a>
+                    <button id="foodButton" class="btn btn-default" type="submit">Submit</button>
+
+                </form>
         </div>
     </div>
     @if(!empty($array)) 
     <div class="col-md-4">
         <div id="sidebar">
-        <div class="row">
-			<?php $location = array_shift($array); ?>
-		 	<h4 class="category">{{ $location }}</h4>
-		 	<a class="sidebarEdit" href="">edit</a>
-		</div>
+    
+		<?php $location = array_shift($array); ?>
+	
         @foreach( $array as $key => $value )
             <p>{{ $key . ':'}}</p>
             <div class="row">
