@@ -42,8 +42,8 @@ class PageController extends Controller
         } else {
             
             $input = explode(',', $request['location']);
-            $city = trim($input[0]);
-            $province = trim($input[1]);
+            $city = trim(ucfirst($input[0]));
+            $province = ucfirst(trim($input[1]));
 
             $locations = new Locations(env('API_KEY'));
             $possible_locations = $locations->search($city);
@@ -70,6 +70,7 @@ class PageController extends Controller
         } else {
 
             $request->session()->put('days', $request['days']);
+            $request->session()->put('id', $request['id']);
             return redirect()->action('PageController@groupsize');
         }
     }
@@ -98,7 +99,6 @@ class PageController extends Controller
             $groupsize = session()->get('groupsize');
             $geonameid = session()->get('geonameid');
             $currency_code = session()->get('currency_code');
-            var_dump($currency_code);
             $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation($geonameid);
             $cost_per_day = $cost_data[count($cost_data) - 1];
@@ -107,17 +107,6 @@ class PageController extends Controller
             $USD_average_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_cost_per_day);
             $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
             $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
-            // $category_ids = [];
-            // foreach($cost_data as $categories){
-            //     array_push($category_ids, $categories->category_id);
-            // }
-            // $categories = new Categories(env('API_KEY'));
-            // $categories_description = [];
-            // foreach($category_ids as $id){
-            //     array_push($categories_description, $categories->getCategories($id));
-            // }
-            // var_dump($category_ids);
-            // var_dump($categories_description);
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', ''), 'Average Cost per Person' => number_format((float)$average_trip_cost, 2, '.', '')];
             
             return view('accommodations', $data);
