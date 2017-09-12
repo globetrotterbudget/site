@@ -8,7 +8,7 @@
 
 <div class="container">
 
-	<div id="header" class="row">
+	<div id="tripname" class="row">
 		<div class="col-md-3">
 			<h2>{{ $trips[0]->trip_name }}</h2>
 		</div>

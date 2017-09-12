@@ -26,7 +26,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                         <li><a href="{{ action('UsersController@show', array(Auth::id()) ) }}">Update Account</a></li>
-                        <li><a href="auth/logout">Logout</a></li>
+                        <li><a href="/auth/logout">Logout</a></li>
                         </ul>
                     </li>
                     @endif

@@ -44,6 +44,7 @@
 					@endforeach
 				
 				<a class="sidebarEdit" href="">edit</a></p>
+			<a href="/cancel"><input type="button" class="btn btn-default" value="Cancel"></a>
 		</div>
 	</div>
 </div>

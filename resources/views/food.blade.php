@@ -9,6 +9,12 @@
 <div class="container">
     <div id="wizard" class="col-md-8 parent-container">
         <div id="content">
+            <div class="row">
+                <?php $location = $array['location']; ?>
+                <div id="locationBox" class="container">
+                        <h4 class="category">{{ $location }}</h4>
+                </div>
+            </div>
             <h2>Select a Meal Preference Budget</h2>
                 <span data-dollar=0 class="dollarsign">$</span>
                 <span data-dollar=1 class="dollarsign">$$</span>
@@ -24,17 +30,14 @@
                     <button id="foodButton" class="btn btn-default" type="submit">Submit</button>
 
                 </form>
-            <h4>"$$" Budgets are modestly priced restaurants.</h4>
         </div>
     </div>
     @if(!empty($array)) 
     <div class="col-md-4">
         <div id="sidebar">
-        <div class="row">
-			<?php $location = array_shift($array); ?>
-		 	<h4 class="category">{{ $location }}</h4>
-		 	<a class="sidebarEdit" href="">edit</a>
-		</div>
+    
+		<?php $location = array_shift($array); ?>
+	
         @foreach( $array as $key => $value )
             <p>{{ $key . ':'}}</p>
             <div class="row">

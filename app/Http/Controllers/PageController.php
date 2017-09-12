@@ -25,7 +25,9 @@ class PageController extends Controller
 
     public function startover(Request $request)
     {
-        session()->flush();
+        // session()->flush();
+        session()->forget('location');
+        session()->forget('itinerary');
         return view('layouts.location');
     }
     public function location(Request $request)
@@ -297,7 +299,7 @@ class PageController extends Controller
     public function trips()
     {
 
-        $data['tripNames'] = Trip::select('trip_name')->distinct()->get();
+        $data['tripNames'] = Trip::select('trip_name')->where('user_id', Auth::id())->distinct()->get();
         return view('/trips', $data);
 
     }

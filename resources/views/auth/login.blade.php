@@ -31,7 +31,8 @@
                 </div>
 
                 <div>
-                    <button type="submit">Login</button>
+                    <input type="submit" class="btn btn-default" value="Login">
+                    <a href="/auth/register"><input type="button" class="btn btn-default" value="Sign Up" name=""></a>
                 </div>
             </form>
         </div>
