@@ -1,3 +1,45 @@
+body {
+	background-color: black;
+}
+
+#daysBlade {
+	background-image: url('../img/emotions-2559504_1920.jpg');
+}
+#groupSize {
+	background-image: url('../img/sunbeds-2436919_1920.jpg');
+	width: 1280px;
+  	height: 700px;
+  	background-position: center;
+  	background-size: cover;
+}
+#accommodationsBlade {
+  	background-image: url('../img/family-2368181_1280.jpg');
+  	background-size: cover;
+}
+#transBlade {
+	background-image: url('../img/abstract-1239439_1280.jpg')
+}
+#foodBlade {
+	background-image: url('../img/breakfast-hotel-1921530_1280.jpg')
+}
+#entBlade {
+	text-align: center;
+	height: 400px;
+	width:100vw;
+	background-color:black;
+	margin:0 auto;
+	display: ;
+	background-image: url('../img/rescue-helicopter-922465_1280.jpg')
+}
+#summaryBlade {
+	text-align: center;
+	height: 400px;
+	width:100vw;
+	background-color:black;
+	margin:0 auto;
+	display: table;
+	background-image: url('../img/oia-416135_1920.jpg')
+}
 input:focus, textarea:focus
 {
     outline: none;
@@ -59,6 +101,10 @@ h1, h2 {
 }
 #feature1 {
 	background-image: url('../img/Paris.jpg');
+	width: 280px;
+  	height: 280px;
+  	background-position: center;
+  	background-size: cover;
 	float:left;
 }
 #feature2 {
