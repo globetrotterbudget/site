@@ -49,7 +49,8 @@ Route::get('/start', 'PageController@startover');
 Route::get('/trips/{id}/update', 'PageController@update');
 
 Route::get('/cancel', function(Request $request) {
-	session()->flush();
+	session()->forget('location');
+    session()->forget('itinerary');
 	return redirect()->action('PageController@trips');
 });
 

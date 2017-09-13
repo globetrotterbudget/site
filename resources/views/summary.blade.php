@@ -75,9 +75,12 @@
 
 					<h5>{{ $things['description'] . ': '}}
 					{{ $things['price'] . ': '}}<br></h5>
-					<?php $entTotal += (int)($things['price']); ?>
+					<?php   $entTotal = 0;
+							$entTotal += (int)($things['price']); ?>
+
 				@endforeach
 			@else
+			
 			<h5>none available</h5>
 			@endif
     	</div>
