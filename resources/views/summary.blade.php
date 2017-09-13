@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container">
+<div id="summaryBlade" class="container">
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="content">
 			<div class="row">

@@ -7,7 +7,7 @@
 @section('content')
 
 
-<div class="container">
+<div id=transBlade class="container">
     <div id="wizard" class="col-md-8 parent-container">
         <div id="content">
             <div class="row">
@@ -20,8 +20,8 @@
             
             <div id="transpo" class="row">
 
-                <input type="button" id="public" data-transportation="public" value="public">
-                <input type="button" id="rental" data-transportation="rental" value="rental">
+                <input class="publicTrans" type="button" id="public" data-transportation="public" value="public">
+                <input class="rentalTrans" type="button" id="rental" data-transportation="rental" value="rental">
 
                 <form method="GET" action="{{ action('PageController@transportation')}}">
                 {{ csrf_field() }}
