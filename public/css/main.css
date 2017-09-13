@@ -1,6 +1,4 @@
-body {
-	background-color: black;
-}
+
 
 /*#daysBlade {
 	background-image: url('../img/emotions-2559504_1920.jpg');
@@ -157,7 +155,7 @@ h1, h2 {
 .entOptions {
 	border-radius: 4px;
 	border: 1px solid #eee;
-	height: 180px;
+	height: 150px;
 	width:180px;
 	background-color: white;
 	display:inline-block;
@@ -167,7 +165,7 @@ h1, h2 {
 }
 
 .isSelected {
-	font-weight: bold;
+	background-color: #eee;
 }
 .container .parent-container {
 	display: table;

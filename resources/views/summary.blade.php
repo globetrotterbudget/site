@@ -1,17 +1,12 @@
-@extends('layouts.master')
 
-@section('title')
-<title>Summary</title>
-@stop
+			<?php 	
+					
 
-@section('content')
+					if (is_string(session()->get('entertainment')) &&
+					   !empty(session()->get('entertainment')) )
+					{
 
-<div id="summaryBlade" class="container">
-	<div id="wizard" class="col-md-8 parent-container">
-		<div id="content">
-			<div class="row">
-
-			<?php $entString = session()->get('entertainment');
+					$entString = session()->get('entertainment');
 
 					session()->forget('entertainment');
 					$substring = substr($entString, 1, -1);
@@ -44,62 +39,108 @@
 						$ent['price'] = $arrays[1];
 
 						$entertainment[] = $ent;
+					}
 					}	
 						
 					  ?>
 						
-			
-			<?php $location = $array['location']; ?>
-				<div id="locationBox" class="container">
-			 		<h4 class="category">{{ $location }}</h4>
-				</div>
-			</div><br>
-			
+@extends('layouts.master')
+
+@section('title')
+<title>Summary</title>
+@stop
+
+@section('content')
+
+<div id="summaryBlade" class="container">
+
+ 	<div class="row">
+    	<div class="col-md-12">
+    		<h3>{{ $array['location'] }}</h3>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-3">
+    		<h5>Travelers: {{ $array['groupsize'] }}</h5>
+    		<h5>Days: 2{{ $array['days'] }}</h5>
+    		<h5>Accommodations:</h5>
+    		<h5>{{ $array['accommodations']}} star hotel</h5>
+    		<h5>Transportation:</h5>
+    		<h5>{{ $array['transportation'] }}</h5>
+    		<h5>Food: {{ $array['food'] }}</h5>
+    		<h5>Entertainment extras</h5>
+
+    		@if(isset($entertainment) && is_array($entertainment))
+				@foreach($entertainment as $things)
+
+					<h5>{{ $things['description'] . ': '}}
+					{{ $things['price'] . ': '}}<br></h5>
+					<?php $entTotal += (int)($things['price']); ?>
+				@endforeach
+			@else
+			<h5>none available</h5>
+			@endif
+    	</div>
+    	<div class="col-md-4">
+    		<h5>Accommodations:</h5>
+    		<h5>${{ session()->get('average_accommodation_cost_per_day') }} per day</h5>
+    		<h5>${{ session()->get('average_accommodation_cost') }} per day</h5>
+    		<h5>Meals:</h5>
+    		<h5>${{ session()->get('average_food_cost_per_day') }} per day</h5>
+    		<h5>${{ session()->get('average_food_cost') }} group per day</h5>
+    		<h5>Transportation:</h5>
+    		<h5>${{ session()->get('average_transportation_cost_per_day') }} per day</h5>
+    		<h5>${{ session()->get('average_transportation_cost') }} group per day</h5>
+
+    	</div>
+    	<div class="col-md-2">
+<?php
+    	$acc = (float)session()->get('average_accommodation_cost_per_day');
+    	$food = (float)session()->get('average_food_cost_per_day');
+    	$trans = (float)session()->get('average_transportation_cost_per_day');
+    	$extra = isset($entTotal) ? (float)$entTotal : 0;
+    	$days = (float)$array['days'];
+    	$daily = ($acc + $food + $trans + ($extra/$days));
+    	$group = (float)(session()->get('groupsize'));
+    	$grouply = ($daily * $group);
+    	?>
+
+    		<h1>${{ $daily }}</h1>
+    		<p>per day</p>
+    		<h5>${{ $grouply }} group per day</h5>
+
+    	</div>
+    	<div class="col-md-3">
+
+    		
+
+    	</div>
+    </div>
+    	<div class="col-md-12"><hr>
+   		
         	@if(Auth::check())
         		@if(isset($array['id']))
           		<a href="{{ action('PageController@update', $array['id'])}}"><input type="button" class="btn btn-default"value="Update intinerary"></a>
           		<a href="/cancel"><input type="button" class="btn btn-default" value="Cancel"></a>
           		@else
           		<a href="/save"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
+          		<a href="/location"><input type="button" class="btn btn-default" value="Cancel"></a>
           		@endif
           	@else
           	<a href="{{ action('PageController@startover')}}"><input type="button" class="btn btn-default" value="Start Over"></a>
           	<?php session()->put('itinerary', 'yes'); ?> 
           	<a href="/auth/login"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
           	@endif
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div id="sidebar">
-			
-				<?php $location = array_shift($array);
-						$nothing = array_pop($array); 
-						unset($array['id']); ?>
+		</div></div>
+	
 
-
-			@foreach( $array as $key => $value )
-
-				<p>{{ $key . ':'}}</p>
-				<div class="row">
-					<h4 class="category">{{ $value }}</h4>
-				 	<a class="sidebarEdit" href="/{{ $key }}">edit</a>
-				 </div>
-			@endforeach
-			
-			<p>Entertainment<br>
-					
-					@foreach($entertainment as $things)
-
-						{{ $things['description'] . ': '}}
-						{{ $things['price'] . ': '}}<br>
-
-					@endforeach
-				</p>
-				<a class="sidebarEdit" href="/entertainment">edit</a>
-		</div>
-	</div>
 
 </div>
+	
+	<?php if(isset($entertainment) && is_array($entertainment))
+	{
+		session()->put('entertainment', $entertainment);
 
-				<?php session()->put('entertainment', $entertainment); ?>
+	} ?>
+
 @stop
