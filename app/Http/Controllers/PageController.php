@@ -25,7 +25,7 @@ class PageController extends Controller
 
     public function startover(Request $request)
     {
-        // session()->flush();
+        
         session()->forget('location');
         session()->forget('itinerary');
         return view('layouts.location');
