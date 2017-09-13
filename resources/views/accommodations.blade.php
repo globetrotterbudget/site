@@ -11,6 +11,7 @@
 		<div id="content">
 			<div class="row">
 					<?php $location = $array['location']; ?>
+					<?php $historical = array_pop($array); ?>
 					<div id="locationBox" class="container">
 				 		<h4 class="category">{{ $location }}</h4>
 					</div>
@@ -34,13 +35,20 @@
         			<button id="accommodationsButton" class="btn btn-default" type="submit">Submit</button>
 
 				</form>
+				<div style="margin-top:20px" class="row">
+					<div id="runningTotal">
+						<p>Historical average cost</p>
+						 <h1 style="margin-top:10px; margin-bottom:5px">$ {{ $historical }}</h1>
+						<p>per person / day</p>
+					</div>
+				</div>
 		</div>
 	</div>
 	@if(!empty($array)) 
 	<div class="col-md-4">
 		<div id="sidebar">
 		
-			<?php $location = array_shift($array); ?>
+		<?php $location = array_shift($array); ?>
 
 		@foreach( $array as $key => $value )
 			<p>{{ $key . ':'}}</p>

@@ -26,7 +26,7 @@
     	</div>
     	<div class="col-md-3">
     		<h5>Travelers: {{$object->groupsize}}</h5>
-    		<h5>Days: 2{{$object->days}}</h5>
+    		<h5>Days: {{$object->days}}</h5>
     		<h5>Transportation:</h5>
     		<h5>{{$object->transportation}}</h5>
     		<h5>Food: {{$object->food}}</h5>
@@ -38,7 +38,7 @@
     		<p>Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, </p>
     	</div>
     	<div class="col-md-2">
-    		<h1>$95</h1>
+    		<h1>${{ $object->daily }}</h1>
     		<p>per day</p>
     	</div>
     	<div class="col-md-3">

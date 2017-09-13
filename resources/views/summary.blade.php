@@ -62,7 +62,7 @@
     <div class="row">
     	<div class="col-md-3">
     		<h5>Travelers: {{ $array['groupsize'] }}</h5>
-    		<h5>Days: 2{{ $array['days'] }}</h5>
+    		<h5>Days: {{ $array['days'] }}</h5>
     		<h5>Accommodations:</h5>
     		<h5>{{ $array['accommodations']}} star hotel</h5>
     		<h5>Transportation:</h5>
@@ -103,9 +103,11 @@
     	$trans = (float)session()->get('average_transportation_cost_per_day');
     	$extra = isset($entTotal) ? (float)$entTotal : 0;
     	$days = (float)$array['days'];
-    	$daily = ($acc + $food + $trans + ($extra/$days));
+    	$daily = (float)($acc + $food + $trans + ($extra/$days));
     	$group = (float)(session()->get('groupsize'));
-    	$grouply = ($daily * $group);
+    	$grouply = (float)($daily * $group);
+        session()->put('daily', $daily);
+
     	?>
 
     		<h1>${{ $daily }}</h1>

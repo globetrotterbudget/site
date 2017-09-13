@@ -32,6 +32,14 @@
                     
                 </form>
             </div>
+            <div style="margin-top:20px" class="row">
+            <?php $avgCostDay = array_pop($array); ?>
+                    <div id="runningTotal">
+                        <p>Current Total</p>
+                         <h1 style="margin-top:10px; margin-bottom:5px">$ {{ $avgCostDay }}</h1>
+                        <p>per person / day</p>
+                    </div>
+                </div>
 
         </div>
     </div>
