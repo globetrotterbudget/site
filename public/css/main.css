@@ -105,6 +105,11 @@ h1, h2 {
   	background-size: cover;
 	float:left;
 }
+#runningTotal {
+	
+	margin: 0 auto;
+	bottom: 0px;
+}
 #feature2 {
 	background-image: url('../img/telaviv.png');
 	float:left;
@@ -211,7 +216,7 @@ h1, h2 {
 #public, #rental {
 	border-radius: 4px;
 	border: 1px solid #eee;
-	height: 250px;
+	height: 180px;
 	width:180px;
 	background-color: white;
 	display:inline-block;

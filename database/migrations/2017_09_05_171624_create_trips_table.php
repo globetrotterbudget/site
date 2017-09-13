@@ -23,6 +23,7 @@ class CreateTripsTable extends Migration
             $table->integer('accommodations');
             $table->integer('transportation');
             $table->integer('food');
+            $table->float('daily');
             $table->timestamps();
         });
     }

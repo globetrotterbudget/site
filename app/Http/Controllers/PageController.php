@@ -13,6 +13,7 @@ use App\budgetyourtrip_api\Countries;
 use App\budgetyourtrip_api\Currencies;
 use App\budgetyourtrip_api\Locations;
 use App\Trip;
+use App\Cost;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -130,7 +131,10 @@ class PageController extends Controller
             $USD_average_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_cost_per_day);
             $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
             $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', ''), 'Average Cost per Person' => number_format((float)$average_trip_cost, 2, '.', '')];
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', '')];
+            
+            //  Avg cost per person per day...
+            // 'Average Cost per Person' => number_format((float)$average_trip_cost, 2, '.', '')
             
             return view('accommodations', $data);
 
@@ -322,6 +326,7 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+
         $trip = new trip();
         $trip->user_id = Auth::id();
         $trip->trip_name = $request->trip_name;
@@ -331,7 +336,21 @@ class PageController extends Controller
         $trip->accommodations = session()->get('accommodations');
         $trip->transportation = session()->get('transportation');
         $trip->food = session()->get('food');
+        $trip->daily = session()->get('daily');
         $trip->save();
+
+        $cost = new cost();
+        $cost->trip_id = $trip->id;
+        $cost->accom_day_cost = session()->get('average_accommodation_cost_per_day');
+        $cost->accom_cost = session()->get('average_accommodation_cost');
+        $cost->avg_food_day_cost = session()->get('average_food_cost_per_day');
+        $cost->avg_food_cost = session()->get('average_food_cost');
+        $cost->avg_trans_day_cost = session()->get('average_transportation_cost_per_day');
+        $cost->avg_trans_cost = session()->get('average_transportation_cost');
+        $cost->save();
+
+
+
 
         $request->session()->flash("successMessage", "Your post was saved successfully");
 
@@ -350,9 +369,12 @@ class PageController extends Controller
     public function tripDetail($tripName)
     {
         
-        $trips = \DB::table('trips')->where('trip_name', $tripName)->get();
+        $trips = \DB::table('trips')->where('user_id', Auth::id())->where('trip_name', $tripName)->get();
+        // $costs = \DB::table('costs')->where('user_id', Auth::id())->where('trip_id', $trips)
         $data['trips'] = $trips;
+        // $data['costs'] = $costs;
         return view('/tripdetail', $data);
+        
     }
     
 

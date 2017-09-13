@@ -17,7 +17,7 @@
     <div class="row">
     	<div class="col-md-3">
     		<h5>Travelers: {{ $array['groupsize'] }}</h5>
-    		<h5>Days: 2{{ $array['days'] }}</h5>
+    		<h5>Days: {{ $array['days'] }}</h5>
     		<h5>Accommodations:</h5>
     		<h5>{{ $array['accommodations']}} star hotel</h5>
     		<h5>Transportation:</h5>

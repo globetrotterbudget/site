@@ -1,3 +1,16 @@
+<?php
+
+// dd($array);
+$aapd = $array['Average Accomodation Cost per Person per Day'];
+$tcpd = $array['Transportation Cost per Person per Day'];
+$tcp = $array['Transportation Cost per Person'];
+$ttc = $array['Total Trip Cost'];
+$total = ($aapd + $tcpd)
+
+?>
+
+
+
 @extends('layouts.master')
 
 @section('title')
@@ -28,8 +41,15 @@
                     <input type="hidden" name="food" id="foodValue">
                     <a href="/transportation"><input type="button" class="btn btn-default" value="Previous"></a>
                     <button id="foodButton" class="btn btn-default" type="submit">Submit</button>
-
                 </form>
+                <div style="margin-top:20px" class="row">
+                    <div id="runningTotal">
+                        <p>Current Total</p>
+                         <h1 style="margin-top:10px; margin-bottom:5px">$ {{ $total }}</h1>
+                        <p>per person / day</p>
+                    </div>
+                </div>
+
         </div>
     </div>
     @if(!empty($array)) 
@@ -37,14 +57,30 @@
         <div id="sidebar">
     
 		<?php $location = array_shift($array); ?>
-	
-        @foreach( $array as $key => $value )
-            <p>{{ $key . ':'}}</p>
+
+        
+            <p>Days:</p>
             <div class="row">
-                <h4 class="category">{{ $value }}</h4>
-                <a class="sidebarEdit" href="/{{ $key }}">edit</a>
+                <h4 class="category">{{ $array['days'] }}</h4>
+                <a class="sidebarEdit" href="/days">edit</a>
              </div>
-        @endforeach
+             <p>Groupsize:</p>
+            <div class="row">
+                <h4 class="category">{{ $array['groupsize'] }}</h4>
+                <a class="sidebarEdit" href="/groupsize">edit</a>
+             </div>
+             <p>Accommodations:</p>
+            <div class="row">
+                <h4 class="category">{{ $array['accommodations'] }}</h4>
+                <a class="sidebarEdit" href="/accommodations">edit</a>
+             </div>
+             <p>Transportation:</p>
+            <div class="row">
+                <h4 class="category">{{ $array['transportation'] }}</h4>
+                <a class="sidebarEdit" href="/transportation">edit</a>
+             </div>
+
+        
         </div>
     @endif
     </div>
