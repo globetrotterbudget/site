@@ -42,17 +42,20 @@ class PageController extends Controller
             return view('layouts.location');
         } else {
             
+            $locations = new Locations(env('API_KEY'));
             $input = explode(',', $request['location']);
             $city = trim(strtolower($input[0]));
 
             if(strpos($city, ' ') !== false){
                 $citySearchable = str_replace(' ', '-', $city);
+                $possible_locations = $locations->search($citySearchable);
+            } else {
+                $possible_locations = $locations->search($city);            
             }
             
             if(count($input) === 2){
                 $province = strtolower(trim($input[1]));
-                $locations = new Locations(env('API_KEY'));
-                $possible_locations = $locations->search($citySearchable);
+                
                 $possible_location_names = [];
                 foreach($possible_locations as $possible_location){
                     array_push($possible_location_names, $possible_location->name);
