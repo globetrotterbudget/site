@@ -108,6 +108,21 @@ h1, h2 {
 	display:table-cell;
     vertical-align:middle;
 }
+.entOptions {
+	border-radius: 4px;
+	border: 1px solid #eee;
+	height: 180px;
+	width:180px;
+	background-color: white;
+	display:inline-block;
+	font-size: 20px;
+	margin: 20px 20px 20px 20px;
+	cursor:pointer;
+}
+
+.isSelected {
+	font-weight: bold;
+}
 .container .parent-container {
 	display: table;
 	text-align:center;

@@ -17,30 +17,20 @@
                 </div>
             </div>
             <h2>Choose Entertainment for your trip.</h2>
+            @foreach($entertainmentOptions as $entertainmentOption)
+                <div class="entOptions" data-ent="{{$entertainmentOption->description}}" data-price="{{ $entertainmentOption->cost }}">
+                    <h4 style="pointer-events:none">{{ $entertainmentOption->description}}</h4>
+                    <p  style="pointer-events:none">{{ $entertainmentOption->cost}}</p>
+                </div>
+            @endforeach
+
             <form method="GET" action="{{ action('PageController@entertainment') }}">
                 {{ csrf_field() }}
 
-                @foreach($entertainmentOptions as $entertainmentOption )
-                    <div>
-                        <h2>{{ $entertainmentOption->description}}</h2>
-                        <p>{{ $entertainmentOption->cost}}</p>
-                    </div>
-                @endforeach
 
-            <div>
-                <input type="checkbox" name="entertainment[]" value='pack6'>
-                <input type="checkbox" name="entertainment[]" value='pack7'>
-                <input type="checkbox" name="entertainment[]" value='pack8'>
-                <input type="checkbox" name="entertainment[]" value='pack9'>
-                <input type="checkbox" name="entertainment[]" value='pack10'>
-            </div>
-            <div>
-                <input type="checkbox" name="entertainment[]" value='pack11'>
-                <input type="checkbox" name="entertainment[]" value='pack12'>
-                <input type="checkbox" name="entertainment[]" value='pack13'>
-                <input type="checkbox" name="entertainment[]" value='pack14'>
-                <input type="checkbox" name="entertainment[]" value='pack15'>
-            </div>
+            <input id="getEntertainment" type="hidden" name="entertainment">
+
+
             <button type='submit'>Next</button>
         </form>
         </div>
