@@ -6,11 +6,76 @@
 
 @section('content')
 
-<div class="container">
 
-    <div class="col-md-offset-2 col-md-8 parent-container">
+<div id="summaryBlade" class="container">
+
+ 	<div class="row">
+    	<div class="col-md-12">
+    		<h3>{{ $array['location'] }}</h3>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-3">
+    		<h5>Travelers: {{ $array['groupsize'] }}</h5>
+    		<h5>Days: 2{{ $array['days'] }}</h5>
+    		<h5>Accommodations:</h5>
+    		<h5>{{ $array['accommodations']}} star hotel</h5>
+    		<h5>Transportation:</h5>
+    		<h5>{{ $array['transportation'] }}</h5>
+    		<h5>Food: {{ $array['food'] }}</h5>
+    		<h5>Entertainment extras</h5>
+
+    		@if(isset($entertainment) && is_array($entertainment))
+				@foreach($entertainment as $things)
+
+					<h5>{{ $things['description'] . ': '}}
+					{{ $things['price'] . ': '}}<br></h5>
+					<?php   $entTotal = 0;
+							$entTotal += (int)($things['price']); ?>
+
+				@endforeach
+			@else
+			
+			<h5>none available</h5>
+			@endif
+    	</div>
+    	<div class="col-md-4">
+    		<h5>Accommodations:</h5>
+    		<h5>${{ session()->get('average_accommodation_cost_per_day') }} per day</h5>
+    		<h5>${{ session()->get('average_accommodation_cost') }} per day</h5>
+    		<h5>Meals:</h5>
+    		<h5>${{ session()->get('average_food_cost_per_day') }} per day</h5>
+    		<h5>${{ session()->get('average_food_cost') }} group per day</h5>
+    		<h5>Transportation:</h5>
+    		<h5>${{ session()->get('average_transportation_cost_per_day') }} per day</h5>
+    		<h5>${{ session()->get('average_transportation_cost') }} group per day</h5>
+
+    	</div>
+    	<div class="col-md-2">
+<?php
+    	$acc = (float)session()->get('average_accommodation_cost_per_day');
+    	$food = (float)session()->get('average_food_cost_per_day');
+    	$trans = (float)session()->get('average_transportation_cost_per_day');
+    	$extra = isset($entTotal) ? (float)$entTotal : 0;
+    	$days = (float)$array['days'];
+    	$daily = ($acc + $food + $trans + ($extra/$days));
+    	$group = (float)(session()->get('groupsize'));
+    	$grouply = ($daily * $group);
+    	?>
+
+    		<h1>${{ $daily }}</h1>
+    		<p>per day</p>
+    		<h5>${{ $grouply }} group per day</h5>
+
+    	</div>
+    	<div class="col-md-3">
+
+    		
+
+    	</div>
+
+    <div class="col-md-12 parent-container">
         <div id="save">
-
         		<form method="POST" action="{{ action('PageController@store') }}">
         		{{ csrf_field() }}
         			<label for="save">Save to New Trip</label>
@@ -28,23 +93,7 @@
 					}?>
 					</select>
         			<button type="submit">Save</button>
-				<?php $location = array_shift($array); ?>
-				<?php $entertainment = array_pop($array); ?>
-			 	<h4 class="category">{{ $location }}
-			 	<a class="sidebarEdit" href="">edit</a></h4>
-			@foreach( $array as $key => $value )
-				<p>{{ $key . ':'}}</p>
 				
-					<h4 class="category">{{ $value }}
-				 	<a class="sidebarEdit" href="">edit</a></h4>
-			@endforeach
-			<p>Entertainment<br>
-					@foreach($entertainment as $thing)
-					{!! $thing . ", " !!}
-					@endforeach
-				
-				<a class="sidebarEdit" href="">edit</a></p>
-			<a href="/cancel"><input type="button" class="btn btn-default" value="Cancel"></a>
 		</div>
 	</div>
 </div>
