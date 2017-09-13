@@ -9,30 +9,30 @@
 <div class="container">
 
     <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
-        <div id="login">
-            <h2>This is where you log in</h2>
-            
-            <form method="POST" action="/auth/login">
+        <div id="login">            
+            <form method="POST" action="/auth/login" data-validation data-required-message="This field is required">
                 {!! csrf_field() !!}
 
-                <div>
+                <div class="form-group">
                     <label for="email">Username</label>
-                    <input type="email" name="email" value="{{ old('email') }}">
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                 </div>
 
-                <div>
+                <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" class="form-control" name="password" id="password" required>
                 </div>
 
                 <div>
                     <input type="checkbox" name="remember">
                     <label for="remember">Remember Me</label>
-                </div>
-
-                <div>
-                    <input type="submit" class="btn btn-default" value="Login">
-                    <a href="/auth/register"><input type="button" class="btn btn-default" value="Sign Up" name=""></a>
+                </div class='form-group'>
+                    <div class='row login_row'>
+                        <input type="submit" class="btn btn-success col-sm-2 col col-sm-offset-5" value="Login">
+                    </div>
+                    <div class='row login_row'>
+                        <a href="/auth/register"><input type="button" class="btn btn-default col-sm-2 col col-sm-offset-5" value="Sign Up" name=""></a>
+                    </div>
                 </div>
             </form>
         </div>
