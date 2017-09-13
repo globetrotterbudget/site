@@ -224,3 +224,6 @@ h1, h2 {
 #public:focus, #rental:focus {
 	background-color: #eee;
 }
+.login_row{
+	padding-top: 1em;
+}
