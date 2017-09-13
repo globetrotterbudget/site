@@ -10,7 +10,7 @@
 	<div id="welcome" class="col-md-offset-1 col-md-9">
 		<div id="banner">Plan your vacation budget</div>
    		<form method="GET" action="{{action ('PageController@location')}}">
-        	<input id="search" type="text" name="location" placeholder='e.g. City, Country'>
+        	<input id="search" type="text" name="location" placeholder='e.g. City, State/Country'>
         	<button type="submit">Go</button>
       	</form>
     </div>    

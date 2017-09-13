@@ -42,19 +42,42 @@ class PageController extends Controller
         } else {
             
             $input = explode(',', $request['location']);
-            $city = trim(ucfirst($input[0]));
-            $province = ucfirst(trim($input[1]));
+            $city = trim(strtolower($input[0]));
 
-            $locations = new Locations(env('API_KEY'));
-            $possible_locations = $locations->search($city);
-            foreach($possible_locations as $possible_location){
-                if($possible_location->name === $city && trim($possible_location->country_name) === $province){
-                    session()->put('geonameid', $possible_location->geonameid);
-                    session()->put('currency_code', $possible_location->currency_code);
-                }
+            if(strpos($city, ' ') !== false){
+                $citySearchable = str_replace(' ', '-', $city);
             }
-            $request->session()->put('location', $request['location']);
-            return redirect()->action('PageController@days');
+            
+            if(count($input) === 2){
+                $province = strtolower(trim($input[1]));
+                $locations = new Locations(env('API_KEY'));
+                $possible_locations = $locations->search($citySearchable);
+                $possible_location_names = [];
+                foreach($possible_locations as $possible_location){
+                    array_push($possible_location_names, $possible_location->name);
+                    if(strtolower($possible_location->name) === $city && trim(strtolower($possible_location->country_name)) === $province){
+                        $location = $possible_location->name;
+                        session()->put('geonameid', $possible_location->geonameid);
+                        session()->put('currency_code', $possible_location->currency_code);
+                    } else if(strtolower($possible_location->name) === $city && trim(strtolower(    $possible_location->statename) === $province)){
+                        $location = $possible_location->name;
+                        session()->put('geonameid', $possible_location->geonameid);
+                        session()->put('currency_code', $possible_location->currency_code);
+                    }
+                }
+                if(session()->has('geonameid') && session()->has('currency_code')){
+                    $request->session()->put('location', $location);
+                    return redirect()->action('PageController@days');
+                } else {
+                    $request['location'] = null;
+                    $request->session()->flash('no_match_error', 'Did you mean ' . $possible_location_names[0] .'?');
+                    return redirect()->action('PageController@location');
+                }
+            } else {
+                $request['location'] = null;
+                $request->session()->flash('no_match_error', 'You must enter a city and state/country.');
+                return redirect()->action('PageController@location');
+            }
         }
     }
     public function days(Request $request)
