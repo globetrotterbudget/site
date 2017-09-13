@@ -239,16 +239,19 @@ class PageController extends Controller
             session()->put('average_food_cost', $average_food_cost);
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accommodation Cost per Person per Day' => $average_accommodation_cost_per_day, 'transportation' => $transportation, 'Average Transportation Cost Per Person Per Day' => $average_transportation_cost_per_day, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
             $data['entertainmentOptions'] = $entertainment_options;
+
             return view('entertainment', $data);
 
         } else {
+            
             $request->session()->put('entertainment', $request['entertainment']);
             return redirect()->action('PageController@summary');
         }
 
     }
 
-    public function summary(Request $request) {        
+    public function summary(Request $request) {
+             
         $location = session()->get('location');
         $days = session()->get('days');
         $groupsize = session()->get('groupsize');
