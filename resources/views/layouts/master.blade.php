@@ -68,6 +68,7 @@ $(document).ready(function() {
         }
 
         $('#accommodations').val(clickedIndex);
+
         
    });
 });
@@ -141,6 +142,63 @@ $(document).ready(function() {
 });
 
 </script>
+
+<script>
+    
+    var arrayOfSelections = [];
+
+    $('.entOptions').click(function(e) {
+
+        var selectedObject = {};
+        selectedObject.description = $(e.target).data('ent');
+        selectedObject.price = $(e.target).data('price');
+
+        if ($(e.target).hasClass('isSelected')) {
+            $(e.target).removeClass('isSelected') 
+
+            // remove selectedObject from arrayOfSelections
+            var indexOfObject = arrayOfSelections.indexOf(selectedObject);
+            arrayOfSelections.splice(indexOfObject, 1);
+            console.log(arrayOfSelections);
+
+        } else {
+            $(e.target).addClass('isSelected');
+            arrayOfSelections.push(selectedObject);
+            console.log(arrayOfSelections);
+        }
+
+        var selectionString = arrayOfSelections.join(", ");
+        selectionString = JSON.stringify(arrayOfSelections);
+
+        $("#getEntertainment").val(selectionString);
+
+    });
+     
+</script>
+
+
+
+<!-- <script>
+	$('document').ready(function () {
+
+		const entertainmentOpts = $('.entOptions');
+
+		
+
+	   		$('.entOptions').click(function(e) {
+	   			console.log($(e.target).data('ent'));
+	   			$('#getEntertainment').val($(e.target).data('ent'));
+	   		});
+   		
+
+
+		
+	});
+
+
+
+
+</script> -->
 
 </body>
 </html>
