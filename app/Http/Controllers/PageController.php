@@ -25,7 +25,7 @@ class PageController extends Controller
 
     public function startover(Request $request)
     {
-        // session()->flush();
+        
         session()->forget('location');
         session()->forget('itinerary');
         return view('layouts.location');
@@ -239,10 +239,7 @@ class PageController extends Controller
             session()->put('average_food_cost', $average_food_cost);
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accommodation Cost per Person per Day' => $average_accommodation_cost_per_day, 'transportation' => $transportation, 'Average Transportation Cost Per Person Per Day' => $average_transportation_cost_per_day, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
             $data['entertainmentOptions'] = $entertainment_options;
-<<<<<<< HEAD
-=======
-            
->>>>>>> ca071cd9d93699ac9b29e1c5d2d684a4ab68536e
+
             return view('entertainment', $data);
 
         } else {
