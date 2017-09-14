@@ -13,11 +13,17 @@
     	<h2>My Trips</h2>
 
     	<?php foreach($tripNames as $trip)
-		{
-			echo "<div class=\"panel panel-default\">"
-			. "<div class=\"panel-body\">" .
-			"<a href=\"/trips/$trip->trip_name\">"  . $trip->trip_name 
-			."</a>" . "</div>" . "</div>";
+		{	
+		
+			echo
+
+			"<a href=\"/trips/$trip->trip_name\">" .
+			"<div class=\"trips\">" .
+			'<h3 style="margin-bottom: 5px">' . $trip->trip_name . '</h3>'.
+			'<h1 style="margin-top: 10px; margin-bottom: 5px">$' . $costs[0] . '</h1>' .
+			'<p style="font-size:14px">total cost</p>' .
+			'<h4>$' . $costs[1] . ' daily</h4><br>' .
+			"</div>" . '</a>' ;
 		
 		}?>
 
