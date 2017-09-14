@@ -326,6 +326,8 @@ class PageController extends Controller
         $cost->avg_trans_cost = session()->get('average_transportation_cost');
         $cost->save();
 
+        $entertainment = (!empty(session()->get('entertainment'))) ? session()->get('entertainment') : [["description"=>"None available"]];
+        dd($entertainment);
 
 
 
@@ -346,12 +348,12 @@ class PageController extends Controller
     public function tripDetail($tripName)
     {
         
-        $trips = \DB::table('trips')->where('user_id', Auth::id())->where('trip_name', $tripName)->get();
-        // $costs = \DB::table('costs')->where('user_id', Auth::id())->where('trip_id', $trips)
+        $trips = \App\Trip::where('user_id', Auth::id())->where('trip_name', $tripName)->get();
+
         $data['trips'] = $trips;
-        // $data['costs'] = $costs;
-        return view('/tripdetail', $data);
         
+        return view('/tripdetail', $data);
+
     }
     
 
@@ -384,14 +386,19 @@ class PageController extends Controller
 
 
         foreach($trip as $key)
-        {
+        {   
+
             foreach($key as $value=>$info)
             {
                $array[$value] = $info; 
                
             }
         }
+        
+        $array = array_splice($array,3,1);
+        
         $data['array'] = $array;
+        
         return view('/days', $data);
 
     }

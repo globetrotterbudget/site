@@ -61,6 +61,7 @@
     </div>
     <div class="row">
     	<div class="col-md-3">
+            <p>SELECTED:</p>
     		<h5>Travelers: {{ $array['groupsize'] }}</h5>
     		<h5>Days: {{ $array['days'] }}</h5>
     		<h5>Accommodations:</h5>
@@ -85,6 +86,7 @@
 			@endif
     	</div>
     	<div class="col-md-4">
+            <p>COSTS:</p>
     		<h5>Accommodations:</h5>
     		<h5>${{ session()->get('average_accommodation_cost_per_day') }} per day</h5>
     		<h5>${{ session()->get('average_accommodation_cost') }} per day</h5>
@@ -110,9 +112,9 @@
 
     	?>
 
-    		<h1>${{ $daily }}</h1>
+    		<h1>${{ number_format($daily,2,'.','') }}</h1>
     		<p>per day</p>
-    		<h5>${{ $grouply }} group per day</h5>
+    		<h5>${{ number_format($grouply,2,'.','') }} group per day</h5>
 
     	</div>
     	<div class="col-md-3">
