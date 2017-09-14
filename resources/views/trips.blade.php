@@ -21,11 +21,13 @@
 			"<a href=\"/trips/$trip->trip_name\">" .
 			"<div class=\"trips\">" .
 			'<h3 style="margin-bottom: 5px">' . $trip->trip_name . '</h3>'.
-			'<h1 style="margin-top: 10px; margin-bottom: 5px">$' . $costs[$i][0] . '</h1>' .
+			'<h1 style="margin-top: 10px; margin-bottom: 5px">$' .
+			number_format((float)$costs[$i][0],2,'.','') . '</h1>' .
 			'<p style="font-size:14px">total cost</p>' .
-			'<h4>$' . $costs[$i][1] . ' daily</h4><br>' .
+			'<h4>$' .
+			number_format((float)$costs[$i][1],2,'.','') . ' daily</h4><br>' .
 			"</div>" . '</a>' ;
-			
+
 			$i++;
 		}?>
 
