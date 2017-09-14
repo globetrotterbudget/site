@@ -179,6 +179,19 @@ $(document).ready(function() {
     });
      
 </script>
+<script>
+
+	$(document).ready(function() {
+
+	    const dayNumbers = $('.dayNumber');
+
+	     var1 = (dayNumbers[1]);
+	     console.log(var1.val());
+
+	    
+	});	
+
+</script>
 
 
 
