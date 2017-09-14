@@ -372,7 +372,7 @@ class PageController extends Controller
         return redirect()->action('PageController@summary');
     }
     public function tokyo_feature() {
-        session()->put('location',1850147);
+        session()->put('location', 'Tokyo');
         session()->put('currency_code', 'JPY');
         session()->put('days', 7);
         session()->put('groupsize', 2);
