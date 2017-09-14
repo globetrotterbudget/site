@@ -5,9 +5,14 @@
 @stop
 
 @section('content')
-    
+@if (count($errors))
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            {{$error}}
+        @endforeach
+    </div>
+@endif   
 <div class="container">
-
     <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
         <div id="login">            
             <form method="POST" action="/auth/login" data-validation data-required-message="This field is required">
