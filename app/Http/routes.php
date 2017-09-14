@@ -51,8 +51,8 @@ Route::get('/start', 'PageController@startover');
 Route::get('/trips/{id}/update', 'PageController@update');
 
 Route::get('/paris_feature', 'PageController@paris_feature');
-Route::get('/paris_feature', 'PageController@tel_aviv_feature');
-Route::get('/paris_feature', 'PageController@tokyo_feature');
+Route::get('/tel_aviv_feature', 'PageController@tel_aviv_feature');
+Route::get('/tokyo_feature', 'PageController@tokyo_feature');
 Route::get('/cancel', function(Request $request) {
 	session()->forget('location');
     session()->forget('itinerary');
