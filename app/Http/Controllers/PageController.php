@@ -178,9 +178,10 @@ class PageController extends Controller
                 $USD_average_accommodation_per_day /= 2;
                 $average_accommodation_cost /= 2;
             }
+            var_dump($USD_average_accommodation_per_day);
             session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
             session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', ''), 'Average Accomodation Cost per Person per Day' => number_format((float)$average_accommodation_cost, 2, '.', '')];
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', '')];
             return view('transportation', $data);
         } else {
             
