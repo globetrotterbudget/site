@@ -69,6 +69,7 @@
     	<div class="col-md-3">
     		<a href="/trips/{{ $trip->id }}/edit" class="btn btn-default">Edit</a>
     		<a href="#" class="btn btn-default">Delete {{ $trip->id }}</a>
+    		
 
     	</div>
     	<div class="col-md-12"><hr></div>
