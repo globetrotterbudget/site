@@ -5,7 +5,13 @@
 @stop
 
 @section('content')
-
+@if (count($errors))
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            {{$error}}
+        @endforeach
+    </div>
+@endif 
 <div class="container">
 
     <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
@@ -15,28 +21,32 @@
         <form method="POST" action="/auth/register">
             {!! csrf_field() !!}
 
-                <div>
+                <div class='form-group'>
                    <label for="name">Name</label>
-                    <input type="text" name="name" value="{{ old('name') }}">
+                   <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                 </div>
 
-                <div>
+                <div class='form-group'>
                     <label for="email">Email</label>
-                    <input type="email" name="email" value="{{ old('email') }}">
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                 </div>
 
-                <div>
+                <div class='form-group'>
                     <label for="password">Password</label>
-                    <input type="password" name="password">
+                    <input type="password" class="form-control" name="password" id="password" required>
                 </div>
 
-                <div>
+                <div class='form-group'>
                     <label for="password_confirmation">Confirm Password</label>
-                    <input type="password" name="password_confirmation">
+                    <input type="password" class="form-control" name="password_confirmation" id="password" required>
                 </div>
-
-                <div>
-                    <button type="submit">Register</button>
+                <div class='form-group'>
+                    <div class='row login_row'>
+                        <button type="submit" class="btn btn-success col-sm-2 col col-sm-offset-5">Register</button>
+                    </div>
+                    <div class='row login_row'>
+                        <a href="/auth/login"><input type="button" class="btn btn-default col-sm-2 col col-sm-offset-5" value="Login" name=""></a>
+                    </div>
                 </div>
             </form>
             </div>
