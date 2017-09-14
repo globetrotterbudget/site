@@ -183,7 +183,6 @@ class PageController extends Controller
                 $USD_average_accommodation_per_day /= 2;
                 $average_accommodation_cost /= 2;
             }
-            var_dump($USD_average_accommodation_per_day);
             session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
             session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', '')];
@@ -286,7 +285,129 @@ class PageController extends Controller
         }
 
     }
+    public function paris_feature() {
+        session()->put('location', 'Paris');
+        session()->put('geonameid', 2988507);
+        session()->put('days', 7);
+        session()->put('groupsize', 2);
+        session()->put('accomodations', 3);
+        session()->put('transportation', 'public');
+        session()->put('entertainment', '');
+        session()->put('food', 'modest');
+        $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation(2988507);
+            $accommodations_per_day = $cost_data[0];
+            $accommodations_cost_per_day = $accommodations_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
 
+            $USD_average_accommodation_per_day_summary = $currencies->convert('EUR', 'USD', $accommodations_cost_per_day);
+            $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
+            $average_accommodation_cost = round((7 * $USD_average_accommodation_per_day_summary->newAmount), 2);
+            $USD_average_accommodation_per_day /= 2;
+            $average_accommodation_cost /= 2;
+            $transportation_cost_per_day = $cost_data[1];
+            $average_transportation_cost_per_day = $transportation_cost_per_day->value_budget;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_transportation_cost_per_day_summary = $currencies->convert('EUR', 'USD', $average_transportation_cost_per_day);
+            $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
+            $average_transportation_cost = round((7 * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
+            $food_cost_per_day = $cost_data[2];
+            $average_food_cost_per_day = $food_cost_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_food_cost_per_day_summary = $currencies->convert('EUR', 'USD', $average_food_cost_per_day);
+            $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
+            $average_food_cost = round((7 * $USD_average_food_cost_per_day_summary->newAmount), 2);
+ 
+            session()->put('average_food_cost_per_day', $USD_average_food_cost_per_day);
+            session()->put('average_food_cost', $average_food_cost);
+            session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
+            session()->put('average_transportation_cost_per_day', number_format((float)$USD_average_transportation_cost_per_day, 2, '.', '') );
+            session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
+            session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
+        return redirect()->action('PageController@summary');
+    }
+    public function tel_aviv_feature() {
+        session()->put('location', 'Tel Aviv-Yasof');
+        session()->put('currency_code', 'NIS');
+        session()->put('days', 7);
+        session()->put('groupsize', 2);
+        session()->put('accomodations', 3);
+        session()->put('transportation', 'public');
+        session()->put('entertainment', '');
+        session()->put('food', 'modest');
+        $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation(293394);
+            $accommodations_per_day = $cost_data[0];
+            $accommodations_cost_per_day = $accommodations_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+
+            $USD_average_accommodation_per_day_summary = $currencies->convert('NIS', 'USD', $accommodations_cost_per_day);
+            $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
+            $average_accommodation_cost = round((7 * $USD_average_accommodation_per_day_summary->newAmount), 2);
+            $USD_average_accommodation_per_day /= 2;
+            $average_accommodation_cost /= 2;
+            $transportation_cost_per_day = $cost_data[1];
+            $average_transportation_cost_per_day = $transportation_cost_per_day->value_budget;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_transportation_cost_per_day_summary = $currencies->convert('NIS', 'USD', $average_transportation_cost_per_day);
+            $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
+            $average_transportation_cost = round((7 * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
+            $food_cost_per_day = $cost_data[2];
+            $average_food_cost_per_day = $food_cost_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_food_cost_per_day_summary = $currencies->convert('NIS', 'USD', $average_food_cost_per_day);
+            $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
+            $average_food_cost = round((7 * $USD_average_food_cost_per_day_summary->newAmount), 2);
+ 
+            session()->put('average_food_cost_per_day', $USD_average_food_cost_per_day);
+            session()->put('average_food_cost', $average_food_cost);
+            session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
+            session()->put('average_transportation_cost_per_day', number_format((float)$USD_average_transportation_cost_per_day, 2, '.', '') );
+            session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
+            session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
+        return redirect()->action('PageController@summary');
+    }
+    public function tokyo_feature() {
+        session()->put('location',1850147);
+        session()->put('currency_code', 'JPY');
+        session()->put('days', 7);
+        session()->put('groupsize', 2);
+        session()->put('accomodations', 3);
+        session()->put('transportation', 'public');
+        session()->put('entertainment', '');
+        session()->put('food', 'modest');
+        $costs = new Costs(env('API_KEY'));
+            $cost_data = $costs->getLocation(1850147);
+            $accommodations_per_day = $cost_data[0];
+            $accommodations_cost_per_day = $accommodations_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+
+            $USD_average_accommodation_per_day_summary = $currencies->convert('JPY', 'USD', $accommodations_cost_per_day);
+            $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
+            $average_accommodation_cost = round((7 * $USD_average_accommodation_per_day_summary->newAmount), 2);
+            $USD_average_accommodation_per_day /= 2;
+            $average_accommodation_cost /= 2;
+            $transportation_cost_per_day = $cost_data[1];
+            $average_transportation_cost_per_day = $transportation_cost_per_day->value_budget;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_transportation_cost_per_day_summary = $currencies->convert('JPY', 'USD', $average_transportation_cost_per_day);
+            $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
+            $average_transportation_cost = round((7 * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
+            $food_cost_per_day = $cost_data[2];
+            $average_food_cost_per_day = $food_cost_per_day->value_midrange;
+            $currencies = new Currencies(env('API_KEY'));
+            $USD_average_food_cost_per_day_summary = $currencies->convert('JPY', 'USD', $average_food_cost_per_day);
+            $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
+            $average_food_cost = round((7 * $USD_average_food_cost_per_day_summary->newAmount), 2);
+ 
+            session()->put('average_food_cost_per_day', $USD_average_food_cost_per_day);
+            session()->put('average_food_cost', $average_food_cost);
+            session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
+            session()->put('average_transportation_cost_per_day', number_format((float)$USD_average_transportation_cost_per_day, 2, '.', '') );
+            session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
+            session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
+        return redirect()->action('PageController@summary');
+    }
     public function summary(Request $request) {
              
         $location = session()->get('location');

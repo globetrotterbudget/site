@@ -45,10 +45,13 @@ Route::get('/trips', 'PageController@trips');
 Route::get('/trips/{tripName}', 'PageController@tripDetail');
 Route::post('/trips/{id}/delete', 'PageController@destroy');
 
-Route:get('/trips/{id}/edit', 'PageController@edit');
+Route::get('/trips/{id}/edit', 'PageController@edit');
 Route::get('/start', 'PageController@startover');
 Route::get('/trips/{id}/update', 'PageController@update');
 
+Route::get('/paris_feature', 'PageController@paris_feature');
+Route::get('/paris_feature', 'PageController@tel_aviv_feature');
+Route::get('/paris_feature', 'PageController@tokyo_feature');
 Route::get('/cancel', function(Request $request) {
 	session()->forget('location');
     session()->forget('itinerary');
