@@ -18,32 +18,58 @@
 		<div class="col-md-12"><hr></div>
 	</div>
     
-    @foreach($trips as $object)
+    @foreach($trips as $trip)
     
     <div class="row">
     	<div class="col-md-12">
-    		<h3>{{$object->location}}</h3>
+    		<h3>{{$trip->location}}</h3>
     	</div>
     	<div class="col-md-3">
-    		<h5>Travelers: {{$object->groupsize}}</h5>
-    		<h5>Days: {{$object->days}}</h5>
-    		<h5>Transportation:</h5>
-    		<h5>{{$object->transportation}}</h5>
-    		<h5>Food: {{$object->food}}</h5>
-    	</div>
-    	<div class="col-md-4">
+    	<p>SELECTED:</p>
+    	<h5>Travelers: {{$trip->groupsize}}</h5>
+    		<h5>Days: {{ $trip->days }}</h5>
     		<h5>Accommodations:</h5>
-    		<h5>{{$object->accommodations}}</h5>
-    		<h5>Entertainment:</h5>
-    		<p>Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum, </p>
+    		<h5>{{ $trip->accommodations }} star hotel</h5>
+    		<h5>Transportation:</h5>
+    		<h5>{{ $trip->transportation }}</h5>
+    		<h5>Food: {{ $trip->food }}</h5>
+    		<h5>Entertainment extras:</h5>
+
+
+    		<?php $newarray = $trip->options;
+    			foreach($newarray as $option)
+    			{
+    				echo '<h5>' . $option['description'] . ': ';
+    				echo '$ ' . $option['price'] . '</h5>';
+    			} ?>
+
+
+    		
+
+    		
+    	</div>
+    		
+    		
+    	<div class="col-md-4">
+    	<p>SELECTED:</p>
+    		<h5>Accommodations:</h5>
+    		<h5>${{ $trip->cost->accom_day_cost }} per day</h5>
+    		<h5>${{ $trip->cost->accom_cost }} per day</h5>
+    		<h5>Meals:</h5>
+    		<h5>${{ $trip->cost->avg_food_day_cost }} per day</h5>
+    		<h5>${{ $trip->cost->avg_food_cost }} group per day</h5>
+    		<h5>Transportation:</h5>
+    		<h5>${{ $trip->cost->avg_trans_day_cost }} per day</h5>
+    		<h5>${{ $trip->cost->avg_trans_cost }} group per day</h5>
     	</div>
     	<div class="col-md-2">
-    		<h1>${{ $object->daily }}</h1>
+    		<h1>${{ $trip->daily }}</h1>
     		<p>per day</p>
     	</div>
     	<div class="col-md-3">
-    		<a href="/trips/{{ $object->id }}/edit" class="btn btn-default">Edit</a>
-    		<a href="#" class="btn btn-default">Delete {{ $object->id }}</a>
+    		<a href="/trips/{{ $trip->id }}/edit" class="btn btn-default">Edit</a>
+    		<a href="#" class="btn btn-default">Delete {{ $trip->id }}</a>
+    		
 
     	</div>
     	<div class="col-md-12"><hr></div>
