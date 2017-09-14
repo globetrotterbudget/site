@@ -26,6 +26,7 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::resource('users', 'UsersController');
+Route::get('auth/about', 'PageController@aboutUs');
 
 Route::get('/days', 'PageController@days');
 
@@ -45,7 +46,7 @@ Route::get('/trips', 'PageController@trips');
 Route::get('/trips/{tripName}', 'PageController@tripDetail');
 Route::post('/trips/{id}/delete', 'PageController@destroy');
 
-Route:get('/trips/{id}/edit', 'PageController@edit');
+Route::get('/trips/{id}/edit', 'PageController@edit');
 Route::get('/start', 'PageController@startover');
 Route::get('/trips/{id}/update', 'PageController@update');
 
