@@ -58,6 +58,11 @@ class PageController extends Controller
                 $province = strtolower(trim($input[1]));
                 
                 $possible_location_names = [];
+                if($possible_locations === []){
+                    $request['location'] = null;
+                    $request->session()->flash('no_match_error', 'There were no results for your search.');
+                    return redirect()->action('PageController@location');
+                }
                 foreach($possible_locations as $possible_location){
                     array_push($possible_location_names, $possible_location->name);
                     if(strtolower($possible_location->name) === $city && trim(strtolower($possible_location->country_name)) === $province){

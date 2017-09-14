@@ -10,9 +10,17 @@
 	<div id="welcome" class="col-md-offset-1 col-md-9">
 		<div id="banner">Plan your vacation budget</div>
    		<form method="GET" action="{{action ('PageController@location')}}">
-        	<input id="search" type="text" name="location" placeholder='e.g. City, State/Country'>
-        	<button type="submit">Go</button>
-      	</form>
+   			<div class="row">
+  				<div class="col-lg-6 col-lg-offset-3">
+   					<div class='input-group'>
+        				<input type="text" name="location" class='form-control' placeholder=' e.g. City, State/Country' required>
+        			<span class='input-group-btn'>
+        				<button type="submit" class='btn btn-success'>Go</button>
+        			</span>
+        			</div>
+        		</div><!-- /.col-lg-6 -->
+        	</div><!-- /.row -->
+      	</form>	
     </div>    
 </div>
 <div class="container">
