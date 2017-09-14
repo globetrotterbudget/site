@@ -14,6 +14,7 @@ use App\budgetyourtrip_api\Currencies;
 use App\budgetyourtrip_api\Locations;
 use App\Trip;
 use App\Cost;
+use App\Entertainment;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -264,6 +265,7 @@ class PageController extends Controller
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
         $id = session()->get('id');
+        
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'id' => $id, 'entertainment' => $entertainment];
         return view('summary', $data);
     }
@@ -326,12 +328,19 @@ class PageController extends Controller
         $cost->avg_trans_cost = session()->get('average_transportation_cost');
         $cost->save();
 
-        $entertainment = (!empty(session()->get('entertainment'))) ? session()->get('entertainment') : [["description"=>"None available"]];
-        dd($entertainment);
+        $entertainment = (!empty(session()->get('entertainment'))) ? session()->get('entertainment') : [["description"=>"None available","price"=>"0"]];
+        
+        foreach($entertainment as $options) {
 
+            $option = new entertainment();
+            $option->trip_id = $trip->id;
+            $option->description = $options['description'];
+            $option->price = $options['price'];
+            $option->save();
 
+        }
 
-        $request->session()->flash("successMessage", "Your post was saved successfully");
+       $request->session()->flash("successMessage", "Your post was saved successfully");
 
 
         // var_dump($request);

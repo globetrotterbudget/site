@@ -13,7 +13,13 @@ class Trip extends Model
     public function cost()
     {
  
-    return $this->hasOne('\App\Cost');
+    	return $this->hasOne('\App\Cost');
+
+	}
+	public function options()
+	{
+
+		return $this->hasMany('\App\Entertainment');
 
 	}
 

@@ -40,6 +40,8 @@
 
 						$entertainment[] = $ent;
 					}
+                        
+                    session()->put('entertainment', $entertainment);
 					}	
 						
 					  ?>

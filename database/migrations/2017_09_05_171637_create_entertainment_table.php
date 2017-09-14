@@ -12,11 +12,11 @@ class CreateEntertainmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('entertainment', function(Blueprint $table){
+        Schema::create('options', function(Blueprint $table){
             $table->increments('id');
             $table->integer('trip_id')->unsigned();
             $table->foreign('trip_id')->references('id')->on('trips');
-            $table->string('event');
+            $table->string('description');
             $table->integer('price');
             $table->timestamps();
         });
