@@ -393,27 +393,30 @@ class PageController extends Controller
             $result = \App\Trip::where('user_id', Auth::id())->where('trip_name', $trip)->get();
             
 
+            // $daily = 0;
             $totaldays = 0;
             $cost = 0;
-            $daily = 0;
+            
             foreach($result as $single)
             {
+
                 $daily = (float)$single['daily'];
                 $days = (float)$single['days'];
                 $totaldays += (float)$single['days'];
                 $cost += (float)($daily * $days);
+                $dailyavg = (float)($cost / $totaldays);
 
                 
             }
-            $dailyavg = (float)($cost / $totaldays);
-            $data['costs'] = [$cost, $dailyavg];
-
+            $costs[] = [$cost, $dailyavg];
+            
 
 
 
             // echo $result[0]['daily'];
         }
-
+            
+        $data['costs'] = $costs;
         return view('/trips', $data);
 
     }
