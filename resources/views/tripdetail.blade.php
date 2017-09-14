@@ -68,8 +68,11 @@
     	</div>
     	<div class="col-md-3">
     		<a href="/trips/{{ $trip->id }}/edit" class="btn btn-default">Edit</a>
-    		<a href="#" class="btn btn-default">Delete {{ $trip->id }}</a>
-    		
+    	<form method="POST" action="{{ action ('PageController@destroy', $trip->id) }}"
+    			onsubmit="return confirm('Delete your trip to {{ $trip->location}}?');">
+    		{{ csrf_field() }}
+    		<input type="submit" value="Delete" class="btn btn-default">
+    	</form>
 
     	</div>
     	<div class="col-md-12"><hr></div>
@@ -80,6 +83,7 @@
     <div class="row">
     	<div class="col-md-offset-5 col-md-2">
     		<a href="/trips" class="btn btn-default">Back to my trips</a>
+    		<a href="/location" class="btn btn-default">Add another city</a>
     	</div>
     	<div class="col-md-12"><br><br></div>
     </div>

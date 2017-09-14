@@ -43,6 +43,7 @@ Route::post('/save', 'PageController@store');
 
 Route::get('/trips', 'PageController@trips');
 Route::get('/trips/{tripName}', 'PageController@tripDetail');
+Route::post('/trips/{id}/delete', 'PageController@destroy');
 
 Route:get('/trips/{id}/edit', 'PageController@edit');
 Route::get('/start', 'PageController@startover');

@@ -224,6 +224,17 @@ h1, h2 {
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
 }
+.trips{
+	border-radius: 4px;
+	border: 1px solid #eee;
+	height: 180px;
+	width:180px;
+	background-color: white;
+	display:inline-block;
+	font-size: 20px;
+	margin: 20px 20px 20px 20px;
+	cursor:pointer;
+}
 
 #public:hover, #rental:hover,
 #public:focus, #rental:focus {

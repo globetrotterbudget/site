@@ -265,7 +265,7 @@ class PageController extends Controller
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
         $id = session()->get('id');
-        
+
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'id' => $id, 'entertainment' => $entertainment];
         return view('summary', $data);
     }
@@ -351,6 +351,37 @@ class PageController extends Controller
     {
 
         $data['tripNames'] = Trip::select('trip_name')->where('user_id', Auth::id())->distinct()->get();
+
+        $tripsArray = $data['tripNames'];
+
+        foreach($tripsArray as $trips){
+
+            $trip = $trips['attributes']['trip_name'];
+
+            $result = \App\Trip::where('user_id', Auth::id())->where('trip_name', $trip)->get();
+            
+
+            $totaldays = 0;
+            $cost = 0;
+            $daily = 0;
+            foreach($result as $single)
+            {
+                $daily = (float)$single['daily'];
+                $days = (float)$single['days'];
+                $totaldays += (float)$single['days'];
+                $cost += (float)($daily * $days);
+
+                
+            }
+            $dailyavg = (float)($cost / $totaldays);
+            $data['costs'] = [$cost, $dailyavg];
+
+
+
+
+            // echo $result[0]['daily'];
+        }
+
         return view('/trips', $data);
 
     }
@@ -444,7 +475,15 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $tripNameArr = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
+        $tripName = $tripNameArr[0]->trip_name;
+
+        \DB::table('costs')->where('trip_id', $id)->delete();
+        \DB::table('options')->where('trip_id', $id)->delete();
+        \DB::table('trips')->where('id', $id)->delete();
+        
+        return redirect()->action('PageController@tripDetail', $tripName);
     }
 }
 

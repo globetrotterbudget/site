@@ -29,6 +29,6 @@ class CreateEntertainmentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('entertainment');
+        Schema::drop('options');
     }
 }
