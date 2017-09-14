@@ -28,15 +28,21 @@
 		<h2>Featured Locations</h2>
 	</div>
 	<div class="col-md-offset-1 col-md-10">
-		<div id="feature1" class="feature">
-			<h2>Paris</h2>
-		</div>
+		<a href="{{ action('PageController@paris_feature') }}">
+			<div id="feature1" class="feature">
+				<h2>Paris</h2>
+			</div>
+		</a>
+		<a href="{{ action('PageController@tel_aviv_feature') }}">
 		<div id="feature2" class="feature">
 			<h2>Tel Aviv</h2>
 		</div>
+		</a>
+		<a href="{{ action('PageController@tokyo_feature') }}">
 		<div id="feature3" class="feature">
 			<h2>Tokyo</h2>
-		</div>		
+		</div>
+		</a>		
 	</div>
 </div>
 
