@@ -1,3 +1,5 @@
+
+
 @extends('layouts.master')
 
 @section('title')
@@ -26,8 +28,10 @@
     	</div>
     	<div class="col-md-3">
     	<p>SELECTED:</p>
+
     	<h5>Travelers: {{$trip->groupsize}}</h5>
     		<h5>Days: {{ $trip->days }}</h5>
+    		<div style="display:none" class="dayNumber">{{ $trip->days }}</div>
     		<h5>Accommodations:</h5>
     		<h5>{{ $trip->accommodations }} star hotel</h5>
     		<h5>Transportation:</h5>
@@ -63,7 +67,7 @@
     		<h5>${{ $trip->cost->avg_trans_cost }} group per day</h5>
     	</div>
     	<div class="col-md-2">
-    		<h1>${{ $trip->daily }}</h1>
+    		<h1 class="dailyNumber">${{ $trip->daily }}</h1>
     		<p>per day</p>
     	</div>
     	<div class="col-md-3">

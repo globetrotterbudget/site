@@ -25,6 +25,7 @@
 			'<p style="font-size:14px">total cost</p>' .
 			'<h4>$' . $costs[$i][1] . ' daily</h4><br>' .
 			"</div>" . '</a>' ;
+			
 			$i++;
 		}?>
 
