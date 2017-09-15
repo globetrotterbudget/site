@@ -57,7 +57,6 @@ class PageController extends Controller
             } else {
                 $possible_locations = $locations->search($city);            
             }
-            
             if(count($input) === 2){
                 $province = strtolower(trim($input[1]));
                 

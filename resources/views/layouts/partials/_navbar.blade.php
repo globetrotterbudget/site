@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="logo" class="navbar-brand" href="/location"></a>
+            <a id="logo" class="navbar-brand" href="{{ action('PageController@startover') }}"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
