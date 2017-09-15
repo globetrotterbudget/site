@@ -8,7 +8,7 @@
     
 <div class="container">
 
-    <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
+    <div id="login_box" class="col-md-offset-2 col-md-8 parent-container">
         <div id="about">
             <h2>ABOUT US</h2>
                 <p>We are Globetrotter, a full-stack development team that has created a high performance, feature-packed travel website for anyone interested in planning and budgeting their trip.

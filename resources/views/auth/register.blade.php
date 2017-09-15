@@ -14,7 +14,7 @@
 @endif 
 <div class="container">
 
-    <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
+    <div id="login_box" class="col-md-offset-2 col-md-8 parent-container">
 
     <div id="signup">
         <h2>Register</h2>

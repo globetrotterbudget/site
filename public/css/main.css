@@ -149,6 +149,9 @@ h1, h2 {
 	padding-left: 0;
 >>>>>>> ca0fa45f5ba15e77da8121fb1538ad95462efa3a
 }
+#login_box{
+	margin-top: 20px;
+}
 #login {
 	text-align:center;
 	display:table-cell;
