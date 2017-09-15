@@ -175,6 +175,9 @@ h1, h2 {
 	margin-left: 0;
 	padding-left: 0;
 }
+#login_box{
+	margin-top: 20px;
+}
 #login {
 	text-align:center;
 	display:table-cell;

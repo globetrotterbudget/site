@@ -13,7 +13,7 @@
     </div>
 @endif   
 <div class="container">
-    <div id="wizard" class="col-md-offset-2 col-md-8 parent-container">
+    <div id='login_box' class="col-md-offset-2 col-md-8 parent-container">
         <div id="login">            
             <form method="POST" action="/auth/login" data-validation data-required-message="This field is required">
                 {!! csrf_field() !!}
