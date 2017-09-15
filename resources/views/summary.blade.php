@@ -40,7 +40,7 @@
 
 						$entertainment[] = $ent;
 					}
-                        
+
                     session()->put('entertainment', $entertainment);
 					}	
 						
@@ -91,13 +91,13 @@
             <p>COSTS:</p>
     		<h5>Accommodations:</h5>
     		<h5>${{ session()->get('average_accommodation_cost_per_day') }} per day</h5>
-    		<h5>${{ session()->get('average_accommodation_cost') }} per day</h5>
+    		<h5>${{ session()->get('average_accommodation_cost') }} trip total</h5>
     		<h5>Meals:</h5>
     		<h5>${{ session()->get('average_food_cost_per_day') }} per day</h5>
-    		<h5>${{ session()->get('average_food_cost') }} group per day</h5>
+    		<h5>${{ session()->get('average_food_cost') }} trip total</h5>
     		<h5>Transportation:</h5>
     		<h5>${{ session()->get('average_transportation_cost_per_day') }} per day</h5>
-    		<h5>${{ session()->get('average_transportation_cost') }} group per day</h5>
+    		<h5>${{ session()->get('average_transportation_cost') }} trip total</h5>
 
     	</div>
     	<div class="col-md-2">
