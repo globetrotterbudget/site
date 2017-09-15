@@ -19,16 +19,19 @@ $total = ($aapd + $tcpd)
 @stop
 
 @section('content')
+
+<?php $location = $array['location']; ?>
+
 <div id="foodBlade" class="container">
     <div id="wizard" class="col-md-8 parent-container">
+        <div id="locationBox" class="row">
+            <h4>{{ $location }}</h4>
+        </div>
         <div id="content">
             <div class="row">
-                <?php $location = $array['location']; ?>
-                <div id="locationBox" class="container">
-                        <h4 class="category">{{ $location }}</h4>
-                </div>
+                <br>
             </div>
-            <h2>Select a Meal Preference Budget</h2>
+                <h2>Select a Meal Preference Budget</h2>
                 <span data-dollar='lowest' class="dollarsign">$</span>
                 <span data-dollar='modest' class="dollarsign">$$</span>
                 <span data-dollar='luxury' class="dollarsign">$$$</span>

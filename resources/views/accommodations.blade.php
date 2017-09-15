@@ -6,18 +6,19 @@
 
 @section('content')
 
-<div id=accommodationsBlade class="container">
+<?php $location = $array['location']; ?>
+<?php $historical = array_pop($array); ?>
+<div id="accommodationsBlade" class="container">
 	<div id="wizard" class="col-md-8 parent-container">
+		<div id="locationBox" class="row">
+	 		<h4>{{ $location }}</h4>
+		</div>
 		<div id="content">
-			<div class="row">
-					<?php $location = $array['location']; ?>
-					<?php $historical = array_pop($array); ?>
-					<div id="locationBox" class="container">
-				 		<h4 class="category">{{ $location }}</h4>
-					</div>
-				</div>
+		<div class="row">
+		<div id="headline" class="row">
+		</div>
+		<div class="row">
 			<h2>Accommodations</h2>
-
 				<span data-star=0 class="star"> &#9734 </span>
 			    <span data-star=1 class="star"> &#9734 </span>
 			    <span data-star=2 class="star"> &#9734 </span>
@@ -35,6 +36,8 @@
         			<button id="accommodationsButton" class="btn btn-default" type="submit">Submit</button>
 
 				</form>
+			</div>
+			</div>
 				<div style="margin-top:20px" class="row">
 					<div id="runningTotal">
 						<p>Historical average cost</p>
