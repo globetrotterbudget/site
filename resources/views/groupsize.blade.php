@@ -15,7 +15,7 @@
 		<div id="content">
 		<div id="groupImage" class="row"></div>
 			<div id="headline" class="row">
-			<h2>How many will you be traveling with?</h2>
+			<h2>How many travelers in your group?</h2>
 			<form method="GET" action="{{ action('PageController@groupsize') }}">
 				<input type="text" name="groupsize">
 				<button type="submit">Submit</button>
