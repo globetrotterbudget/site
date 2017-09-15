@@ -141,6 +141,13 @@ h1, h2 {
 }
 #wizard{
 	height: 80vh;
+<<<<<<< HEAD
+=======
+	padding-right: 0;
+	margin-top:20px;
+	margin-left: 0;
+	padding-left: 0;
+>>>>>>> ca0fa45f5ba15e77da8121fb1538ad95462efa3a
 }
 #login {
 	text-align:center;
@@ -163,7 +170,7 @@ h1, h2 {
 	height: 150px;
 	width:180px;
 	background-color: white;
-	display:inline-block;
+	display:inline-grid;
 	font-size: 20px;
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
