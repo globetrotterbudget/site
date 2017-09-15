@@ -19,11 +19,11 @@
 		</div>
 		<div class="row">
 			<h2>Accommodations</h2>
-				<span data-star=0 class="star"> &#9734 </span>
-			    <span data-star=1 class="star"> &#9734 </span>
+				<span data-star=1 class="star"> &#9734 </span>
 			    <span data-star=2 class="star"> &#9734 </span>
 			    <span data-star=3 class="star"> &#9734 </span>
 			    <span data-star=4 class="star"> &#9734 </span>
+			    <span data-star=5 class="star"> &#9734 </span>
 
 			    <p id="ratings"></p>
 
