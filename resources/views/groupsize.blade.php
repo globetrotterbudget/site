@@ -6,21 +6,22 @@
 
 @section('content')
 
-<div id=groupSize class="container">
-
+<?php $location = $array['location']; ?>
+<div id=daysBlade class="container">
 	<div id="wizard" class="col-md-8 parent-container">
+		<div id="locationBox" class="row">
+	 		<h4>{{ $location }}</h4>
+		</div>
 		<div id="content">
-			<div class="row">
-					<?php $location = $array['location']; ?>
-					<div id="locationBox" class="container">
-				 		<h4 class="category">{{ $location }}</h4>
-					</div>
-				</div>
+		<div id="groupImage" class="row"></div>
+			<div id="headline" class="row">
 			<h2>How many will you be traveling with?</h2>
 			<form method="GET" action="{{ action('PageController@groupsize') }}">
 				<input type="text" name="groupsize">
 				<button type="submit">Submit</button>
 			</form>
+
+			</div>
 		</div>
 	</div>
 	@if(!empty($array)) 

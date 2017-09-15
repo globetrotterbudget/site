@@ -50,8 +50,28 @@ h1, h2 {
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 500;
 }
+.navbar-inverse {
+	background-color: #91d8c1;
+	border:none;
+}
 .navbar {
 	margin-bottom: 0px;
+	border-radius: 0px;
+	height:80px;
+}
+#logo{
+	width: 200px;
+    background-image: url(../img/GlobetrotterType.png);
+    background-size: 200px 200px;
+    background-position: 200px;
+    margin-top: 15px
+}
+.navbar-nav>li>a {
+    padding-top: 28px;
+    padding-bottom: 15px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
 }
 #banner {
 	font-family: 'Work Sans', sans-serif;
@@ -125,22 +145,32 @@ h1, h2 {
 	float:right;
 	width:300px;
 	height: 80vh;
-	background-color: #bbb;
-	padding: 30px;
-	margin: 20px;
-	position: relative;
+	background-color: white;
+	padding: 20px;
+    margin: 20px;
+    position: relative;
+    border: 1px solid #91d8c1;
+
 
 }
 #locationBox{
-	background-color:#d8d8d8;
+	position:absolute;
+	background-color:#91d8c1;
 	width: auto;
 	width: 110px;
-    padding: 1px;
-    color: white;
+    padding: 1px 15px;
     text-align:center;
+    color:white;
+    left:45%;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+
 }
+
 #wizard{
+	position:relative;
 	height: 80vh;
+	margin-top:20px;
 }
 #login {
 	text-align:center;
@@ -191,7 +221,10 @@ h1, h2 {
 	margin-top:10px;
 }
 #sidebar .category{
-	display:inline;
+    display: inline;
+    font-weight: 500;
+    font-size: 24px;
+    color: #72d1b2;
 }
 .sidebarEdit {
 	float: right;
@@ -199,6 +232,30 @@ h1, h2 {
 	display: inline;
 	padding: 0px;
 	margin: 0px;
+}
+#daysImage {
+    background-image: url('../img/Sun.gif');
+    width: 300px;
+    height: 250px;
+    text-align: center;
+    background-position: center;
+    margin: auto;
+    z-index: -1;
+}
+#groupImage {
+    background-image: url(../img/Suitcases.gif);
+    width: 240px;
+    height: 200px;
+    text-align: center;
+    background-position: 0 170px;
+    margin: auto;
+    z-index: -1;
+    background-size: 240px;
+}
+#headline {
+	position: relative;
+    text-align: center;
+    top: -80px;
 }
 
 .star {
