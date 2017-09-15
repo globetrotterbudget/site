@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-
 <?php $entertainment = session()->get('entertainment'); ?>
 
 <div id="summaryBlade" class="container">

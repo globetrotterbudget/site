@@ -134,20 +134,17 @@ h1, h2 {
 #locationBox{
 	background-color:#d8d8d8;
 	width: auto;
-	width: 110px;
-    padding: 1px;
-    color: white;
+    padding: 1px 15px;
+
     text-align:center;
 }
 #wizard{
 	height: 80vh;
-<<<<<<< HEAD
-=======
 	padding-right: 0;
 	margin-top:20px;
 	margin-left: 0;
 	padding-left: 0;
->>>>>>> ca0fa45f5ba15e77da8121fb1538ad95462efa3a
+
 }
 #login_box{
 	margin-top: 20px;
@@ -240,7 +237,7 @@ h1, h2 {
 	height: 180px;
 	width:180px;
 	background-color: white;
-	display:inline-block;
+	display:inline-grid;
 	font-size: 20px;
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;

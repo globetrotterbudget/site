@@ -7,11 +7,14 @@
 @section('content')
 
 <?php $location = $array['location']; ?>
+
 <div id=daysBlade class="container">
+
 	<div class='row'>
 		<div id="wizard" class="col-md-8 parent-container">
 			<div id="locationBox" class="row">
 		 		<h4>{{ $location }}</h4>
+
 			</div>
 			<div id="content">
 				<div id="daysImage" class="row"></div>

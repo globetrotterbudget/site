@@ -87,7 +87,7 @@
     <div class="row">
     	<div class="col-md-offset-5 col-md-2">
     		<a href="/trips" class="btn btn-default">Back to my trips</a>
-    		<a href="/location" class="btn btn-default">Add another city</a>
+    		<a href="{{ action('PageController@newcity') }}" class="btn btn-default">Add another city</a>
     	</div>
     	<div class="col-md-12"><br><br></div>
     </div>
