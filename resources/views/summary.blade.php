@@ -47,7 +47,7 @@
 					  ?>
 						
 @extends('layouts.master')
-
+<?php var_dump($array); ?>
 @section('title')
 <title>Summary</title>
 @stop
@@ -128,10 +128,12 @@
     	<div class="col-md-12"><hr>
    		
         	@if(Auth::check())
-        		@if(isset($array['id']))
-          		<a href="{{ action('PageController@update', $array['id'])}}"><input type="button" class="btn btn-default"value="Update intinerary"></a>
+        		@if(null !==(session()->get('id')))
+
+          		<a href="{{ action('PageController@update', session()->get('id'))}}"><input type="button" class="btn btn-default"value="Update intinerary"></a>
           		<a href="/cancel"><input type="button" class="btn btn-default" value="Cancel"></a>
           		@else
+
           		<a href="/save"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
           		<a href="/location"><input type="button" class="btn btn-default" value="Cancel"></a>
           		@endif

@@ -28,10 +28,18 @@ class PageController extends Controller
     {
         return view('auth/about');
     }
+    public function newcity(Request $request)
+    {
+        if(null !==(session()->get('id'))) {
+            (session()->forget('id'));
+        }
+            
+        return view('layouts.location');
+    }
 
     public function startover(Request $request)
     {
-        
+        session()->forget('id');
         session()->forget('location');
         session()->forget('itinerary');
         return view('layouts.location');
@@ -100,6 +108,7 @@ class PageController extends Controller
         if($request['days'] === null) {
             
             $location = session()->get('location');
+            // $id = session()->get('id');
             $data['array'] = ['location' => $location];
 
             return view('days', $data);
@@ -107,7 +116,7 @@ class PageController extends Controller
         } else {
 
             $request->session()->put('days', $request['days']);
-            $request->session()->put('id', $request['id']);
+            // $request->session()->put('id', $request['id']);
             return redirect()->action('PageController@groupsize');
         }
     }
@@ -421,9 +430,10 @@ class PageController extends Controller
         $transportation = session()->get('transportation');
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
-        $id = session()->get('id');
+        
+        
 
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'id' => $id, 'entertainment' => $entertainment];
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
         return view('summary', $data);
     }
 
@@ -446,11 +456,13 @@ class PageController extends Controller
         $groupsize = session()->get('groupsize');
         $accommodations = session()->get('accommodations');
         $food = session()->get('food');
+        
 
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
 
         $data['tripNames'] = Trip::select('trip_name')->distinct()->get();
 
+        
         return view('/save', $data);
     }
 
@@ -584,6 +596,7 @@ class PageController extends Controller
     {
         $trip = \DB::table('trips')->where('id', $id)->get();
 
+        
 
         foreach($trip as $key)
         {   
@@ -594,11 +607,13 @@ class PageController extends Controller
                
             }
         }
+        array_splice($array,1, 2);
+        array_splice($array,8, 2);
         
-        $array = array_splice($array,3,1);
-        
+        $id = array_shift($array);
+
+        session()->put('id', $id);
         $data['array'] = $array;
-        
         return view('/days', $data);
 
     }
@@ -638,12 +653,20 @@ class PageController extends Controller
         
         $tripNameArr = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
         $tripName = $tripNameArr[0]->trip_name;
-
         \DB::table('costs')->where('trip_id', $id)->delete();
         \DB::table('options')->where('trip_id', $id)->delete();
         \DB::table('trips')->where('id', $id)->delete();
         
-        return redirect()->action('PageController@tripDetail', $tripName);
-    }
+        $tripNameArr = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
+        
+        if (isset($tripNameArr[0]->trip_name)) {
+            return redirect()->action('PageController@tripDetail', $tripName);
+        } else {
+
+            return redirect()->action('PageController@trips');
+            
+        }
+
+        }
 }
 

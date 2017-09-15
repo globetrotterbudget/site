@@ -7,6 +7,7 @@
 @section('content')
 
 <?php $location = $array['location']; ?>
+
 <div id=daysBlade class="container">
 	<div id="wizard" class="col-md-8 parent-container">
 		<div id="locationBox" class="row">
@@ -16,7 +17,7 @@
 		<div id="daysImage" class="row"></div>
 			<div id="headline" class="row">
 			<h2>How many days would you like to visit for?</h2>
-	        <form method="GET" action="{{action ('PageController@days')}}">
+	        <form method="GET" action="{{ action('PageController@days') }}">
 	          <input type="text" name="days">
 	          <input type="hidden" name="location" value="{{ $array['location'] }}">
 	          @if(isset($array['id']))
