@@ -47,7 +47,7 @@
 					  ?>
 						
 @extends('layouts.master')
-<?php var_dump($array); ?>
+
 @section('title')
 <title>Summary</title>
 @stop

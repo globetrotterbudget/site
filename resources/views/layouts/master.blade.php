@@ -185,8 +185,8 @@ $(document).ready(function() {
 
 	    const dayNumbers = $('.dayNumber');
 
-	     var1 = (dayNumbers[1]);
-	     console.log(var1.val());
+	     var1 = (dayNumbers);
+	     console.log(var1);
 
 	    
 	});	

@@ -53,18 +53,18 @@
     		
     	</div>
     		
-    		
+    	
     	<div class="col-md-4">
     	<p>SELECTED:</p>
     		<h5>Accommodations:</h5>
-    		<h5>${{ $trip->cost->accom_day_cost }} per day</h5>
-    		<h5>${{ $trip->cost->accom_cost }} trip total</h5>
+    		<h5>${{ number_format(($trip->cost->accom_day_cost),2,'.','') }} per day</h5>
+    		<h5>${{ number_format(($trip->cost->accom_cost),2,'.','') }} trip total</h5>
     		<h5>Meals:</h5>
-    		<h5>${{ $trip->cost->avg_food_day_cost }} per day</h5>
-    		<h5>${{ $trip->cost->avg_food_cost }} trip total</h5>
+    		<h5>${{ number_format(($trip->cost->avg_food_day_cost),2,'.','') }} per day</h5>
+    		<h5>${{ number_format(($trip->cost->avg_food_cost),2,'.','') }} trip total</h5>
     		<h5>Transportation:</h5>
-    		<h5>${{ $trip->cost->avg_trans_day_cost }} per day</h5>
-    		<h5>${{ $trip->cost->avg_trans_cost }} trip total</h5>
+    		<h5>${{ number_format(($trip->cost->avg_trans_day_cost),2,'.','') }} per day</h5>
+    		<h5>${{ number_format(($trip->cost->avg_trans_cost),2,'.','') }} trip total</h5>
     	</div>
     	<div class="col-md-2">
     		<h1 class="dailyNumber">${{ $trip->daily }}</h1>
