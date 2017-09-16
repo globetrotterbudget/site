@@ -184,9 +184,24 @@ $(document).ready(function() {
 	$(document).ready(function() {
 
 	    const dayNumbers = $('.dayNumber');
+	    const dailyNumbers = $('.dailyNumber');
 
-	     var1 = (dayNumbers);
-	     console.log(var1);
+	    var total = 0;
+
+	    for(var i = 0; i < dayNumbers.length; i++) {
+
+			var days = (dayNumbers[i]['attributes'][1].value);
+			var daily = (dailyNumbers[i]['attributes'][1].value);
+
+			var triptotal = days * daily;
+			total += triptotal;
+
+		}
+
+		// console.log(total);
+
+		$('#tripTotal').text(total);
+
 
 	    
 	});	
