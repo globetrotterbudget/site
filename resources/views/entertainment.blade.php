@@ -93,8 +93,8 @@ if(($array['food']) == 'luxury')
                      </div>
                      <p>Food / Drink:</p>
                     <div class="row">
-
-                        <h4 class="category">{{ $food }} {{ ($array['food']) }}</h4>
+                    
+                        <h4 class="category">{{ ($array['food']) }}</h4>
                         <a class="sidebarEdit" href="/transportation">edit</a>
                      </div>
                 </div>

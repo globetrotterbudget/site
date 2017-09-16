@@ -39,7 +39,7 @@
     		<h5>{{ $trip->transportation }}</h5>
     		<h5>Food: {{ $trip->food }}</h5>
     		<h5>Entertainment extras:</h5>
-
+            
 
     		<?php $newarray = $trip->options;
     			foreach($newarray as $option)

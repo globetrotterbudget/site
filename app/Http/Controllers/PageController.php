@@ -648,7 +648,6 @@ class PageController extends Controller
         $transportation = ($request->session()->get('transportation'));
         $food = ($request->session()->get('food'));
         $daily = ($request->session()->get('daily'));
-
         $accom_day_cost = session()->get('average_accommodation_cost_per_day');
         $accom_cost = session()->get('average_accommodation_cost');
         $avg_food_day_cost = session()->get('average_food_cost_per_day');
