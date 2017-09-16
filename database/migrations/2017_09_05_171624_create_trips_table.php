@@ -24,6 +24,8 @@ class CreateTripsTable extends Migration
             $table->integer('transportation');
             $table->integer('food');
             $table->float('daily');
+            $table->string('geonameid');
+            $table->string('currency_code');
             $table->timestamps();
         });
     }
