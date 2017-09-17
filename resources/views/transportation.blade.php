@@ -51,13 +51,25 @@
 
 		<?php $location = array_shift($array); ?>
 
-        @foreach( $array as $key => $value )
-            <p>{{ $key . ':'}}</p>
+            <p>Days:</p>
             <div class="row">
-                <h4 class="category">{{ $value }}</h4>
-                <a class="sidebarEdit" href="/{{ $key }}">edit</a>
+                <h4 class="category">{{ $array['days'] }}</h4>
+                <a class="sidebarEdit" href="/days">edit</a>
              </div>
-        @endforeach
+             <p>Groupsize:</p>
+            <div class="row">
+                <h4 class="category">{{ $array['groupsize'] }}</h4>
+                <a class="sidebarEdit" href="/groupsize">edit</a>
+             </div>
+             <p>Accommodations:</p>
+            <div class="row">
+                <div class="starNumber" style="display:none;">{{ $array['accommodations'] }}</div>
+                <h4 class="category starSidebar"></h4>
+                <a class="sidebarEdit" href="/accommodations">edit</a>
+             </div>
+             
+
+
         </div>
     @endif
     </div>

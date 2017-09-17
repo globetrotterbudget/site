@@ -74,7 +74,8 @@ $total = ($aapd + $tcpd)
              </div>
              <p>Accommodations:</p>
             <div class="row">
-                <h4 class="category">{{ $array['accommodations'] }}</h4>
+                <div class="starNumber" style="display:none;">{{ $array['accommodations'] }}</div>
+                <h4 class="category starSidebar"></h4>
                 <a class="sidebarEdit" href="/accommodations">edit</a>
              </div>
              <p>Transportation:</p>
