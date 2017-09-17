@@ -128,19 +128,22 @@ $(document).ready(function() {
 
         if(foodIndex == 'lowest') {
             $('#foodDesc').text("Food and Drink budget will cover food from markets and street fare, or fast food type restaurants.");
+            	$('#foodValue').val(0);
         } else if(foodIndex == 'modest') {
             $('#foodDesc').text("A mid-range option that allows for some meals to be purchased at restaurants in addition to food from markets and street vendors.");
+            	$('#foodValue').val(1);
         } else if(foodIndex == 'luxury') {
             $('#foodDesc').text("All meals will be eaten and modest to high quality restaurants, with service charges included.");
+            	$('#foodValue').val(2);
         } 
    
 
         $(e.target).css("color", "#ffe319");
         
 
-        $("#foodValue").val(foodIndex);
-        console.log($("#foodValue").val());
-        console.log(foodIndex);
+        // $("#foodValue").val(foodIndex);
+        // console.log($("#foodValue").val());
+        // console.log(foodIndex);
         
    });
 });
@@ -179,18 +182,109 @@ $(document).ready(function() {
     });
      
 </script>
+
+
+
 <script>
 
 	$(document).ready(function() {
 
 	    const dayNumbers = $('.dayNumber');
+	    const dailyNumbers = $('.dailyNumber');
 
-	     var1 = (dayNumbers);
-	     console.log(var1);
+	    var total = 0;
+
+	    for(var i = 0; i < dayNumbers.length; i++) {
+
+			var days = (dayNumbers[i]['attributes'][1].value);
+			var daily = (dailyNumbers[i]['attributes'][1].value);
+
+			var triptotal = days * daily;
+			total += triptotal;
+
+		}
+
+		// console.log(total);
+		total = total.toFixed(2);
+		$('#tripTotal').text(total);
+
 
 	    
 	});	
 
+</script>
+
+
+
+<script>
+
+	$('document').ready(function()
+
+	{
+
+
+	//display stars
+    
+    
+    var starArray = $('.starNumber');
+    var starDisplayArray = $('.starDisplay');
+    
+    for(i = 0; i < starArray.length; i++) {
+        var starNumber = starArray.eq(i).html();
+        var displayString = '';
+        var blankStars = 5 - starNumber;
+        
+    	for(s = 0; s < starNumber; s++) {
+    		displayString += '&#9733';
+    	}
+
+        for(t = 0; t < blankStars; t++) {
+    		displayString += '&#9734';
+    	}
+
+        starDisplayArray.eq(i).html('<h3 style="color:#eedc05;margin-top: 5px;">' + displayString + '</h3>');
+        $('.starSidebar').html(displayString).css("color","#eedc05");
+        console.log(displayString);
+        
+
+       
+    }
+
+	//display dollar signs
+
+    var dollarDivs = $('.dollarNumber');
+    var dollarDisplay = $('.dollarDisplay');
+
+    
+    for(var d = 0; d < dollarDivs.length; d++) {
+
+        var dollarNumber = dollarDivs.eq(d).html();
+        var blankDollars = 3 - dollarNumber;
+        var dollarString = '';
+        
+
+        for(var e = 0; e < dollarNumber; e++) {
+            dollarString += '<span style="color:#d1d11f"> $</span>';
+        }
+
+    	for(var f = 0; f < blankDollars; f++) {
+    		dollarString += '<span style="color:#dbdbdb"> $</span>';
+    	}
+         
+	   dollarDisplay.eq(d).html('<h2 style="display:inline">' + dollarString + '</h2>');
+	   $('.dollarSidebar').html(dollarString).css("color","#eedc05");
+
+    }
+
+
+
+
+
+
+
+});
+	
+	
 </script>
 
 

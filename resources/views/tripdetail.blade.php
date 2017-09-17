@@ -15,7 +15,7 @@
 			<h2>{{ $trips[0]->trip_name }}</h2>
 		</div>
 		<div style="text-align:right" class="col-md-offset-6 col-md-3">
-			<h2>$95/day</h2>
+			<h2><span style="font-size:18px; font-weight: 400; color:#dbdbdb">trip total: </span>$<span id="tripTotal"></span></h2>
 		</div>
 		<div class="col-md-12"><hr></div>
 	</div>
@@ -30,14 +30,16 @@
     	<p>SELECTED:</p>
 
     	<h5>Travelers: {{$trip->groupsize}}</h5>
-    		<h5>Days: {{ $trip->days }}</h5>
-    		<div style="display:none" class="dayNumber">{{ $trip->days }}</div>
-    		<h5>Accommodations:</h5>
-    		<h5>{{ $trip->accommodations }} star hotel</h5>
-    		<h5>Transportation:</h5>
-    		<h5>{{ $trip->transportation }}</h5>
-    		<h5>Food: {{ $trip->food }}</h5>
-    		<h5>Entertainment extras:</h5>
+		<h5 class="dayNumber" data-tripdays="{{ $trip->days }}">Days: {{ $trip->days }}</h5>
+		<h5>Accommodations:</h5>
+        <div class="starNumber" style="display:none">{{ $trip->accommodations }}</div>
+		<h5 class="starDisplay"></h5>
+        <h5>Transportation:</h5>
+        <h5>{{ $trip->transportation }}</h5>
+		<h5>Food / Drink:</h5>
+        <div class="dollarNumber" style="display:none">{{ $trip->food }}</div>
+		<h5 class="dollarDisplay"></h5>
+		<h5>Entertainment extras:</h5>
 
 
     		<?php $newarray = $trip->options;
@@ -55,7 +57,7 @@
     		
     	
     	<div class="col-md-4">
-    	<p>SELECTED:</p>
+    	<p>COSTS:</p>
     		<h5>Accommodations:</h5>
     		<h5>${{ number_format(($trip->cost->accom_day_cost),2,'.','') }} per day</h5>
     		<h5>${{ number_format(($trip->cost->accom_cost),2,'.','') }} trip total</h5>
@@ -67,7 +69,7 @@
     		<h5>${{ number_format(($trip->cost->avg_trans_cost),2,'.','') }} trip total</h5>
     	</div>
     	<div class="col-md-2">
-    		<h1 class="dailyNumber">${{ $trip->daily }}</h1>
+    		<h1 class="dailyNumber" data-daily="{{$trip->daily}}">${{ $trip->daily }}</h1>
     		<p>per day</p>
     	</div>
     	<div class="col-md-3">

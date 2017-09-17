@@ -17,14 +17,17 @@
     <div class="row">
     	<div class="col-md-3">
     		<p>SELECTED:</p>
-    		<h5>Travelers: {{ $array['groupsize'] }}</h5>
-    		<h5>Days: {{ $array['days'] }}</h5>
-    		<h5>Accommodations:</h5>
-    		<h5>{{ $array['accommodations']}} star hotel</h5>
-    		<h5>Transportation:</h5>
-    		<h5>{{ $array['transportation'] }}</h5>
-    		<h5>Food: {{ $array['food'] }}</h5>
-    		<h5>Entertainment extras</h5>
+	        <h5>Travelers: {{ $array['groupsize'] }}</h5>
+	        <h5 class="dayNumber" data-tripdays="{{ $array['days'] }}">Days: {{ $array['days'] }}</h5>
+	        <h5>Accommodations:</h5>
+	        <div class="starNumber" style="display:none">{{ $array['accommodations'] }}</div>
+	        <h5 class="starDisplay"></h5>
+	        <h5>Transportation:</h5>
+	        <h5>{{ $array['transportation'] }}</h5>
+	        <h5>Food / Drink:</h5>
+	        <div class="dollarNumber" style="display:none">{{ $array['food'] }}</div>
+	        <h5 class="dollarDisplay"></h5>
+	        <h5>Entertainment extras:</h5>
 
     		@if(isset($entertainment) && is_array($entertainment))
 				@foreach($entertainment as $things)
@@ -64,7 +67,7 @@
     	$group = (float)(session()->get('groupsize'));
     	$grouply = ($daily * $group);
     	?>
-
+    		<h1 style="display:none" class="dailyNumber" data-daily="{{$daily}}">${{ $daily }}</h1>
     		<h1>${{ number_format($daily,2,'.','') }}</h1>
     		<p>per day</p>
     		<h5>${{ number_format($grouply,2,'.','') }} group per day</h5>
