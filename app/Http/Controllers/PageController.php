@@ -307,7 +307,7 @@ class PageController extends Controller
         session()->put('accomodations', 3);
         session()->put('transportation', 'public');
         session()->put('entertainment', '');
-        session()->put('food', 'modest');
+        session()->put('food', 3);
         $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation(2988507);
             $accommodations_per_day = $cost_data[0];
@@ -348,7 +348,7 @@ class PageController extends Controller
         session()->put('accomodations', 3);
         session()->put('transportation', 'public');
         session()->put('entertainment', '');
-        session()->put('food', 'modest');
+        session()->put('food', 2);
         $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation(293394);
             $accommodations_per_day = $cost_data[0];
@@ -389,7 +389,7 @@ class PageController extends Controller
         session()->put('accomodations', 3);
         session()->put('transportation', 'public');
         session()->put('entertainment', '');
-        session()->put('food', 'modest');
+        session()->put('food', 2);
         $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation(1850147);
             $accommodations_per_day = $cost_data[0];
@@ -432,8 +432,6 @@ class PageController extends Controller
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
         
-        
-
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
         return view('summary', $data);
     }
