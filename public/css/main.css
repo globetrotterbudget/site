@@ -374,7 +374,8 @@ h1, h2 {
 }
 
 .isSelected {
-	background-color: #eee;
+	
+	background-image: url('../img/cargrey.svg');
 }
 .container .parent-container {
 	display: table;
@@ -452,12 +453,23 @@ h1, h2 {
 	background-color: white;
 	display:inline-block;
 	font-size: 20px;
-	margin: 20px 20px 20px 20px;
+    margin: 0px 10px;
 	cursor:pointer;
+	background-size: 70%;
+    text-align: center;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position-y: 3vw;
+    background-position-x: center;
 }
 #public {
-	background-image: url('../img/noun_1250745_cc.svg');
+    background-image: url('../img/busgrey.svg');
+    
 }
+#rental {
+    background-image: url('../img/cargrey.svg');
+}
+    
 .trips{
 	border-radius: 8px;
 	border: 1px solid #eee;
@@ -469,6 +481,13 @@ h1, h2 {
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
 
+}
+.transChip {
+
+}
+.transChip>.costItem{
+    position: relative;
+    top: 50px;
 }
 .trips h1 {
     margin-top: 0px;
@@ -484,9 +503,13 @@ h1, h2 {
 .trips:hover{
 	background-color:#eee;
 }
-#public:hover, #rental:hover,
-#public:focus, #rental:focus {
-	background-color: #eee;
+#public:hover,
+#public:focus {
+	background-image:url('../img/busgreen.svg');
+}
+#rental:hover,
+#rental:focus {
+	background-image:url('../img/cargreen.svg');
 }
 .login_row{
 	padding-top: 1em;

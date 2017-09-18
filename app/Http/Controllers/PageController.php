@@ -688,5 +688,9 @@ class PageController extends Controller
         }
 
         }
+
+    public function getImage($geonameid){
+        
+    }
 }
 
