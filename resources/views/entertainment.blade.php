@@ -53,7 +53,7 @@ if(($array['food']) == 'luxury')
             <form method="GET" action="{{ action('PageController@entertainment') }}">
                 {{ csrf_field() }}
             <input id="getEntertainment" type="hidden" name="entertainment">
-            <button type='submit' class='btn btn-default'>Next</button>
+            <button class="gtButton2" type="submit"><a>Next</a></button>
         </form>
         <div style="margin-top:20px" class="row">
             <div id="runningTotal">

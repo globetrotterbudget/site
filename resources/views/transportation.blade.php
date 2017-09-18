@@ -29,8 +29,8 @@
                 {{ csrf_field() }}
                     <br>
                     <input id="hiddenTrans" type="hidden" name="transportation" value="">
-                    <a href="/accommodations"><input type="button" class="btn btn-default" value="Previous"></a>
-                    <button id="transportation" class="btn btn-default" type="submit">Submit</button>
+                    <button class="gtButton2"><a href="/accommodations"><input type="button" value="Previous"></a></button>
+                    <button id="transportation" class="gtButton" type="submit"><a>Submit</a></button>
                     
                 </form>
             </div>
