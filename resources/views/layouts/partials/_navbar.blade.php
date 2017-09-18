@@ -20,7 +20,7 @@
                     <li><a href="/auth/register">Sign Up</a></li>
                     <li><a href="/auth/login">Login</a></li>
                     @else
-                    <li><a href="/trips">My Trips</a></li>
+                    <li><a href="/trips">Trips</a></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span></a>

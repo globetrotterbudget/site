@@ -92,6 +92,21 @@ h1, h2 {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
+#tripsHeader {
+    margin: 50px 0 50px 0;
+}
+.chips h1{
+	color: #76d5b6;
+}
+.chips:hover{
+	text-decoration:none;
+}
+.chips p{
+	margin-bottom: 0px;
+}
+.chips h4 {
+    color: black;
+}
 .gtButton {
 	height: 44px;
     background-color: #fe8181;
@@ -176,6 +191,7 @@ h1, h2 {
 }
 .costItem {
 	font-size: 20px;
+	color: black;
 }
 .costItem > .indivCost {
 	font-weight: 600;
@@ -421,18 +437,35 @@ h1, h2 {
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
 }
+#public {
+	background-image: url('../img/noun_1250745_cc.svg');
+}
 .trips{
-	border-radius: 4px;
+	border-radius: 8px;
 	border: 1px solid #eee;
-	height: 180px;
-	width:180px;
+    height: 12em;
+    width: 12em;
 	background-color: white;
 	display:inline-grid;
 	font-size: 20px;
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
-}
 
+}
+.trips h1 {
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+.trips h4 {
+    margin-top: -8px;
+    color: black;
+}
+.trips p {
+    margin-bottom: 12px;
+}
+.trips:hover{
+	background-color:#eee;
+}
 #public:hover, #rental:hover,
 #public:focus, #rental:focus {
 	background-color: #eee;
