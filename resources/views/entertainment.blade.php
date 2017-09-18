@@ -53,7 +53,7 @@ if(($array['food']) == 'luxury')
             <form method="GET" action="{{ action('PageController@entertainment') }}">
                 {{ csrf_field() }}
             <input id="getEntertainment" type="hidden" name="entertainment">
-            <button type='submit' class='btn btn-default'>Next</button>
+            <button class="gtButton2" type="submit"><a>Next</a></button>
         </form>
         <div style="margin-top:20px" class="row">
             <div id="runningTotal">
@@ -83,7 +83,8 @@ if(($array['food']) == 'luxury')
                      </div>
                      <p>Accommodations:</p>
                     <div class="row">
-                        <h4 class="category">{{ $array['accommodations'] }}</h4>
+                        <div class="starNumber" style="display:none;">{{ $array['accommodations'] }}</div>
+                        <h4 class="category starSidebar"></h4>
                         <a class="sidebarEdit" href="/accommodations">edit</a>
                      </div>
                      <p>Transportation:</p>
@@ -93,8 +94,8 @@ if(($array['food']) == 'luxury')
                      </div>
                      <p>Food / Drink:</p>
                     <div class="row">
-
-                        <h4 class="category">{{ $food }} {{ ($array['food']) }}</h4>
+                    <div class="dollarNumber" style="display:none;">{{ $array['food'] }}</div>
+                        <h4 class="dollarSidebar category"></h4>
                         <a class="sidebarEdit" href="/transportation">edit</a>
                      </div>
                 </div>

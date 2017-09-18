@@ -105,8 +105,8 @@ class PageController extends Controller
     {
         
         if($request['days'] === null) {
-            
             $location = session()->get('location');
+
             // $id = session()->get('id');
             $data['array'] = ['location' => $location];
 
@@ -121,10 +121,10 @@ class PageController extends Controller
     }
     public function groupsize(Request $request)
     {
-        if($request['groupsize'] === null) {
 
+        if($request['groupsize'] === null) {
+            
             $location = session()->get('location');
-            var_dump($location);
             $days = session()->get('days');
             $data['array'] = ['location' => $location, 'days' => $days];
 
@@ -183,7 +183,7 @@ class PageController extends Controller
                 $accommodations_cost_per_day = $accommodations_per_day->value_budget;
             } else if ($accommodations > 2 && $accommodations <= 4){
                 $accommodations_cost_per_day = $accommodations_per_day->value_midrange;
-            } else if ($accommodations > 3 && $accommodations <= 5){
+            } else if ($accommodations > 4){
                 $accommodations_cost_per_day = $accommodations_per_day->value_luxury;
             }
             $currencies = new Currencies(env('API_KEY'));
@@ -198,7 +198,7 @@ class PageController extends Controller
             }
             session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
             session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', '')];
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', '')];
             return view('transportation', $data);
         } else {
             
@@ -233,7 +233,7 @@ class PageController extends Controller
             $average_transportation_cost = round(($days * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
             session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
             session()->put('average_transportation_cost_per_day', number_format((float)$USD_average_transportation_cost_per_day, 2, '.', '') );
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accomodation Cost per Person per Day'=>$average_accommodation_cost_per_day, 'transportation'=> $transportation, 'Transportation Cost per Person per Day'=> number_format((float)$USD_average_transportation_cost_per_day, 2, '.', ''), 'Transportation Cost per Person'=> number_format((float)$average_transportation_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost];
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'Average Accomodation Cost per Person per Day'=>$average_accommodation_cost_per_day, 'transportation'=> $transportation, 'Transportation Cost per Person per Day'=> number_format((float)$USD_average_transportation_cost_per_day, 2, '.', ''), 'Transportation Cost per Person'=> number_format((float)$average_transportation_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost];
 
             return view('food', $data);
         } else {
@@ -287,7 +287,7 @@ class PageController extends Controller
  
             session()->put('average_food_cost_per_day', $USD_average_food_cost_per_day);
             session()->put('average_food_cost', $average_food_cost);
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accommodation Cost per Person per Day' => $average_accommodation_cost_per_day, 'transportation' => $transportation, 'Average Transportation Cost Per Person Per Day' => $average_transportation_cost_per_day, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
+            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'Average Accommodation Cost per Person per Day' => $average_accommodation_cost_per_day, 'transportation' => $transportation, 'Average Transportation Cost Per Person Per Day' => $average_transportation_cost_per_day, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
             $data['entertainmentOptions'] = $entertainment_options;
             $data['i'] = $i;
 
@@ -308,7 +308,7 @@ class PageController extends Controller
         session()->put('accomodations', 3);
         session()->put('transportation', 'public');
         session()->put('entertainment', '');
-        session()->put('food', 'modest');
+        session()->put('food', 3);
         $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation(2988507);
             $accommodations_per_day = $cost_data[0];
@@ -349,7 +349,7 @@ class PageController extends Controller
         session()->put('accomodations', 3);
         session()->put('transportation', 'public');
         session()->put('entertainment', '');
-        session()->put('food', 'modest');
+        session()->put('food', 2);
         $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation(293394);
             $accommodations_per_day = $cost_data[0];
@@ -390,7 +390,7 @@ class PageController extends Controller
         session()->put('accomodations', 3);
         session()->put('transportation', 'public');
         session()->put('entertainment', '');
-        session()->put('food', 'modest');
+        session()->put('food', 2);
         $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation(1850147);
             $accommodations_per_day = $cost_data[0];
@@ -433,8 +433,6 @@ class PageController extends Controller
         $entertainment = session()->get('entertainment');
         $food = session()->get('food');
         
-        
-
         $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
         return view('summary', $data);
     }
@@ -457,10 +455,11 @@ class PageController extends Controller
         $days = session()->get('days');
         $groupsize = session()->get('groupsize');
         $accommodations = session()->get('accommodations');
+        $daily = session()->get('daily');
         $food = session()->get('food');
         
 
-        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'entertainment' => $entertainment];
+        $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food'=>$food, 'daily'=> $daily, 'entertainment' => $entertainment];
 
         $data['tripNames'] = Trip::select('trip_name')->distinct()->get();
 
@@ -487,6 +486,8 @@ class PageController extends Controller
         $trip->transportation = session()->get('transportation');
         $trip->food = session()->get('food');
         $trip->daily = session()->get('daily');
+        $trip->geonameid = session()->get('geonameid');
+        $trip->currency_code = session()->get('currency_code');
         $trip->save();
 
         $cost = new cost();
@@ -610,14 +611,20 @@ class PageController extends Controller
             }
         }
         array_splice($array,1, 2);
-        array_splice($array,8, 2);
+        $extra = array_splice($array,8,4);
+        $geonameid = $extra['geonameid'];
+        $currency_code = $extra['currency_code'];
         
+
         $id = array_shift($array);
         session()->put('id', $id);
+        session()->put('currency_code', $currency_code);
+        session()->put('geonameid', $geonameid);
         session()->put('location', $array['location']);
-        session()->put('geonameid', '1609350');
-        session()->put('currency_code', 'THB');
         $data['array'] = $array;
+
+
+
         return view('/days', $data);
 
     }
@@ -638,9 +645,22 @@ class PageController extends Controller
         $accommodations = ($request->session()->get('accommodations'));
         $transportation = ($request->session()->get('transportation'));
         $food = ($request->session()->get('food'));
+        $daily = ($request->session()->get('daily'));
+        $accom_day_cost = session()->get('average_accommodation_cost_per_day');
+        $accom_cost = session()->get('average_accommodation_cost');
+        $avg_food_day_cost = session()->get('average_food_cost_per_day');
+        $avg_food_cost = session()->get('average_food_cost');
+        $avg_trans_day_cost = session()->get('average_transportation_cost_per_day');
+        $avg_trans_cost = session()->get('average_transportation_cost');
+
+
 
         \DB::table('trips')->where('id', $id)->update(['location' => $location,
-            'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'transportation' => $transportation, 'food' => $food]);
+            'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'daily'=> $daily, 'transportation' => $transportation, 'food' => $food]);
+        \DB::table('costs')->where('trip_id', $id)->update(['accom_day_cost'=>$accom_day_cost, 'accom_cost' => $accom_cost, 'avg_food_day_cost' => $avg_food_day_cost, 'avg_food_cost' => $avg_food_cost, 'avg_trans_day_cost' => $avg_trans_day_cost, 'avg_trans_cost' => $avg_trans_cost]);
+
+
+
         $name = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
         $tripName = $name[0]->trip_name;
         return redirect()->action('PageController@tripDetail', $tripName);

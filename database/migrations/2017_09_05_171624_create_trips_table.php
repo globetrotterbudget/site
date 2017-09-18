@@ -21,9 +21,11 @@ class CreateTripsTable extends Migration
             $table->integer('groupsize');
             $table->integer('days');
             $table->integer('accommodations');
-            $table->integer('transportation');
+            $table->string('transportation');
             $table->integer('food');
             $table->float('daily');
+            $table->string('geonameid');
+            $table->string('currency_code');
             $table->timestamps();
         });
     }

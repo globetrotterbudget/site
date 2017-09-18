@@ -67,8 +67,11 @@ h1, h2 {
      margin-top: 15px
  }
  .navbar-nav>li>a {
-     padding-top: 28px;
-     padding-bottom: 15px;
+    padding-top: 28px;
+    padding-bottom: 15px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1em;
+
  }
  .navbar-inverse .navbar-nav>li>a {
      color: #ffffff;
@@ -89,7 +92,163 @@ h1, h2 {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
-
+#tripsHeader {
+    margin: 50px 0 50px 0;
+}
+.chips h1{
+	color: #76d5b6;
+}
+.chips:hover{
+	text-decoration:none;
+}
+.chips p{
+	margin-bottom: 0px;
+}
+.chips h4 {
+    color: black;
+}
+.gtButton {
+	height: 44px;
+    background-color: #fe8181;
+    /*width: 160px;*/
+    padding: 12px;
+    border-radius: 32px;
+    border: none;
+    margin: 0px 2px 0px 2px;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 2px;
+    text-align:center;
+}
+.gtButton:focus {
+	outline:none;
+}
+.gtButton > a, .gtButton > a:hover,
+.gtButton > a > input, .gtButton > a > input:hover,
+.gtButton>a:focus,.gtButton>a>input:focus
+{
+	color:white;
+	font-size: 17px;
+    font-weight: 500;
+    text-decoration:none;
+    background: none;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+.gtButton2 {
+	height: 44px;
+    background-color: white;
+    /*width: 160px;*/
+    padding: 12px;
+    border-radius: 32px;
+    border: none;
+    margin: 0px 2px 0px 2px;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 2px;
+    border: 2px solid #64cdab;
+}
+.gtButton2:focus {
+	outline:none;
+}
+.gtButton2>a,.gtButton2>a:hover,
+.gtButton2>a>input,.gtButton2>a>input:hover,
+.gtButton2>a:focus,.gtButton2>a>input:focus
+{
+	color: #49b693;
+    font-size: 18px;
+    font-weight: 500;
+	font-size: 17px;
+    font-weight: 500;
+    text-decoration:none;
+    background: none;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+.gtButton3 {
+	height: 40px;
+    background-color: white;
+    width: 100px;
+    padding: 12px;
+    border-radius: 32px;
+    border: none;
+    margin: 0px 2px 0px 2px;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 2px;
+    border: 2px solid #dfdfdf;
+    margin:6px;
+}
+.gtButton3:focus {
+	outline:none;
+}
+.gtButton3>a, .gtButton3>input,
+.gtButton3>a:hover, .gtButton3>input:hover
+.gtButton3>a:focus,.gtButton3>a>input:focus
+{
+	background-color: white;
+    color: #a6a6a6;
+    line-height: 2px;
+    padding: 5px;
+    border: none;
+    text-decoration:none;
+    font-size: 15px;
+    outline: none;
+}
+.dailyNumber {
+	text-align: center;
+    font-size: 4em;
+    font-weight: 300;
+}
+.dailyColumn {
+	text-align: center;
+}
+.tripLocation {
+	height: 70px;
+    font-size: 3.5em;
+    font-weight: 400
+}
+.costItem {
+	font-size: 20px;
+	color: black;
+}
+.costItem > .indivCost {
+	font-weight: 600;
+}
+.gtSave {
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+ 	font-size: 1.2em;
+    color: #bbb;   
+}
+.gtInput {
+	border-radius: .35em;
+    border: 1px solid #ddd;
+    border-radius: .35em;
+    border: 1px solid #ddd;
+    width: 16em;
+    height: 2.4em;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+    padding-left: .4em;
+}
+.gtInput select{
+	display:none;
+}
+.gtInput::placeholder{
+	color:#ddd;
+}
+.gtSaveButton {
+	height: 3.2em;
+    border-radius: 0 .35em .35em 0;
+    height: 2.8em;
+    border: 1px solid #ddd;
+    padding: 0 1em;
+    margin: -.8em;
+    font-family: 'Work Sans', sans-serif;
+    background-color: white;
+}
 #header {
 	text-align: center;
 	height: 400px;
@@ -106,6 +265,7 @@ h1, h2 {
     vertical-align:middle;
     text-shadow: 0 0px 16px rgba(0,0,0, .6);
 }
+
 .feature {
 	background-color:white;
 	height: 280px;
@@ -202,6 +362,16 @@ h1, h2 {
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
 }
+#tripTotal {
+	color: #99d7c2;
+}
+.tripName {
+	font-weight: 600;
+    color: #91d8c1;
+}
+.costCategory {
+	font-size: 1.5em;
+}
 
 .isSelected {
 	opacity: 0.2;
@@ -285,18 +455,35 @@ h1, h2 {
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
 }
+#public {
+	background-image: url('../img/noun_1250745_cc.svg');
+}
 .trips{
-	border-radius: 4px;
+	border-radius: 8px;
 	border: 1px solid #eee;
-	height: 180px;
-	width:180px;
+    height: 12em;
+    width: 12em;
 	background-color: white;
 	display:inline-grid;
 	font-size: 20px;
 	margin: 20px 20px 20px 20px;
 	cursor:pointer;
-}
 
+}
+.trips h1 {
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+.trips h4 {
+    margin-top: -8px;
+    color: black;
+}
+.trips p {
+    margin-bottom: 12px;
+}
+.trips:hover{
+	background-color:#eee;
+}
 #public:hover, #rental:hover,
 #public:focus, #rental:focus {
 	background-color: #eee;

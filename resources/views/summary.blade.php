@@ -47,7 +47,7 @@
 					  ?>
 						
 @extends('layouts.master')
-<?php var_dump($array); ?>
+
 @section('title')
 <title>Summary</title>
 @stop
@@ -58,25 +58,29 @@
 
  	<div class="row">
     	<div class="col-md-12">
-    		<h3>{{ $array['location'] }}</h3>
+    		<h2 class="tripLocation">{{ $array['location'] }}</h2>
     	</div>
     </div>
     <div class="row">
-    	<div class="col-md-3">
-            <p>SELECTED:</p>
-    		<h5>Travelers: {{ $array['groupsize'] }}</h5>
-    		<h5>Days: {{ $array['days'] }}</h5>
-    		<h5>Accommodations:</h5>
-    		<h5>{{ $array['accommodations']}} star hotel</h5>
-    		<h5>Transportation:</h5>
-    		<h5>{{ $array['transportation'] }}</h5>
-    		<h5>Food: {{ $array['food'] }}</h5>
-    		<h5>Entertainment extras</h5>
+    	<div class="col-md-4">
+
+        <p class="costCategory">SELECTED:</p>
+        <h5 class="costItem"><span class="indivCost">Travelers:</span> {{ $array['groupsize'] }}</h5>
+        <h5 class="dayNumber costItem" data-tripdays="{{ $array['days'] }}"><span class="indivCost">Days:</span> {{ $array['days'] }}</h5>
+        <h5 class="costItem"><span class="indivCost">Accommodations:</span></h5>
+        <div class="starNumber" style="display:none">{{ $array['accommodations'] }}</div>
+        <h5 class="starDisplay"></h5>
+        <h5 class="costItem"><span class="indivCost">Transportation:</span></h5>
+        <h5 class="costItem">{{ $array['transportation'] }}</h5>
+        <h5 class="costItem"><span class="indivCost">Food / Drink:</span></h5>
+        <div class="dollarNumber" style="display:none">{{ $array['food'] }}</div>
+        <h5 class="dollarDisplay"></h5>
+        <h5 class="costItem"><span class="indivCost">Entertainment extras:</span></h5>
 
     		@if(isset($entertainment) && is_array($entertainment))
 				@foreach($entertainment as $things)
 
-					<h5>{{ $things['description'] . ': '}}
+					<h5 class="costItem">{{ $things['description'] . ': '}}
 					{{ $things['price'] . ': '}}<br></h5>
 					<?php   $entTotal = 0;
 							$entTotal += (int)($things['price']); ?>
@@ -84,23 +88,23 @@
 				@endforeach
 			@else
 			
-			<h5>none available</h5>
+			<h5 class="costItem">none available</h5>
 			@endif
     	</div>
     	<div class="col-md-4">
-            <p>COSTS:</p>
-    		<h5>Accommodations:</h5>
-    		<h5>${{ session()->get('average_accommodation_cost_per_day') }} per day</h5>
-    		<h5>${{ session()->get('average_accommodation_cost') }} trip total</h5>
-    		<h5>Meals:</h5>
-    		<h5>${{ session()->get('average_food_cost_per_day') }} per day</h5>
-    		<h5>${{ session()->get('average_food_cost') }} trip total</h5>
-    		<h5>Transportation:</h5>
-    		<h5>${{ session()->get('average_transportation_cost_per_day') }} per day</h5>
-    		<h5>${{ session()->get('average_transportation_cost') }} trip total</h5>
+            <p class="costCategory">COSTS:</p>
+    		<h5 class="costItem"><span class="indivCost">Accommodations:</span></h5>
+    		<h5 class="costItem">${{ session()->get('average_accommodation_cost_per_day') }} per day</h5>
+    		<h5 class="costItem">${{ session()->get('average_accommodation_cost') }} trip total</h5><br>
+    		<h5 class="costItem"><span class="indivCost">Meals:</span></h5>
+    		<h5 class="costItem">${{ session()->get('average_food_cost_per_day') }} per day</h5>
+    		<h5 class="costItem">${{ session()->get('average_food_cost') }} trip total</h5><br>
+    		<h5 class="costItem"><span class="indivCost">Transportation:</span></h5>
+    		<h5 class="costItem">${{ session()->get('average_transportation_cost_per_day') }} per day</h5>
+    		<h5 class="costItem">${{ session()->get('average_transportation_cost') }} trip total</h5>
 
     	</div>
-    	<div class="col-md-2">
+    	<div class="col-md-3 dailyColumn">
 <?php
     	$acc = (float)session()->get('average_accommodation_cost_per_day');
     	$food = (float)session()->get('average_food_cost_per_day');
@@ -113,10 +117,10 @@
         session()->put('daily', $daily);
 
     	?>
-
-    		<h1>${{ number_format($daily,2,'.','') }}</h1>
-    		<p>per day</p>
-    		<h5>${{ number_format($grouply,2,'.','') }} group per day</h5>
+            <h1 style="display:none" class="dailyNumber" data-daily="{{$daily}}">${{ $daily }}</h1>
+    		<h1 class="dailyNumber" style="display:inline-block">${{ number_format($daily,2,'.','') }} <p style="display:inline-block; font-size:16px"><span>/ day</span></p></h1>
+    		
+    		<h5 class="costItem"><span class="indivCost">${{ number_format($grouply,2,'.','') }}</span> group per day</h5>
 
     	</div>
     	<div class="col-md-3">
@@ -130,17 +134,18 @@
         	@if(Auth::check())
         		@if(null !==(session()->get('id')))
 
-          		<a href="{{ action('PageController@update', session()->get('id'))}}"><input type="button" class="btn btn-default"value="Update intinerary"></a>
-          		<a href="/cancel"><input type="button" class="btn btn-default" value="Cancel"></a>
+          		<button class="gtButton"><a href="{{ action('PageController@update', session()->get('id'))}}"><input type="button" value="Update intinerary"></a></button>
+          		
+                <button class="gtButton2"><a href="/cancel"><input type="button" value="Cancel"></a></button>
           		@else
 
-          		<a href="/save"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
-          		<a href="/location"><input type="button" class="btn btn-default" value="Cancel"></a>
+          		<button class="gtButton"><a href="/save"><input type="button" value="Save this itinerary"></a></button>
+          		<button class="gtButton2"><a href="/location"><input type="button" value="Cancel"></a></button>
           		@endif
-          	@else
-          	<a href="{{ action('PageController@startover')}}"><input type="button" class="btn btn-default" value="Start Over"></a>
-          	<?php session()->put('itinerary', 'yes'); ?> 
-          	<a href="/auth/login"><input type="button" class="btn btn-default" value="Save this itinerary"></a>
+            @else
+            <?php session()->put('itinerary', 'yes'); ?> 
+            <button class="gtButton"><a href="/auth/login"><input type="button" value="Save this itinerary"></a></button>
+            <button class="gtButton2"><a href="{{ action('PageController@startover')}}"><input type="button" value="Start Over"></a></button>
           	@endif
 		</div></div>
 	
