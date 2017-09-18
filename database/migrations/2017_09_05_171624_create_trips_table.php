@@ -38,6 +38,8 @@ class CreateTripsTable extends Migration
     public function down()
     {
         Schema::drop('trips');
+        $table->dropForeign(['pick_detail_id']);
+        $table->dropColumn('pick_detail_id');
     }
 }
 

@@ -45,10 +45,10 @@ if(($array['food']) == 'luxury')
             </div>
             <h2>Choose Entertainment for your trip.</h2>
             @foreach($entertainmentOptions as $entertainmentOption)
-                    <div class="entOptions" data-ent="{{$entertainmentOption->description}}" data-price="{{ $entertainmentOption->cost }}">
-                        <h4 style="pointer-events:none">{{ $entertainmentOption->description}}</h4>
-                        <p  style="pointer-events:none">{{ $entertainmentOption->cost}}</p>
-                    </div>
+                <div class="entOptions" id='picture{{ $i += 1 }}' data-ent="{{$entertainmentOption->description}}" data-price="{{ $entertainmentOption->cost }}">
+                    <h4 style="pointer-events:none" class='words'>{{ $entertainmentOption->description}}</h4>
+                    <p  style="pointer-events:none" class='words'>${{ $entertainmentOption->cost}}</p>
+                </div>
             @endforeach
             <form method="GET" action="{{ action('PageController@entertainment') }}">
                 {{ csrf_field() }}
