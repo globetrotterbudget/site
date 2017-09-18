@@ -32,29 +32,47 @@
 .Row
 {
     display: table;
-    width: 100%; /*Optional*/
+    width: 85%; /*Optional*/
     table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
+    border-spacing: 20px; /*Optional*/
 }
 .C1
 {
     display: table-cell;
-    width: 50px;
     height: 170px;
+    width: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    background-position: left;
     background-image: url(../img/HWarren.jpg); /*Optional*/
 }
 .C2
 {
     display: table-cell;
-    width: 50px;
     height: 170px;
+    width: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    background-position: center;
     background-image: url(../img/DJex.jpg); /*Optional*/
 }
 .C3
 {
     display: table-cell;
-    width: 50px;
     height: 170px;
+    width: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    background-position: right;
     background-image: url(../img/DNewton.jpg); /*Optional*/
 }
 .Row2
