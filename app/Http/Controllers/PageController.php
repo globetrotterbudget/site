@@ -30,10 +30,11 @@ class PageController extends Controller
     }
     public function newcity(Request $request)
     {
+        dd($request);
         if(null !==(session()->get('id'))) {
             (session()->forget('id'));
         }
-            
+        // \App\Trip::
         return view('layouts.location');
     }
 
@@ -598,22 +599,19 @@ class PageController extends Controller
     {
         $trip = \DB::table('trips')->where('id', $id)->get();
 
-        
-
         foreach($trip as $key)
         {   
-
             foreach($key as $value=>$info)
             {
                $array[$value] = $info; 
                
             }
         }
+
         array_splice($array,1, 2);
         $extra = array_splice($array,8,4);
         $geonameid = $extra['geonameid'];
         $currency_code = $extra['currency_code'];
-        
 
         $id = array_shift($array);
 
@@ -622,8 +620,6 @@ class PageController extends Controller
         session()->put('geonameid', $geonameid);
         session()->put('location', $array['location']);
         $data['array'] = $array;
-
-
 
         return view('/days', $data);
 
@@ -686,8 +682,8 @@ class PageController extends Controller
         if (isset($tripNameArr[0]->trip_name)) {
             return redirect()->action('PageController@tripDetail', $tripName);
         } else {
-
             return redirect()->action('PageController@trips');
+
             
         }
 
