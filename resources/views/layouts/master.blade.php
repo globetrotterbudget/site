@@ -242,7 +242,7 @@ $(document).ready(function() {
     		displayString += '&#9734';
     	}
 
-        starDisplayArray.eq(i).html('<h3 style="color:#eedc05;margin-top: 5px;">' + displayString + '</h3>');
+        starDisplayArray.eq(i).html('<h2 style="color:#eedc05;margin-top: 5px;">' + displayString + '</h2>');
         $('.starSidebar').html(displayString).css("color","#eedc05");
         console.log(displayString);
         
