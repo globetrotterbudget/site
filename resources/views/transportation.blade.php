@@ -22,11 +22,11 @@
             
             <div id="transpo" class="row">
                 <div class="transChip" style="display:inline-block">
-                    <h5 class="costItem">transpo</h5>
+                    <h5 class="costItem">Public / Taxi</h5>
                     <input class="publicTrans" type="button" id="public" data-transportation="public">
                 </div>
                 <div class="transChip" style="display:inline-block">
-                    <h5 class="costItem">transpo</h5>
+                    <h5 class="costItem">Rental car</h5>
                     <input class="rentalTrans" type="button" id="rental" data-transportation="rental">
                 </div>
                 <form method="GET" action="{{ action('PageController@transportation')}}">

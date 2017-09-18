@@ -482,13 +482,19 @@ h1, h2 {
 	cursor:pointer;
 
 }
-.transChip {
+#public:focus,#rental:focus,
+#public:active,#rental:active,
+#public:hover,#rental:hover {
 
+    border: 1px solid #88dfc3;
+    color: red;
 }
 .transChip>.costItem{
     position: relative;
     top: 50px;
+    pointer-events: none;
 }
+
 .trips h1 {
     margin-top: 0px;
     margin-bottom: -10px;

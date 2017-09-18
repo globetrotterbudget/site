@@ -32,7 +32,7 @@
 				<form method="GET" action="{{ action('PageController@accommodations')}}">
 
 					<input type="hidden" name="accommodations" id="accommodations" value="">
-					<button class="gtButton2" ><a href="/groupsize"><input type="button" value="Previous"></a></button>
+					<button class="gtButton2"><a href="/groupsize"><input type="button" value="Previous"></a></button>
         			<button id="accommodationsButton" class="gtButton" type="submit"><a>Submit</a></button>
 
 				</form>

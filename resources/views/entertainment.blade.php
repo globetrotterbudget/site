@@ -27,7 +27,7 @@ if(($array['food']) == 'luxury')
 @extends('layouts.master')
 
 @section('title')
-<title>Entertianment</title>
+<title>Entertainment</title>
 @stop
 
 @section('content')
@@ -44,16 +44,22 @@ if(($array['food']) == 'luxury')
                 <br>
             </div>
             <h2>Choose Entertainment for your trip.</h2>
+
+            
             @foreach($entertainmentOptions as $entertainmentOption)
                     <div class="entOptions" data-ent="{{$entertainmentOption->description}}" data-price="{{ $entertainmentOption->cost }}">
                         <h4 style="pointer-events:none">{{ $entertainmentOption->description}}</h4>
                         <p  style="pointer-events:none">{{ $entertainmentOption->cost}}</p>
                     </div>
             @endforeach
+            @if(empty($entertainmentOptions))
+                <p id="entDescription">There are no available entertainment options for this destination.</p>
+            @endif
             <form method="GET" action="{{ action('PageController@entertainment') }}">
                 {{ csrf_field() }}
             <input id="getEntertainment" type="hidden" name="entertainment">
-            <button class="gtButton2" type="submit"><a>Next</a></button>
+            <button class="gtButton2"><a href="/transportation"><input type="button" value="Previous"></a></button>
+            <button class="gtButton" type="submit"><a>Next</a></button>
         </form>
         <div style="margin-top:20px" class="row">
             <div id="runningTotal">

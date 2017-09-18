@@ -83,17 +83,22 @@ $(document).ready(function() {
 
 	$('document').ready(function() {
 		"use strict";
-		$('#public').click(function() {
 
-			$('#hiddenTrans').val($('#public').data('transportation'));
+        $('#transportation').css("display", "none");
 
-			// console.log($('#public').data('transportation'));
-		});
-		$('#rental').click(function() {
+        $('#public').click(function(e) {
 
+            
+            $('#transportation').css("display", "inline");
+            $('#hiddenTrans').val($('#public').data('transportation'));
+
+        });
+        $('#rental').click(function(e) {
+
+            
+            $('#transportation').css("display", "inline");
 			$('#hiddenTrans').val($('#rental').data('transportation'));
 
-			// console.log($('#rental').data('transportation'));
 		});
 	});
 
