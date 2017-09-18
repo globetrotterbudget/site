@@ -124,6 +124,7 @@ class PageController extends Controller
         if($request['groupsize'] === null) {
 
             $location = session()->get('location');
+            var_dump($location);
             $days = session()->get('days');
             $data['array'] = ['location' => $location, 'days' => $days];
 
@@ -274,6 +275,7 @@ class PageController extends Controller
             $average_food_cost = round(($days * $USD_average_food_cost_per_day_summary->newAmount), 2);
             $cost_highlights = $costs->getHighlights($geonameid);
             $entertainment_options = [];
+            $i = 0;
             foreach($cost_highlights as $highlight){
                 if($highlight->category_id === '6'){
                     $USD_entertainment_costs = $currencies->convert($currency_code, 'USD', $highlight->cost);
@@ -287,6 +289,7 @@ class PageController extends Controller
             session()->put('average_food_cost', $average_food_cost);
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations . ' stars', 'Average Accommodation Cost per Person per Day' => $average_accommodation_cost_per_day, 'transportation' => $transportation, 'Average Transportation Cost Per Person Per Day' => $average_transportation_cost_per_day, 'food'=>$food, 'Meal Cost per Day Per Person'=> number_format((float)$USD_average_food_cost_per_day, 2, '.', ''), 'Meal Cost per Person'=> number_format((float)$average_food_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost + $average_food_cost];
             $data['entertainmentOptions'] = $entertainment_options;
+            $data['i'] = $i;
 
             return view('entertainment', $data);
 
@@ -610,8 +613,10 @@ class PageController extends Controller
         array_splice($array,8, 2);
         
         $id = array_shift($array);
-
         session()->put('id', $id);
+        session()->put('location', $array['location']);
+        session()->put('geonameid', '1609350');
+        session()->put('currency_code', 'THB');
         $data['array'] = $array;
         return view('/days', $data);
 

@@ -204,7 +204,7 @@ h1, h2 {
 }
 
 .isSelected {
-	background-color: #eee;
+	opacity: 0.2;
 }
 .container .parent-container {
 	display: table;
@@ -303,4 +303,53 @@ h1, h2 {
 }
 .login_row{
 	padding-top: 1em;
+}
+#picture1{
+	background-image: url('/img/reclining_budha.jpg');
+	background-size: 100% 120%;
+	background-repeat: no-repeat;
+}
+#picture2{
+	background-image: url('/img/wat_pho.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture3{
+	background-image: url('/img/fish-pedicure.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture4{
+	background-image: url('/img/movie_ticket.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture5{
+	background-image: url('/img/dusit_zoo.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture6{
+	background-image: url('/img/the_grand_palace.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture7{
+	background-image: url('/img/club.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture8{
+	background-image: url('/img/siriraj_musuem.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#picture9{
+	background-image: url('/img/thai_boxing.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.words{
+	color: #FFF;
+	text-shadow:  0  0 15px #000;
 }
