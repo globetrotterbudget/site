@@ -42,8 +42,8 @@ $total = ($aapd + $tcpd)
 				{{ csrf_field() }}
 
                     <input type="hidden" name="food" id="foodValue">
-                    <a href="/transportation"><input type="button" class="btn btn-default" value="Previous"></a>
-                    <button id="foodButton" class="btn btn-default" type="submit">Submit</button>
+                    <button class="gtButton2"><a href="/transportation"><input type="button" value="Previous"></a></button>
+                    <button id="foodButton" class="gtButton" type="submit"><a>Submit</a></button>
                 </form>
                 <div style="margin-top:20px" class="row">
                     <div id="runningTotal">

@@ -119,8 +119,13 @@ h1, h2 {
     line-height: 2px;
     text-align:center;
 }
+.gtButton:focus {
+	outline:none;
+}
 .gtButton > a, .gtButton > a:hover,
-.gtButton > a > input, .gtButton > a > input:hover {
+.gtButton > a > input, .gtButton > a > input:hover,
+.gtButton>a:focus,.gtButton>a>input:focus
+{
 	color:white;
 	font-size: 17px;
     font-weight: 500;
@@ -128,11 +133,12 @@ h1, h2 {
     background: none;
     padding: 10px;
     border: none;
+    outline: none;
 }
 .gtButton2 {
 	height: 44px;
     background-color: white;
-    width: 160px;
+    /*width: 160px;*/
     padding: 12px;
     border-radius: 32px;
     border: none;
@@ -141,8 +147,13 @@ h1, h2 {
     line-height: 2px;
     border: 2px solid #64cdab;
 }
+.gtButton2:focus {
+	outline:none;
+}
 .gtButton2>a,.gtButton2>a:hover,
-.gtButton2>a>input,.gtButton2>a>input:hover{
+.gtButton2>a>input,.gtButton2>a>input:hover,
+.gtButton2>a:focus,.gtButton2>a>input:focus
+{
 	color: #49b693;
     font-size: 18px;
     font-weight: 500;
@@ -152,6 +163,7 @@ h1, h2 {
     background: none;
     padding: 10px;
     border: none;
+    outline: none;
 }
 .gtButton3 {
 	height: 40px;
@@ -166,8 +178,13 @@ h1, h2 {
     border: 2px solid #dfdfdf;
     margin:6px;
 }
+.gtButton3:focus {
+	outline:none;
+}
 .gtButton3>a, .gtButton3>input,
-.gtButton3>a:hover, .gtButton3>input:hover{
+.gtButton3>a:hover, .gtButton3>input:hover
+.gtButton3>a:focus,.gtButton3>a>input:focus
+{
 	background-color: white;
     color: #a6a6a6;
     line-height: 2px;
@@ -175,6 +192,7 @@ h1, h2 {
     border: none;
     text-decoration:none;
     font-size: 15px;
+    outline: none;
 }
 .dailyNumber {
 	text-align: center;
