@@ -29,15 +29,71 @@
 	display: ;
 	background-image: url('../img/rescue-helicopter-922465_1280.jpg')
 }*/
-/*#aboutBlade {
-	text-align: center;
-	height: 400px;
-	width:100vw;
-	background-color:black;
-	margin:0 auto;
-	display: table;
-	background-image: url('../img/oia-416135_1920.jpg')
-}*/
+.Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.C1
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-image: url(../img/HWarren.jpg); /*Optional*/
+}
+.C2
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-image: url(../img/DJex.jpg); /*Optional*/
+}
+.C3
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-image: url(../img/DNewton.jpg); /*Optional*/
+}
+.Row2
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.colone
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-color:;
+}
+.coltwo
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-color:;
+}
+.colthree
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-color:;
+}
+#aboutBlade {
+	width: 185px;
+    height: 185px;
+    background-image: url(../img/GlobetrotterLogo.png);
+    background-size: 200px 200px;
+    background-position: 200px;
+    margin-top: 5px;
+    margin: 0 auto;
+}
 input:focus, textarea:focus
 {
     outline: none;
