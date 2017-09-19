@@ -31,76 +31,88 @@
 }*/
 .Row
 {
-    display: table;
-    width: 85%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    border-spacing: 20px; /*Optional*/
+	max-width: 960px;
+    /*display: table;*/
+    width: 100%; 
+    table-layout: fixed; 
+    border-spacing: 25px; 
 }
 .C1
 {
-    display: table-cell;
+    display: inline-block;
     height: 170px;
-    width: 100px;
+    width: 170px;
+    padding: 20px;
+    float: left;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    background-position: left;
-    background-image: url(../img/HWarren.jpg); /*Optional*/
+    background-image: url(../img/HWarren.jpg); 
 }
 .C2
 {
-    display: table-cell;
+    display: inline-block;
     height: 170px;
-    width: 100px;
+    width: 170px;
+    padding: 20px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    background-position: center;
-    background-image: url(../img/DJex.jpg); /*Optional*/
+    background-image: url(../img/DJex.jpg); 
 }
 .C3
 {
-    display: table-cell;
+    display: inline-block;
     height: 170px;
-    width: 100px;
+    width: 170px;
+    padding: 20px;
+    float: right;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    background-position: right;
-    background-image: url(../img/DNewton.jpg); /*Optional*/
+    background-image: url(../img/DNewton.jpg); 
 }
 .Row2
 {
-    display: table;
-    width: 100%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
+    max-width: 960px;
+    width: 100%; 
+    /*table-layout: fixed;*/
+    text-align: center; 
+    border-spacing: 0px; 
 }
 .colone
 {
-    display: table-cell;
-    width: 50px;
-    height: 170px;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    padding: 20px;
+    float: left;
+    text-align: center;
     background-color:;
 }
 .coltwo
 {
-    display: table-cell;
-    width: 50px;
-    height: 170px;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    padding: 20px;
+    text-align: center;
     background-color:;
 }
 .colthree
 {
-    display: table-cell;
-    width: 50px;
-    height: 170px;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    padding: 20px;
+    float: right;
+    text-align: center;
     background-color:;
 }
 #aboutBlade {
