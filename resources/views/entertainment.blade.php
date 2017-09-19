@@ -72,7 +72,7 @@ if(($array['food']) == 'luxury')
     </div>
     @if(!empty($array)) 
     <div class="col-md-4">
-        <div id="sidebar">
+        <div id="sidebar"  class='hidden-xs hidden-sm hidden-md'>
 
         <?php $location = array_shift($array); ?>
 

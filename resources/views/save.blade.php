@@ -80,22 +80,30 @@
         		<form style="display:inline-block" method="POST" action="{{ action('PageController@store') }}">
         		{{ csrf_field() }}
         			<label class="gtSave" for="save">Save to New Trip</label>
-        			<input class="gtInput" type="text" name="trip_name" placeholder="Enter a trip name" required>
-        			<button class="gtSaveButton" type="submit">Save</button>
+                    <div class='input-group'>
+        			     <input class="form-control" type="text" name="trip_name" placeholder="Enter a trip name" required>
+                        <span class='input-group-btn'>
+        			         <button class="btn btn-default" type="submit">Save</button>
+                        </span>
+                    </div>
         		</form>
             </div>
-            <div class="col-md-4" >
+            <div class="col-lg-6" id='save_to_existing'>
         		<form style="display:inline-block" method="POST" action="{{ action('PageController@store') }}">
         		{{ csrf_field() }}
 					<label class="gtSave"for="save">Save to Existing Trip</label>
-        			<select class="gtInput" name="trip_name">
+                    <div class='input-group'>
+        			     <select class="form-control" name="trip_name">
         		
-					<?php foreach($tripNames as $trip)
-					{
-						echo "<option>" . $trip->trip_name . "</option>";
-					}?>
-					</select>
-        			<button class="gtSaveButton" type="submit">Save</button>
+					   <?php foreach($tripNames as $trip)
+					   {
+						  echo "<option>" . $trip->trip_name . "</option>";
+					   }?>
+					   </select>
+                        <span class='input-group-btn'>
+        			         <button class="btn btn-default" type="submit">Save</button>
+                        </span>
+                    </div>
 			     </form>
             </div>
 		</div>

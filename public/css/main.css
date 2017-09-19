@@ -141,6 +141,7 @@ h1, h2 {
  }
  .navbar-inverse .navbar-nav>li>a {
      color: #ffffff;
+     background-color: #91d8c1
 }
 #banner {
 	font-family: 'Work Sans', sans-serif;
@@ -339,6 +340,7 @@ h1, h2 {
 	border-radius: 10px;
 	border: 1px solid #ddd;
 	margin: 12px;
+
 	color: white;
 	text-shadow: 0 0px 16px rgba(0,0,0, .6);
 	text-align:center;
@@ -386,7 +388,7 @@ h1, h2 {
 
     text-align:center;
    	color:white;
-    left:45%;
+    left:42%;
     letter-spacing: .15em;
     text-transform: uppercase;
 }
@@ -637,4 +639,48 @@ h1, h2 {
 .words{
 	color: #FFF;
 	text-shadow:  0  0 15px #000;
+}
+#featured_locations{
+	text-align: center;
+}
+.hidden{
+	display: none;
+}
+@media screen and (max-width: 650px) {
+	#banner{
+		font-size: 2.5em;
+	}
+	.feature{
+		margin-left: 117px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.feature{
+		margin-left: 52px;
+	}
+}
+@media screen and (max-width: 400px){
+	
+	.feature{
+		margin-left: 27px;
+	}
+	#locationBox{
+		left: 35%;
+	}
+	#headline{
+		margin: 0;
+		margin-left: 15px;
+		text-align: center;
+	}
+	#days_tagline{
+		font-size: 1.25em;
+	}
+	#accomodations_box{
+		margin: 0;
+		margin-left: 27px;
+	}
+	#save_to_existing{
+		margin-top: 1em;
+		padding-left: 0;
+	}
 }

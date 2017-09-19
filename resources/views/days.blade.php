@@ -12,14 +12,16 @@
 
 	<div class='row'>
 		<div id="wizard" class="col-md-8 parent-container">
-			<div id="locationBox" class="row">
-		 		<h4>{{ $location }}</h4>
+			<div class="row">
+				<div id="locationBox">
+		 			<h4>{{ $location }}</h4>
+		 		</div>
 
 			</div>
 			<div id="content">
 				<div id="daysImage" class="row"></div>
 					<div id="headline" class="row">
-						<h2>How many days would you like to visit for?</h2>
+						<h2 id='days_tagline'>How many days would you like to visit for?</h2>
 		    	    	<form method="GET" action="{{action ('PageController@days')}}">
   							<div class="col-md-6 col-md-offset-3">
    								<div class='input-group'>
@@ -44,7 +46,7 @@
 		</div>
 		@if(!empty($array)) 
 		<div class="col-md-4">
-			<div id="sidebar">
+			<div id="sidebar" class='hidden-xs hidden-sm hidden-md'>
 			
 			@foreach( $array as $key => $value )
 				<p>{{ $key . ':'}}</p>
