@@ -17,7 +17,7 @@
 		<div class="row">
 		<div id="headline" class="row">
 		</div>
-		<div class="row">
+		<div class="row" id="accomodations_box">
 			<h2>Accommodations</h2>
 				<span data-star=1 class="star"> &#9734 </span>
 			    <span data-star=2 class="star"> &#9734 </span>
@@ -49,7 +49,7 @@
 	</div>
 	@if(!empty($array)) 
 	<div class="col-md-4">
-		<div id="sidebar">
+		<div id="sidebar" class='hidden-xs hidden-sm hidden-md'>
 		
 		<?php $location = array_shift($array); ?>
 

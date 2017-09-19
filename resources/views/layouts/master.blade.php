@@ -286,7 +286,7 @@ $(document).ready(function() {
 	
 	
 </script>
-
+@yield('scripts')
 
 
 <!-- <script>
