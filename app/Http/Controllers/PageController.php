@@ -581,12 +581,6 @@ class PageController extends Controller
         return view('/tripdetail', $data);
 
     }
-    
-
-
-
-
-
 
 
     /**
@@ -659,16 +653,33 @@ class PageController extends Controller
         $avg_trans_day_cost = session()->get('average_transportation_cost_per_day');
         $avg_trans_cost = session()->get('average_transportation_cost');
 
+        $entertainment = (!empty(session()->get('entertainment'))) ? session()->get('entertainment') : [["description"=>"None available","price"=>"0"]];
 
 
         \DB::table('trips')->where('id', $id)->update(['location' => $location,
             'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'daily'=> $daily, 'transportation' => $transportation, 'food' => $food]);
         \DB::table('costs')->where('trip_id', $id)->update(['accom_day_cost'=>$accom_day_cost, 'accom_cost' => $accom_cost, 'avg_food_day_cost' => $avg_food_day_cost, 'avg_food_cost' => $avg_food_cost, 'avg_trans_day_cost' => $avg_trans_day_cost, 'avg_trans_cost' => $avg_trans_cost]);
 
+        //delete entertainment options and add all from new session
+
+        \DB::table('options')->where('trip_id', $id)->delete();
+
+        foreach($entertainment as $options) {
+
+            $option = new entertainment();
+            $option->trip_id = $id;
+            $option->description = $options['description'];
+            $option->price = $options['price'];
+            $option->save();
+
+        }
+
+
 
 
         $name = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
         $tripName = $name[0]->trip_name;
+        session()->forget('id');
         return redirect()->action('PageController@tripDetail', $tripName);
     }
 
