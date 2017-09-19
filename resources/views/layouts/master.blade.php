@@ -133,13 +133,13 @@ $(document).ready(function() {
 
         if(foodIndex == 'lowest') {
             $('#foodDesc').text("Food and Drink budget will cover food from markets and street fare, or fast food type restaurants.");
-            	$('#foodValue').val(0);
+            	$('#foodValue').val(1);
         } else if(foodIndex == 'modest') {
             $('#foodDesc').text("A mid-range option that allows for some meals to be purchased at restaurants in addition to food from markets and street vendors.");
-            	$('#foodValue').val(1);
+            	$('#foodValue').val(2);
         } else if(foodIndex == 'luxury') {
             $('#foodDesc').text("All meals will be eaten and modest to high quality restaurants, with service charges included.");
-            	$('#foodValue').val(2);
+            	$('#foodValue').val(3);
         } 
    
 

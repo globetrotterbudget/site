@@ -23,9 +23,9 @@
                     <div class="C3"></div>
                 </div>
                 <div class="Row2">   
-                    <div class="colone">Hunter Warren hunter.warren@gmail.com</div>
-                    <div class="coltwo">David "Russell" Jex david.jex@me.com</div>
-                    <div class="colthree">David Newton david.newton39@yahoo.com</div>
+                    <div class="colone"><p>Hunter Warren hunter.warren@gmail.com</p></div>
+                    <div class="coltwo"><p>David "Russell" Jex david.jex@me.com</p></div>
+                    <div class="colthree"><p>David Newton david.newton39@yahoo.com</p></div>
                 </div>
             
             
