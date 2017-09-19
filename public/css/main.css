@@ -442,6 +442,7 @@ h1, h2 {
 }
 
 .isSelected {
+	opacity: 0.2;
 }
 .container .parent-container {
 	display: table;
