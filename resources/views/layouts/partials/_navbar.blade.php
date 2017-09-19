@@ -22,13 +22,7 @@
                     @else
                     <li><a href="/trips">Trips</a></li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                        <li><a href="{{ action('UsersController@show', array(Auth::id()) ) }}">Update Account</a></li>
-                        <li><a href="/auth/logout">Logout</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/auth/logout" class="dropdown-toggle" data-toggle="dropdown">Logout</a></li>
                     @endif
                 </ul>
 
