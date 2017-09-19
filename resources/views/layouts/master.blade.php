@@ -50,15 +50,15 @@ $(document).ready(function() {
     	
 
 
-        if(clickedIndex == 0) {
+        if(clickedIndex == 1) {
             $('#ratings').text("1 Star—Properties that offer budget facilities without compromising cleanliness or guest security.");
-        } else if(clickedIndex == 1) {
-            $('#ratings').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
         } else if(clickedIndex == 2) {
-            $('#ratings').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
+            $('#ratings').text("2 Star—Properties that focus on the needs of price conscious travellers. Services and guest facilities are typically limited to keep room rates affordable and competitive but may be available upon request or fee-based.");
         } else if(clickedIndex == 3) {
-            $('#ratings').text("4 Star— Properties which achieve a deluxe guest experience. A wide range of facilities and superior design qualities are typically complemented by service standards that reflect the varied and discerning needs of the guest.");
+            $('#ratings').text("3 Star—Properties that deliver a broad range of amenities that exceed above-average accommodation needs. Good quality service, design and physical attributes are typically fit for purpose to match guest expectations.");
         } else if(clickedIndex == 4) {
+            $('#ratings').text("4 Star— Properties which achieve a deluxe guest experience. A wide range of facilities and superior design qualities are typically complemented by service standards that reflect the varied and discerning needs of the guest.");
+        } else if(clickedIndex == 5) {
             $('#ratings').text("5 Star–Properties that typify luxury across all areas of operation. Guests will enjoy an extensive range of facilities and comprehensive or highly personalised services. Properties at this level will display excellent design quality and attention to detail.");
         }
 
@@ -83,17 +83,22 @@ $(document).ready(function() {
 
 	$('document').ready(function() {
 		"use strict";
-		$('#public').click(function() {
 
-			$('#hiddenTrans').val($('#public').data('transportation'));
+        $('#transportation').css("display", "none");
 
-			// console.log($('#public').data('transportation'));
-		});
-		$('#rental').click(function() {
+        $('#public').click(function(e) {
 
+            
+            $('#transportation').css("display", "inline");
+            $('#hiddenTrans').val($('#public').data('transportation'));
+
+        });
+        $('#rental').click(function(e) {
+
+            
+            $('#transportation').css("display", "inline");
 			$('#hiddenTrans').val($('#rental').data('transportation'));
 
-			// console.log($('#rental').data('transportation'));
 		});
 	});
 
@@ -128,13 +133,13 @@ $(document).ready(function() {
 
         if(foodIndex == 'lowest') {
             $('#foodDesc').text("Food and Drink budget will cover food from markets and street fare, or fast food type restaurants.");
-            	$('#foodValue').val(0);
+            	$('#foodValue').val(1);
         } else if(foodIndex == 'modest') {
             $('#foodDesc').text("A mid-range option that allows for some meals to be purchased at restaurants in addition to food from markets and street vendors.");
-            	$('#foodValue').val(1);
+            	$('#foodValue').val(2);
         } else if(foodIndex == 'luxury') {
             $('#foodDesc').text("All meals will be eaten and modest to high quality restaurants, with service charges included.");
-            	$('#foodValue').val(2);
+            	$('#foodValue').val(3);
         } 
    
 

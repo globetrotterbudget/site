@@ -21,15 +21,19 @@
             <h2>How would you prefer to commute on your trip?</h2>
             
             <div id="transpo" class="row">
-
-                <input class="publicTrans" type="button" id="public" data-transportation="public" value="public">
-                <input class="rentalTrans" type="button" id="rental" data-transportation="rental" value="rental">
-
+                <div class="transChip" style="display:inline-block">
+                    <h5 class="costItem">Public / Taxi</h5>
+                    <input class="publicTrans" type="button" id="public" data-transportation="public">
+                </div>
+                <div class="transChip" style="display:inline-block">
+                    <h5 class="costItem">Rental car</h5>
+                    <input class="rentalTrans" type="button" id="rental" data-transportation="rental">
+                </div>
                 <form method="GET" action="{{ action('PageController@transportation')}}">
                 {{ csrf_field() }}
                     <br>
                     <input id="hiddenTrans" type="hidden" name="transportation" value="">
-                    <button class="gtButton2"><a href="/accommodations"><input type="button" value="Previous"></a></button>
+                    <button class="gtButton2"><a href="/accommodations">Previous</a></button>
                     <button id="transportation" class="gtButton" type="submit"><a>Submit</a></button>
                     
                 </form>

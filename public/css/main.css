@@ -29,15 +29,81 @@
 	display: ;
 	background-image: url('../img/rescue-helicopter-922465_1280.jpg')
 }*/
-/*#aboutBlade {
-	text-align: center;
-	height: 400px;
-	width:100vw;
-	background-color:black;
-	margin:0 auto;
-	display: table;
-	background-image: url('../img/oia-416135_1920.jpg')
-}*/
+#login_box p {
+	font-size:16px;
+	line-height: 1.6em;
+}
+.Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 50px 20px; /*Optional*/
+}
+.C1
+{
+    display: table-cell;
+    width: 48px;
+    height: 170px;
+    background-image: url(../img/HWarren.jpg);
+    background-position: center;
+    border-radius: 110px;
+}
+.C2
+{
+    display: table-cell;
+    width: 48px;
+    height: 170px;
+    background-image: url(../img/DJex.jpg); /*Optional*/
+    background-position: center;
+    border-radius: 110px;
+}
+.C3
+{
+    display: table-cell;
+    width: 48px;
+    height: 170px;
+    background-image: url(../img/DNewton.jpg); /*Optional*/
+   	background-position: center;
+    border-radius: 110px;
+}
+.Row2
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.colone
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-color:;
+}
+.coltwo
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-color:;
+}
+.colthree
+{
+    display: table-cell;
+    width: 50px;
+    height: 170px;
+    background-color:;
+}
+#aboutBlade {
+    width: 185px;
+    height: 185px;
+    background-image: url(../img/GlobetrotterLogo.png);
+    background-size: 200px 180px;
+    background-position: 188px 200px;
+    margin-top: 5px;
+    margin: 0 auto;
+}
 input:focus, textarea:focus
 {
     outline: none;
@@ -376,7 +442,6 @@ h1, h2 {
 }
 
 .isSelected {
-	opacity: 0.2;
 }
 .container .parent-container {
 	display: table;
@@ -410,8 +475,12 @@ h1, h2 {
 	padding: 0px;
 	margin: 0px;
 }
+.categoryBlock {
+    position: relative;
+    top: -6vh;
+}
 #daysImage {
-    background-image: url('../img/Sun.gif');
+    background-image: url('../img/Sun.svg');
     width: 300px;
     height: 250px;
     text-align: center;
@@ -420,19 +489,20 @@ h1, h2 {
     z-index: -1;
 }
 #groupImage {
-    background-image: url(../img/Suitcases.gif);
-    width: 240px;
-    height: 200px;
+    background-image: url(../img/Clouds.svg);
+    width: 250px;
+    height: 250px;
     text-align: center;
-    background-position: 0 170px;
+    background-position: center;
     margin: auto;
     z-index: -1;
-    background-size: 240px;
+    background-position-y: 4vh;
 }
 #headline {
 	position: relative;
     text-align: center;
     top: -80px;
+    margin-bottom: 10vh;
 }
 .star {
 	font-size: 4em;
@@ -454,12 +524,23 @@ h1, h2 {
 	background-color: white;
 	display:inline-block;
 	font-size: 20px;
-	margin: 20px 20px 20px 20px;
+    margin: 0px 10px;
 	cursor:pointer;
+	background-size: 70%;
+    text-align: center;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position-y: 3vw;
+    background-position-x: center;
 }
 #public {
-	background-image: url('../img/noun_1250745_cc.svg');
+    background-image: url('../img/busgrey.svg');
+    
 }
+#rental {
+    background-image: url('../img/cargrey.svg');
+}
+    
 .trips{
 	border-radius: 8px;
 	border: 1px solid #eee;
@@ -472,6 +553,19 @@ h1, h2 {
 	cursor:pointer;
 
 }
+#public:focus,#rental:focus,
+#public:active,#rental:active,
+#public:hover,#rental:hover {
+
+    border: 1px solid #88dfc3;
+    color: red;
+}
+.transChip>.costItem{
+    position: relative;
+    top: 50px;
+    pointer-events: none;
+}
+
 .trips h1 {
     margin-top: 0px;
     margin-bottom: -10px;
@@ -486,9 +580,13 @@ h1, h2 {
 .trips:hover{
 	background-color:#eee;
 }
-#public:hover, #rental:hover,
-#public:focus, #rental:focus {
-	background-color: #eee;
+#public:hover,
+#public:focus {
+	background-image:url('../img/busgreen.svg');
+}
+#rental:hover,
+#rental:focus {
+	background-image:url('../img/cargreen.svg');
 }
 .login_row{
 	padding-top: 1em;
