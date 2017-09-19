@@ -30,14 +30,14 @@
 	        <h5 class="costItem"><span class="indivCost">Entertainment </extras:</h5>
 
     		@if(isset($entertainment) && is_array($entertainment))
-				@foreach($entertainment as $things)
+                @foreach($entertainment as $things)
 
-					<h5 class="costItem">{{ $things['description'] . ': '}}
-					{{ $things['price'] . ': '}}<br></h5>
-					<?php   $entTotal = 0;
-							$entTotal += (int)($things['price']); ?>
+                    <h5 class="costItem">{{ $things['description'] . ': '}}<br>
+                    {{ '$' . number_format(($things['price']),2,'.','') }}<br></h5>
+                    <?php   $entTotal = 0;
+                            $entTotal += (int)($things['price']); ?>
 
-				@endforeach
+                @endforeach
 			@else
 			
 			<h5>none available</h5>

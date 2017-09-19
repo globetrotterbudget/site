@@ -80,7 +80,7 @@
     		@if(isset($entertainment) && is_array($entertainment))
 				@foreach($entertainment as $things)
 
-					<h5 class="costItem">{{ $things['description'] . ': '}}
+					<h5 class="costItem">{{ $things['description'] . ': '}}<br>
 					{{ '$' . number_format(($things['price']),2,'.','') }}<br></h5>
 					<?php   $entTotal = 0;
 							$entTotal += (int)($things['price']); ?>
