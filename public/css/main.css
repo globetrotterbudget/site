@@ -34,37 +34,26 @@
 	line-height: 1.6em;
 }
 .Row
-{ display: table;
-    width: 85%; /*Optional*/
+{
+    display: table;
+    width: 100%; /*Optional*/
     table-layout: fixed; /*Optional*/
-
     border-spacing: 50px 20px; /*Optional*/
 }
 .C1
 {
     display: table-cell;
-
     width: 48px;
     height: 170px;
     background-image: url(../img/HWarren.jpg);
     background-position: center;
     border-radius: 110px;
-
 }
 .C2
 {
     display: table-cell;
-
     width: 48px;
     height: 170px;
-    width: 170px;
-    padding: 20px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-    background-position: center;
     background-image: url(../img/DJex.jpg); /*Optional*/
     background-position: center;
     border-radius: 110px;
@@ -74,54 +63,36 @@
     display: table-cell;
     width: 48px;
     height: 170px;
-    width: 170px;
-    padding: 20px;
-    float: right;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-    background-position: right;
     background-image: url(../img/DNewton.jpg); /*Optional*/
    	background-position: center;
     border-radius: 110px;
 }
 .Row2
 {
-    max-width: 960px;
-    width: 100%; 
-    /*table-layout: fixed;*/
-    text-align: center; 
-    border-spacing: 0px; 
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
 }
 .colone
 {
-    display: inline-block;
-    width: 220px;
-    height: 70px;
-    padding: 20px;
-    float: left;
-    text-align: center;
+    display: table-cell;
+    width: 50px;
+    height: 170px;
     background-color:;
 }
 .coltwo
 {
-    display: inline-block;
-    width: 220px;
-    height: 70px;
-    padding: 20px;
-    text-align: center;
+    display: table-cell;
+    width: 50px;
+    height: 170px;
     background-color:;
 }
 .colthree
 {
-    display: inline-block;
-    width: 220px;
-    height: 70px;
-    padding: 20px;
-    float: right;
-    text-align: center;
+    display: table-cell;
+    width: 50px;
+    height: 170px;
     background-color:;
 }
 #aboutBlade {
