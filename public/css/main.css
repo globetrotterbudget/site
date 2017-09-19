@@ -29,33 +29,43 @@
 	display: ;
 	background-image: url('../img/rescue-helicopter-922465_1280.jpg')
 }*/
+#login_box p {
+	font-size:16px;
+	line-height: 1.6em;
+}
 .Row
 {
     display: table;
     width: 100%; /*Optional*/
     table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
+    border-spacing: 50px 20px; /*Optional*/
 }
 .C1
 {
     display: table-cell;
-    width: 50px;
+    width: 48px;
     height: 170px;
-    background-image: url(../img/HWarren.jpg); /*Optional*/
+    background-image: url(../img/HWarren.jpg);
+    background-position: center;
+    border-radius: 110px;
 }
 .C2
 {
     display: table-cell;
-    width: 50px;
+    width: 48px;
     height: 170px;
     background-image: url(../img/DJex.jpg); /*Optional*/
+    background-position: center;
+    border-radius: 110px;
 }
 .C3
 {
     display: table-cell;
-    width: 50px;
+    width: 48px;
     height: 170px;
     background-image: url(../img/DNewton.jpg); /*Optional*/
+   	background-position: center;
+    border-radius: 110px;
 }
 .Row2
 {
@@ -86,11 +96,11 @@
     background-color:;
 }
 #aboutBlade {
-	width: 185px;
+    width: 185px;
     height: 185px;
     background-image: url(../img/GlobetrotterLogo.png);
-    background-size: 200px 200px;
-    background-position: 200px;
+    background-size: 200px 180px;
+    background-position: 188px 200px;
     margin-top: 5px;
     margin: 0 auto;
 }
@@ -463,8 +473,12 @@ h1, h2 {
 	padding: 0px;
 	margin: 0px;
 }
+.categoryBlock {
+    position: relative;
+    top: -6vh;
+}
 #daysImage {
-    background-image: url('../img/Sun.gif');
+    background-image: url('../img/Sun.svg');
     width: 300px;
     height: 250px;
     text-align: center;
@@ -473,19 +487,20 @@ h1, h2 {
     z-index: -1;
 }
 #groupImage {
-    background-image: url(../img/Suitcases.gif);
-    width: 240px;
-    height: 200px;
+    background-image: url(../img/Clouds.svg);
+    width: 250px;
+    height: 250px;
     text-align: center;
-    background-position: 0 170px;
+    background-position: center;
     margin: auto;
     z-index: -1;
-    background-size: 240px;
+    background-position-y: 4vh;
 }
 #headline {
 	position: relative;
     text-align: center;
     top: -80px;
+    margin-bottom: 10vh;
 }
 .star {
 	font-size: 4em;

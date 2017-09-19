@@ -134,18 +134,18 @@
         	@if(Auth::check())
         		@if(null !==(session()->get('id')))
 
-          		<button class="gtButton"><a href="{{ action('PageController@update', session()->get('id'))}}"><input type="button" value="Update intinerary"></a></button>
+          		<button class="gtButton"><a href="{{ action('PageController@update', session()->get('id'))}}">Update intinerary</a></button>
           		
-                <button class="gtButton2"><a href="/cancel"><input type="button" value="Cancel"></a></button>
+                <button class="gtButton2"><a href="/cancel">Cancel</a></button>
           		@else
 
-          		<button class="gtButton"><a href="/save"><input type="button" value="Save this itinerary"></a></button>
-          		<button class="gtButton2"><a href="/location"><input type="button" value="Cancel"></a></button>
+          		<button class="gtButton"><a href="/save">Save this itinerary</a></button>
+          		<button class="gtButton2"><a href="/location">Cancel</a></button>
           		@endif
             @else
             <?php session()->put('itinerary', 'yes'); ?> 
-            <button class="gtButton"><a href="/auth/login"><input type="button" value="Save this itinerary"></a></button>
-            <button class="gtButton2"><a href="{{ action('PageController@startover')}}"><input type="button" value="Start Over"></a></button>
+            <button class="gtButton"><a href="/auth/login">Save this itinerary</a></button>
+            <button class="gtButton2"><a href="{{ action('PageController@startover')}}">Start Over</a></button>
           	@endif
 		</div></div>
 	

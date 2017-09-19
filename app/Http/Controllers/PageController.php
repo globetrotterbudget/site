@@ -28,6 +28,10 @@ class PageController extends Controller
     {
         return view('auth/about');
     }
+    public function tripsEmpty()
+    {
+        return view('getstarted');
+    }
     public function newcity(Request $request)
     {
         dd($request);
@@ -522,8 +526,14 @@ class PageController extends Controller
     }
     public function trips()
     {
-
+        if(!Auth::check()){
+            return view('layouts.location');
+        }
         $data['tripNames'] = Trip::select('trip_name')->where('user_id', Auth::id())->distinct()->get();
+
+        if(!isset($data['tripNames'][0])) {
+            return redirect()->action('PageController@tripsEmpty');
+        }
 
         $tripsArray = $data['tripNames'];
 
@@ -677,9 +687,9 @@ class PageController extends Controller
         \DB::table('options')->where('trip_id', $id)->delete();
         \DB::table('trips')->where('id', $id)->delete();
         
-        $tripNameArr = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
+        $tripNameArr = \DB::table('trips')->where('trip_name', $tripName)->get();
         
-        if (isset($tripNameArr[0]->trip_name)) {
+        if (!empty($tripNameArr)) {
             return redirect()->action('PageController@tripDetail', $tripName);
         } else {
             return redirect()->action('PageController@trips');

@@ -62,3 +62,5 @@ Route::get('/cancel', function(Request $request) {
 	return redirect()->action('PageController@trips');
 });
 
+Route::get('/getstarted', 'PageController@tripsEmpty');
+

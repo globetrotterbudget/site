@@ -17,26 +17,26 @@
 		<div class="row">
 		<div id="headline" class="row">
 		</div>
-		<div class="row">
+		<div id="categoryBlock" class="row">
 			<h2>Accommodations</h2>
 				<span data-star=1 class="star"> &#9734 </span>
 			    <span data-star=2 class="star"> &#9734 </span>
 			    <span data-star=3 class="star"> &#9734 </span>
 			    <span data-star=4 class="star"> &#9734 </span>
 			    <span data-star=5 class="star"> &#9734 </span>
-
+		</div>
 			    <p id="ratings"></p>
 
 
-    			
+    	<div class="row">
 				<form method="GET" action="{{ action('PageController@accommodations')}}">
 
+					<button class="gtButton2" ><a href="/groupsize">Previous</a></button>
 					<input type="hidden" name="accommodations" id="accommodations" value="">
-					<button class="gtButton2"><a href="/groupsize"><input type="button" value="Previous"></a></button>
         			<button id="accommodationsButton" class="gtButton" type="submit"><a>Submit</a></button>
 
 				</form>
-			</div>
+		</div>
 			</div>
 				<div style="margin-top:20px" class="row">
 					<div id="runningTotal">
