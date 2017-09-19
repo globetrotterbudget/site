@@ -48,7 +48,7 @@ $total = ($aapd + $tcpd)
                 <div style="margin-top:20px" class="row">
                     <div id="runningTotal">
                         <p>Current Total</p>
-                         <h1 style="margin-top:10px; margin-bottom:5px">$ {{ $total }}</h1>
+                         <h1 style="margin-top:10px; margin-bottom:5px">$ {{ number_format($total,2,'.','') }}</h1>
                         <p>per person / day</p>
                     </div>
                 </div>
