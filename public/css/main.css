@@ -34,8 +34,7 @@
 	line-height: 1.6em;
 }
 .Row
-{
-    display: table;
+{ display: table;
     width: 85%; /*Optional*/
     table-layout: fixed; /*Optional*/
 
@@ -57,9 +56,9 @@
     display: table-cell;
 
     width: 48px;
-
     height: 170px;
-    width: 100px;
+    width: 170px;
+    padding: 20px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -73,11 +72,11 @@
 .C3
 {
     display: table-cell;
-
     width: 48px;
-
     height: 170px;
-    width: 100px;
+    width: 170px;
+    padding: 20px;
+    float: right;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -90,30 +89,39 @@
 }
 .Row2
 {
-    display: table;
-    width: 100%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
+    max-width: 960px;
+    width: 100%; 
+    /*table-layout: fixed;*/
+    text-align: center; 
+    border-spacing: 0px; 
 }
 .colone
 {
-    display: table-cell;
-    width: 50px;
-    height: 170px;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    padding: 20px;
+    float: left;
+    text-align: center;
     background-color:;
 }
 .coltwo
 {
-    display: table-cell;
-    width: 50px;
-    height: 170px;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    padding: 20px;
+    text-align: center;
     background-color:;
 }
 .colthree
 {
-    display: table-cell;
-    width: 50px;
-    height: 170px;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    padding: 20px;
+    float: right;
+    text-align: center;
     background-color:;
 }
 #aboutBlade {
