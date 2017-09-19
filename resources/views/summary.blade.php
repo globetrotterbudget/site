@@ -88,7 +88,7 @@
 				@endforeach
 			@else
 			
-			<h5 class="costItem">none available</h5>
+			<h5 class="costItem">none</h5>
 			@endif
     	</div>
     	<div class="col-md-4">
