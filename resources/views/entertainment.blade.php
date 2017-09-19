@@ -49,7 +49,7 @@ if(($array['food']) == 'luxury')
             @foreach($entertainmentOptions as $entertainmentOption)
                 <div class="entOptions" id='picture{{ $i += 1 }}' data-ent="{{$entertainmentOption->description}}" data-price="{{ $entertainmentOption->cost }}">
                     <h4 style="pointer-events:none" class='words'>{{ $entertainmentOption->description}}</h4>
-                    <p  style="pointer-events:none" class='words'>${{ $entertainmentOption->cost}}</p>
+                    <p  style="pointer-events:none" class='words'>${{ number_format(($entertainmentOption->cost),2,'.','')}}</p>
                 </div>
             @endforeach
             @if(empty($entertainmentOptions))
