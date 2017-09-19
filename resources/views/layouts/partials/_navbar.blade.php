@@ -22,7 +22,7 @@
                     @else
                     <li><a href="/trips">Trips</a></li>
 
-                    <li><a href="/auth/logout" class="dropdown-toggle" data-toggle="dropdown">Logout</a></li>
+                    <li><a href="/auth/logout">Logout</a></li>
                     @endif
                 </ul>
 
