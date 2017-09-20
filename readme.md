@@ -1,27 +1,29 @@
-## Laravel PHP Framework
+#README:
+We are Globetrotter, a full-stack development team that has created a mobile responsive application to give you real time currency exchange rates, hotel accommodations, local entertainment and transportation costs needed when planning and budgeting a trip before you arrive at your destination. As always, feel free to let us know if you have any questions or concerns by reaching out to us at the contact information included below. Thank you.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+#Development:
+Globetrotter was developed by a group of three Codeup student developers in September 2017 as a Capstone Project in San Antonio Tx. The creation of Globetrotter was during a two week time frame in which the development team dedicated their time and effort to ensure the end product was a successful reliable travel site.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Globetrotter is an application built using a Laravel wireframe needed for large applications using PHP, MySQL, JavaScript and JQuery which then queries an API with cost data info from more than 30,000 locations, making it a user friendly, easy to use website with some custom CSS.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+#Contributors & Contacts:
+For information on how to contribute to the project please contact us at the email addresses listed below.
+	
+	- Hunter Warren hunter.warren@gmail.com
+	- David "Russell" Jex jexdavid@gmail.com
+	- David Newton dnewton.development@gmail.com
 
-## Official Documentation
+#Resources / Credits / Thank You's:
+Globetrotter would like to thank Codeup and instructors (Ryan Orsinger, Justin Reich, Dewayne Allen and Zach Gulde) along with the Quincy Cohert for their support during the development process of our Capstone Project "GLOBETROTTER".
+	- PHP 5.6.30 (cli) (built: Feb  7 2017 16:18:37) Copyright (c) 1997-2016 The PHP Group Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+	- budgetyourtrip.com providing the API key needed for travel destinations used on our site.
+	- Domain name globetrotter.pro provided by Digital Ocean. 
+	- Laravel Frameworks
+	- GitHub.com
+	
+#Version:
+Globetroter.pro Version 1.0
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+#License:
+This code is available at github, globetrotterbudget/site
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
