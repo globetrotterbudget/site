@@ -29,7 +29,7 @@
 	display: ;
 	background-image: url('../img/rescue-helicopter-922465_1280.jpg')
 }*/
-#login_box p {
+p {
 	font-size:16px;
 	line-height: 1.6em;
 }
@@ -42,8 +42,7 @@
 }
 .C1
 {
-    display: table-cell;
-    width: 48px;
+    width: 170px;
     height: 170px;
     background-image: url(../img/HWarren.jpg);
     background-position: center;
@@ -51,8 +50,7 @@
 }
 .C2
 {
-    display: table-cell;
-    width: 48px;
+    width: 170px;
     height: 170px;
     background-image: url(../img/DJex.jpg); /*Optional*/
     background-position: center;
@@ -60,8 +58,7 @@
 }
 .C3
 {
-    display: table-cell;
-    width: 48px;
+    width: 170px;
     height: 170px;
     background-image: url(../img/DNewton.jpg); /*Optional*/
    	background-position: center;
@@ -76,22 +73,16 @@
 }
 .colone
 {
-    display: table-cell;
-    width: 50px;
     height: 170px;
     background-color:;
 }
 .coltwo
 {
-    display: table-cell;
-    width: 50px;
     height: 170px;
     background-color:;
 }
 .colthree
 {
-    display: table-cell;
-    width: 50px;
     height: 170px;
     background-color:;
 }
@@ -647,6 +638,17 @@ h1, h2 {
 .hidden{
 	display: none;
 }
+.us_info{
+	display: inline;
+	text-align: center;
+}
+.emails{
+	font-size: .8em;
+}
+.github_image{
+	height: 3em;
+	width: 3em;
+}
 @media screen and (max-width: 650px) {
 	#banner{
 		font-size: 2.5em;
@@ -684,4 +686,17 @@ h1, h2 {
 		margin-top: 1em;
 		padding-left: 0;
 	}
+	/*.colone{
+		display: block;
+	}*/
+	.C1{
+		margin-left: 20px;
+	}
+	.C2{
+		margin-left: 20px;
+	}
+	.C3{
+		margin-left: 20px;
+	}
+
 }

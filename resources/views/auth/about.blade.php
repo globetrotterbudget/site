@@ -18,14 +18,18 @@
                 We have created designing features to give you real time currency exchange rates, hotel accommodations, local entertainment and transportation assuring you have everything you need for your trip at the touch of a button.</p>
                 <p>As always, feel free to let us know if you have any questions or concerns. Thank you.</p>
                 <div class="Row">
-                    <div class="C1"></div>
-                    <div class="C2"></div>
-                    <div class="C3"></div>
-                </div>
-                <div class="Row2">   
-                    <div class="colone"><p>Hunter Warren hunter.warren@gmail.com</p></div>
-                    <div class="coltwo"><p>David "Russell" Jex david.jex@me.com</p></div>
-                    <div class="colthree"><p>David Newton david.newton39@yahoo.com</p></div>
+                    <div class='col-md-4 us_columns'>
+                        <div class="C1"></div>
+                        <div class="colone"><p class='us_info'>Hunter Warren</p><p class='emails'><a href='mailto:hunter.warren@gmail.com'>hunter.warren@gmail.com</a></p><a href='https://github.com/h9warren'><img src='/img/github.svg' class='github_image'></a></div>
+                    </div>
+                    <div class='col-md-4 us_columns'>
+                        <div class="C2"></div>
+                        <div class="coltwo"><p class='us_info'>David "Russell" Jex</p><p class='emails'><a href='mailto:jexdavid@gmail.com'>jexdavid@gmail.com</a></p><a href='https://github.com/rex725'><img src='/img/github.svg' class='github_image'></a><p><a href='https://rex725.github.io'>Visit my Website</a></p></div>
+                    </div>
+                    <div class='col-md-4 us_columns'>
+                        <div class="C3"></div>
+                        <div class="colthree"><p class='us_info'>David Newton</p><p class='emails'><a href='mailto:dnewton.development@gmail.com'>dnewton.development@gmail.com</a></p><a href='https://github.com/DaveN39'><img src='/img/github.svg' class='github_image'></a></div>
+                    </div>
                 </div>
             
             
