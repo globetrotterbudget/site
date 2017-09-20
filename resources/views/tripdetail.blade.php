@@ -21,8 +21,8 @@
 	</div>
     
     @foreach($trips as $trip)
-    
-    <div class="row">
+     
+    <div id = "{{ $trip->id }}" class="row">
     	<div class="col-md-12">
     		<h2 class="tripLocation">{{$trip->location}}</h2>
     	</div>

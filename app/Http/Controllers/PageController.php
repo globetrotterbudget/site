@@ -34,7 +34,7 @@ class PageController extends Controller
     }
     public function newcity(Request $request)
     {
-        dd($request);
+
         if(null !==(session()->get('id'))) {
             (session()->forget('id'));
         }
@@ -66,9 +66,11 @@ class PageController extends Controller
 
             if(strpos($city, ' ') !== false){
                 $citySearchable = str_replace(' ', '-', $city);
-                $possible_locations = $locations->search($citySearchable);
+                $possible_locations = $locations->search($citySearchable); 
+
             } else {
-                $possible_locations = $locations->search($city);            
+                $possible_locations = $locations->search($city);
+                          
             }
             if(count($input) === 2){
                 $province = strtolower(trim($input[1]));
@@ -153,12 +155,25 @@ class PageController extends Controller
             $costs = new Costs(env('API_KEY'));
             $cost_data = $costs->getLocation($geonameid);
             $cost_per_day = $cost_data[count($cost_data) - 1];
+            // var_dump($cost_per_day);
+            // die;
+
             $average_cost_per_day = $cost_per_day->value_midrange;
+
             $currencies = new Currencies(env('API_KEY'));
-            $USD_average_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_cost_per_day);
-            $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
-            $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
-            $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', '')];
+
+            if($currency_code!=="USD") {
+                $USD_average_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_cost_per_day);
+                $USD_average_cost_per_day = round($USD_average_cost_per_day_summary->newAmount, 2);
+                $average_trip_cost = round(($days * $USD_average_cost_per_day_summary->newAmount), 2);
+                $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', '')];
+            } else {
+
+                $USD_average_cost_per_day = round($average_cost_per_day, 2);
+                $average_trip_cost = round(($days * $average_cost_per_day), 2);
+                $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'Average Cost per Person per Day' => number_format((float)$USD_average_cost_per_day, 2, '.', '')];
+            }
+
             
             //  Avg cost per person per day...
             // 'Average Cost per Person' => number_format((float)$average_trip_cost, 2, '.', '')
@@ -193,14 +208,34 @@ class PageController extends Controller
             }
             $currencies = new Currencies(env('API_KEY'));
 
-            $USD_average_accommodation_per_day_summary = $currencies->convert($currency_code, 'USD', $accommodations_cost_per_day);
-            $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
-            $average_accommodation_cost = round(($days * $USD_average_accommodation_per_day_summary->newAmount), 2);
+            if($currency_code !== 'USD') {
+    
+                $USD_average_accommodation_per_day_summary = $currencies->convert($currency_code, 'USD', $accommodations_cost_per_day);
+                $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary->newAmount, 2);
+                $average_accommodation_cost = round(($days * $USD_average_accommodation_per_day_summary->newAmount), 2);
 
-            if ($groupsize > 1){
-                $USD_average_accommodation_per_day /= 2;
-                $average_accommodation_cost /= 2;
+                if ($groupsize > 1){
+                    $USD_average_accommodation_per_day /= 2;
+                    $average_accommodation_cost /= 2;
+                }
+            } else {
+
+                $USD_average_accommodation_per_day_summary = $accommodations_cost_per_day;
+                
+                $USD_average_accommodation_per_day = round($USD_average_accommodation_per_day_summary, 2);
+
+                $average_accommodation_cost = round(($days * $USD_average_accommodation_per_day_summary), 2);
+
+                if ($groupsize > 1){
+                    $USD_average_accommodation_per_day /= 2;
+                    $average_accommodation_cost /= 2;
+                }
+
             }
+
+
+
+
             session()->put('average_accommodation_cost', number_format((float)$average_accommodation_cost, 2, '.', ''));
             session()->put('average_accommodation_cost_per_day', number_format((float)$USD_average_accommodation_per_day, 2, '.', '') );
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'Average Accomodation Cost per Person per Day' => number_format((float)$USD_average_accommodation_per_day, 2, '.', '')];
@@ -233,14 +268,23 @@ class PageController extends Controller
                 $average_transportation_cost_per_day = $transportation_cost_per_day->value_luxury;
             }
             $currencies = new Currencies(env('API_KEY'));
-            $USD_average_transportation_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_transportation_cost_per_day);
-            $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
-            $average_transportation_cost = round(($days * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
+
+            if($currency_code !=='USD'){
+                $USD_average_transportation_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_transportation_cost_per_day);
+                $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary->newAmount, 2);
+                $average_transportation_cost = round(($days * $USD_average_transportation_cost_per_day_summary->newAmount), 2);
+            } else {
+                $USD_average_transportation_cost_per_day_summary = $average_transportation_cost_per_day;
+                $USD_average_transportation_cost_per_day = round($USD_average_transportation_cost_per_day_summary, 2);
+                $average_transportation_cost = round(($days * $USD_average_transportation_cost_per_day_summary), 2);
+
+             }   
             session()->put('average_transportation_cost', number_format((float)$average_transportation_cost, 2, '.', ''));
             session()->put('average_transportation_cost_per_day', number_format((float)$USD_average_transportation_cost_per_day, 2, '.', '') );
             $data['array'] = ['location' => $location, 'days' => $days, 'groupsize' => $groupsize, 'accommodations' => $accommodations, 'Average Accomodation Cost per Person per Day'=>$average_accommodation_cost_per_day, 'transportation'=> $transportation, 'Transportation Cost per Person per Day'=> number_format((float)$USD_average_transportation_cost_per_day, 2, '.', ''), 'Transportation Cost per Person'=> number_format((float)$average_transportation_cost, 2, '.', ''), 'Total Trip Cost' => $average_transportation_cost + $average_accommodation_cost];
 
             return view('food', $data);
+            
         } else {
             
             $request->session()->put('food', $request['food']);
@@ -275,13 +319,29 @@ class PageController extends Controller
                 $average_food_cost_per_day = $food_cost_per_day->value_luxury;
             }
             $currencies = new Currencies(env('API_KEY'));
-            $USD_average_food_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_food_cost_per_day);
-            $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
-            $average_food_cost = round(($days * $USD_average_food_cost_per_day_summary->newAmount), 2);
-            $cost_highlights = $costs->getHighlights($geonameid);
+
+            if($currency_code !=='USD') {
+
+                $USD_average_food_cost_per_day_summary = $currencies->convert($currency_code, 'USD', $average_food_cost_per_day);
+                $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary->newAmount, 2);
+                $average_food_cost = round(($days * $USD_average_food_cost_per_day_summary->newAmount), 2);
+                $cost_highlights = $costs->getHighlights($geonameid);
+
+            } else {
+
+                $USD_average_food_cost_per_day_summary = $average_food_cost_per_day;
+                $USD_average_food_cost_per_day = round($USD_average_food_cost_per_day_summary, 2);
+                $average_food_cost = round(($days * $USD_average_food_cost_per_day_summary), 2);
+                $cost_highlights = $costs->getHighlights($geonameid);
+
+            }
+
             $entertainment_options = [];
             $i = 0;
-            foreach($cost_highlights as $highlight){
+
+            if($currency_code !=='USD') {
+
+            foreach($cost_highlights as $highlight) {
                 if($highlight->category_id === '6'){
                     $USD_entertainment_costs = $currencies->convert($currency_code, 'USD', $highlight->cost);
                     $USD_entertainment_cost = round($USD_entertainment_costs->newAmount, 2);
@@ -289,6 +349,19 @@ class PageController extends Controller
                     array_push($entertainment_options, $highlight);
                 };
             }
+
+        } else {
+                foreach($cost_highlights as $highlight) {
+                    
+                    if($highlight->category_id === '6') {
+
+                    $USD_entertainment_costs = $highlight->cost;
+                    $USD_entertainment_cost = round($USD_entertainment_costs, 2);
+                    $highlight->cost = $USD_entertainment_cost;
+                    array_push($entertainment_options, $highlight);
+                };
+            }
+        }
  
             session()->put('average_food_cost_per_day', $USD_average_food_cost_per_day);
             session()->put('average_food_cost', $average_food_cost);
@@ -571,15 +644,16 @@ class PageController extends Controller
         return view('/trips', $data);
 
     }
-    public function tripDetail($tripName)
+    public function tripDetail($tripName, $id=null)
     {
-        
         $trips = \App\Trip::where('user_id', Auth::id())->where('trip_name', $tripName)->get();
 
         $data['trips'] = $trips;
         
-        return view('/tripdetail', $data);
 
+        return view('/tripdetail', $data);
+            
+        
     }
 
 
@@ -673,9 +747,6 @@ class PageController extends Controller
             $option->save();
 
         }
-
-
-
 
         $name = \DB::table('trips')->select('trip_name')->where('id', $id)->get();
         $tripName = $name[0]->trip_name;
