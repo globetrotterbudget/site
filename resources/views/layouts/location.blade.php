@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-<title>Location of Travel</title>
+<title>Plan Your Vacation Budget</title>
 @stop
 
 @section('content')
